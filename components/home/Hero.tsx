@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import { site } from '@/lib/site'
 
 const AIRPORTS = [
@@ -17,186 +16,201 @@ const AIRPORTS = [
   'Other destination',
 ]
 
-export default function Hero() {
-  const [passengers, setPassengers] = useState('1')
-  const [pickup, setPickup] = useState('')
-  const [dropoff, setDropoff] = useState('')
-  const [date, setDate] = useState('')
-  const [time, setTime] = useState('')
-  const [loading, setLoading] = useState(false)
+type Status = 'idle' | 'sending' | 'sent' | 'error'
 
-  function handleQuote(e: React.FormEvent) {
-    e.preventDefault()
-    setLoading(true)
-    window.dispatchEvent(new CustomEvent('prefill-booking', {
-      detail: { pickup, dropoff, date, time, passengers },
-    }))
-    setTimeout(() => {
-      setLoading(false)
-      document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })
-    }, 600)
-  }
+export default function Hero() {
+  const [pickup, setPickup]         = useState('')
+  const [dropoff, setDropoff]       = useState('')
+  const [date, setDate]             = useState('')
+  const [time, setTime]             = useState('')
+  const [passengers, setPassengers] = useState('1')
+  const [name, setName]             = useState('')
+  const [phone, setPhone]           = useState('')
+  const [email, setEmail]           = useState('')
+  const [returnOn, setReturnOn]     = useState(false)
+  const [returnDate, setReturnDate] = useState('')
+  const [returnTime, setReturnTime] = useState('')
+  const [status, setStatus]         = useState<Status>('idle')
 
   const today = new Date().toISOString().split('T')[0]
 
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    setStatus('sending')
+    try {
+      const res = await fetch('/api/quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name, email, phone, passengers,
+          pickup, dropoff, date, time,
+          returnJourney: returnOn,
+          returnDate: returnOn ? returnDate : '',
+          returnTime: returnOn ? returnTime : '',
+        }),
+      })
+      if (!res.ok) throw new Error()
+      setStatus('sent')
+    } catch {
+      setStatus('error')
+    }
+  }
+
   return (
     <section className="relative min-h-[100svh] flex flex-col justify-end overflow-hidden">
-      {/* Desktop image */}
-      <Image
-        src="/images/hero/hero-vito.webp"
-        alt="Black Mercedes Vito airport transfer at dusk in Leeds"
-        fill
-        priority
-        className="object-cover hidden md:block"
-        sizes="100vw"
-      />
-      {/* Mobile image */}
-      <Image
-        src="/images/hero/hero-vito-mobile.webp"
-        alt="Black Mercedes Vito airport transfer at dusk in Leeds"
-        fill
-        priority
-        className="object-cover md:hidden"
-        sizes="100vw"
-      />
+      {/* Background images */}
+      <Image src="/images/hero/hero-vito.webp" alt="Ridecore Travel premium airport transfer" fill priority className="object-cover hidden md:block" sizes="100vw" />
+      <Image src="/images/hero/hero-vito-mobile.webp" alt="Ridecore Travel premium airport transfer" fill priority className="object-cover md:hidden" sizes="100vw" />
+      <div className="absolute inset-0 bg-gradient-to-b from-charcoal/50 via-charcoal/30 to-charcoal/95" />
+      <div className="absolute inset-0 bg-gradient-to-r from-charcoal/60 via-transparent to-transparent" />
 
-      {/* Full overlay gradient — dark bottom for widget readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-charcoal/50 via-charcoal/30 to-charcoal/90" />
-      <div className="absolute inset-0 bg-gradient-to-r from-charcoal/70 via-transparent to-transparent" />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-28 pb-10">
 
-      {/* Hero text — top-left */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-36 pb-10">
-        <div className="max-w-2xl mb-10">
-          <div className="flex items-center gap-2 mb-5">
+        {/* Headline */}
+        <div className="max-w-2xl mb-8">
+          <div className="flex items-center gap-2 mb-4">
             <span className="w-6 h-px bg-gold" />
-            <span className="text-gold text-xs font-semibold tracking-widest uppercase">
-              Leeds · 24/7 · Licensed
-            </span>
+            <span className="text-gold text-xs font-semibold tracking-widest uppercase">Leeds · 24/7 · Licensed</span>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-cream leading-[1.08] tracking-tight mb-4">
+          <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-cream leading-[1.08] tracking-tight mb-3">
             Fixed-Price Airport<br className="hidden sm:block" /> Transfers from Leeds
           </h1>
-          <p className="text-cream/70 text-lg md:text-xl leading-relaxed">
+          <p className="text-cream/70 text-lg leading-relaxed">
             Premium Fleet · Fixed prices · Flight tracking included
           </p>
         </div>
 
-        {/* ── Booking widget ── */}
-        <form
-          onSubmit={handleQuote}
-          className="bg-charcoal/80 backdrop-blur-md border border-white/10 rounded-sm p-4 md:p-5"
-        >
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
-            {/* Pickup */}
-            <div className="flex flex-col gap-1 lg:col-span-1">
-              <label className="text-gold text-[10px] font-semibold tracking-widest uppercase px-1">
-                Pickup
-              </label>
-              <input
-                type="text"
-                value={pickup}
-                onChange={e => setPickup(e.target.value)}
-                placeholder="Your address or postcode"
-                required
-                className="bg-white/5 border border-white/12 text-cream text-sm px-3.5 py-3 rounded-sm placeholder:text-grey focus:outline-none focus:border-gold/50 focus:bg-white/8 transition-all"
-              />
-            </div>
+        {/* ── Booking form card ── */}
+        <div className="bg-charcoal/85 backdrop-blur-md border border-white/10 rounded-sm overflow-hidden">
 
-            {/* Drop-off */}
-            <div className="flex flex-col gap-1 lg:col-span-1">
-              <label className="text-gold text-[10px] font-semibold tracking-widest uppercase px-1">
-                Drop-off
-              </label>
-              <div className="relative">
-                <select
-                  value={dropoff}
-                  onChange={e => setDropoff(e.target.value)}
-                  required
-                  className="w-full appearance-none bg-white/5 border border-white/12 text-sm px-3.5 py-3 rounded-sm focus:outline-none focus:border-gold/50 transition-all pr-9 text-cream [&>option]:bg-charcoal [&>option]:text-cream"
-                >
-                  <option value="" className="text-grey">Select airport</option>
-                  {AIRPORTS.map(a => (
-                    <option key={a} value={a}>{a}</option>
-                  ))}
-                </select>
-                <ChevronIcon />
+          {/* Card header */}
+          <div className="px-5 py-3.5 border-b border-white/8 flex items-center justify-between">
+            <span className="text-cream text-sm font-semibold">Get Your Fixed-Price Quote</span>
+            <span className="text-grey text-xs">No payment now · Reply within 30 min</span>
+          </div>
+
+          {status === 'sent' ? (
+            <div className="px-6 py-14 flex flex-col items-center gap-4 text-center">
+              <div className="w-14 h-14 rounded-full border border-gold/40 flex items-center justify-center">
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#b29a75" strokeWidth={1.8}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
               </div>
+              <h3 className="text-cream text-xl font-semibold">Quote Request Sent!</h3>
+              <p className="text-grey text-sm max-w-sm leading-relaxed">
+                We've received your details and will send your fixed price within 30 minutes. Check your email or phone.
+              </p>
+              <button
+                onClick={() => { setStatus('idle'); setName(''); setEmail(''); setPhone(''); setPickup(''); setDropoff(''); setDate(''); setTime(''); setPassengers('1'); setReturnOn(false) }}
+                className="mt-2 text-gold text-xs tracking-widest uppercase font-semibold hover:underline"
+              >
+                Submit another →
+              </button>
             </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="p-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
 
-            {/* Date */}
-            <div className="flex flex-col gap-1">
-              <label className="text-gold text-[10px] font-semibold tracking-widest uppercase px-1">
-                Date
-              </label>
-              <input
-                type="date"
-                value={date}
-                onChange={e => setDate(e.target.value)}
-                min={today}
-                required
-                className="bg-white/5 border border-white/12 text-cream text-sm px-3.5 py-3 rounded-sm focus:outline-none focus:border-gold/50 transition-all [color-scheme:dark]"
-              />
-            </div>
+                {/* Journey row */}
+                <Field label="Pickup address">
+                  <input type="text" value={pickup} onChange={e => setPickup(e.target.value)} placeholder="Your address or postcode" required className={input} />
+                </Field>
+                <Field label="Drop-off / Airport">
+                  <div className="relative">
+                    <select value={dropoff} onChange={e => setDropoff(e.target.value)} required className={`${input} appearance-none pr-8 [&>option]:bg-charcoal`}>
+                      <option value="">Select airport</option>
+                      {AIRPORTS.map(a => <option key={a} value={a}>{a}</option>)}
+                    </select>
+                    <Chevron />
+                  </div>
+                </Field>
+                <Field label="Date">
+                  <input type="date" value={date} onChange={e => setDate(e.target.value)} min={today} required className={`${input} [color-scheme:dark]`} />
+                </Field>
+                <Field label="Time">
+                  <input type="time" value={time} onChange={e => setTime(e.target.value)} required className={`${input} [color-scheme:dark]`} />
+                </Field>
 
-            {/* Time */}
-            <div className="flex flex-col gap-1">
-              <label className="text-gold text-[10px] font-semibold tracking-widest uppercase px-1">
-                Time
-              </label>
-              <input
-                type="time"
-                value={time}
-                onChange={e => setTime(e.target.value)}
-                required
-                className="bg-white/5 border border-white/12 text-cream text-sm px-3.5 py-3 rounded-sm focus:outline-none focus:border-gold/50 transition-all [color-scheme:dark]"
-              />
-            </div>
-
-            {/* Passengers + CTA */}
-            <div className="flex flex-col gap-1">
-              <label className="text-gold text-[10px] font-semibold tracking-widest uppercase px-1">
-                Passengers
-              </label>
-              <div className="flex gap-2">
-                <div className="relative flex-shrink-0 w-20">
-                  <select
-                    value={passengers}
-                    onChange={e => setPassengers(e.target.value)}
-                    className="w-full appearance-none bg-white/5 border border-white/12 text-cream text-sm px-3 py-3 rounded-sm focus:outline-none focus:border-gold/50 transition-all pr-7 [&>option]:bg-charcoal"
-                  >
+                {/* Passengers */}
+                <Field label="Passengers">
+                  <div className="flex gap-1.5">
                     {[1,2,3,4,5,6,7,8].map(n => (
-                      <option key={n} value={n}>{n}</option>
+                      <button key={n} type="button" onClick={() => setPassengers(String(n))}
+                        className={`flex-1 py-2.5 text-sm font-semibold rounded-sm border transition-all ${passengers === String(n) ? 'bg-gold text-charcoal border-gold' : 'bg-white/5 border-white/12 text-grey hover:border-gold/30 hover:text-cream'}`}>
+                        {n}
+                      </button>
                     ))}
-                  </select>
-                  <ChevronIcon />
-                </div>
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="flex-1 bg-gold text-charcoal font-bold text-sm tracking-wide rounded-sm hover:bg-gold/90 active:scale-[.98] transition-all whitespace-nowrap px-4 flex items-center justify-center gap-2 disabled:opacity-80"
-                >
-                  {loading ? (
-                    <>
-                      <svg className="animate-spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
-                        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" strokeLinecap="round"/>
-                      </svg>
-                      Opening…
-                    </>
-                  ) : 'Get Quote'}
-                </button>
-              </div>
-            </div>
-          </div>
+                  </div>
+                </Field>
 
-          {/* Trust micro-line */}
-          <div className="flex flex-wrap gap-x-5 gap-y-1 mt-3 px-1">
-            {['Fixed price · no surprises', 'Reply within minutes', '24/7 availability'].map(t => (
-              <span key={t} className="text-cream/40 text-[11px] flex items-center gap-1.5">
-                <span className="text-gold text-[8px]">✦</span>{t}
-              </span>
-            ))}
-          </div>
-        </form>
+                {/* Return journey toggle */}
+                <Field label="Return journey?">
+                  <div className="flex items-center h-[42px] gap-3">
+                    <button type="button" role="switch" aria-checked={returnOn} onClick={() => setReturnOn(v => !v)}
+                      className={`relative w-10 h-5 rounded-full border transition-all flex-shrink-0 ${returnOn ? 'bg-gold border-gold' : 'bg-white/8 border-white/15'}`}>
+                      <span className={`absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white transition-transform duration-200 ${returnOn ? 'translate-x-5' : ''}`} />
+                    </button>
+                    <span className="text-cream/70 text-sm">{returnOn ? 'Yes — add return details' : 'One way'}</span>
+                  </div>
+                </Field>
+
+                {/* Return fields */}
+                {returnOn && (
+                  <>
+                    <Field label="Return date">
+                      <input type="date" value={returnDate} onChange={e => setReturnDate(e.target.value)} min={date || today} required className={`${input} [color-scheme:dark]`} />
+                    </Field>
+                    <Field label="Return time">
+                      <input type="time" value={returnTime} onChange={e => setReturnTime(e.target.value)} required className={`${input} [color-scheme:dark]`} />
+                    </Field>
+                  </>
+                )}
+
+                {/* Divider */}
+                <div className="sm:col-span-2 lg:col-span-3 border-t border-white/8 pt-1">
+                  <span className="text-grey text-[10px] font-semibold tracking-widest uppercase">Your details</span>
+                </div>
+
+                {/* Personal details */}
+                <Field label="Full name">
+                  <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="First and last name" required className={input} />
+                </Field>
+                <Field label="Phone number">
+                  <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="07xxx xxxxxx" required className={input} />
+                </Field>
+                <Field label="Email address">
+                  <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="you@example.com" required className={input} />
+                </Field>
+
+                {/* Submit */}
+                <div className="sm:col-span-2 lg:col-span-3 pt-1">
+                  {status === 'error' && (
+                    <p className="text-red-400 text-xs mb-2">Something went wrong — please try again or call us directly.</p>
+                  )}
+                  <button type="submit" disabled={status === 'sending'}
+                    className="w-full bg-gold text-charcoal font-bold text-sm tracking-widest uppercase py-4 rounded-sm hover:bg-gold/90 active:scale-[.99] transition-all disabled:opacity-60 flex items-center justify-center gap-2">
+                    {status === 'sending' ? (
+                      <>
+                        <svg className="animate-spin" width="16" height="16" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"/>
+                        </svg>
+                        Sending…
+                      </>
+                    ) : 'Get My Fixed-Price Quote →'}
+                  </button>
+                  <div className="flex flex-wrap gap-x-5 gap-y-1 mt-3 justify-center">
+                    {['Fixed price · no surprises', 'No payment now', '24/7 availability'].map(t => (
+                      <span key={t} className="text-cream/40 text-[11px] flex items-center gap-1.5">
+                        <span className="text-gold text-[8px]">✦</span>{t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </form>
+          )}
+        </div>
 
         {/* Route quick-links */}
         <div className="mt-3 flex flex-wrap gap-2">
@@ -205,23 +219,17 @@ export default function Hero() {
             { label: 'Manchester Airport',     href: '/airport-transfers/leeds-to-manchester-airport' },
             { label: 'Liverpool Airport',      href: '/airport-transfers/leeds-to-liverpool-airport' },
             { label: 'London Heathrow',        href: '/airport-transfers/leeds-to-heathrow' },
-          ].map((r) => (
-            <a
-              key={r.href}
-              href={r.href}
-              className="text-[11px] text-cream/50 hover:text-gold transition-colors border border-white/10 hover:border-gold/30 px-3 py-1.5 rounded-sm tracking-wide"
-            >
+          ].map(r => (
+            <a key={r.href} href={r.href}
+              className="text-[11px] text-cream/50 hover:text-gold transition-colors border border-white/10 hover:border-gold/30 px-3 py-1.5 rounded-sm tracking-wide">
               {r.label}
             </a>
           ))}
         </div>
 
-        {/* Ghost call CTA below widget */}
+        {/* Call CTA */}
         <div className="mt-4 flex items-center gap-4">
-          <a
-            href={`tel:${site.phoneTel}`}
-            className="flex items-center gap-2 text-cream/60 hover:text-cream text-sm transition-colors"
-          >
+          <a href={`tel:${site.phoneTel}`} className="flex items-center gap-2 text-cream/60 hover:text-cream text-sm transition-colors">
             <PhoneIcon />
             Prefer to call? {site.phone}
           </a>
@@ -233,10 +241,21 @@ export default function Hero() {
   )
 }
 
-function ChevronIcon() {
+const input = 'w-full bg-white/5 border border-white/12 text-cream text-sm px-3.5 py-2.5 rounded-sm placeholder:text-grey/50 focus:outline-none focus:border-gold/50 focus:bg-white/8 transition-all'
+
+function Field({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="flex flex-col gap-1.5">
+      <label className="text-gold text-[10px] font-semibold tracking-widest uppercase">{label}</label>
+      {children}
+    </div>
+  )
+}
+
+function Chevron() {
   return (
     <span className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-grey">
-      <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
       </svg>
     </span>
