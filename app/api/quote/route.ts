@@ -87,7 +87,7 @@ export async function POST(req: NextRequest) {
     await Promise.all([
       transporter.sendMail({
         from: `"Ridecore Travel Website" <${process.env.GMAIL_USER}>`,
-        to: 'booking@ridecoretravel.co.uk',
+        to: 'umairlanday@gmail.com, booking@ridecoretravel.co.uk',
         subject: `New Quote — ${data.name} — ${data.dropoff} — ${data.date}`,
         html: notifyHtml,
         text: `New quote request\nName: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nPickup: ${data.pickup}\nDrop-off: ${data.dropoff}\nDate: ${data.date}\nTime: ${data.time}\nPassengers: ${data.passengers}${returnText}`,
