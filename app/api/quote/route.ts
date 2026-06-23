@@ -9,6 +9,54 @@ const transporter = nodemailer.createTransport({
   },
 })
 
+// Inline SVG logo — works in all email clients, no image blocking
+const LOGO_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="160" height="46" viewBox="0 0 160 46">
+  <text x="32" y="30" font-family="Georgia,serif" font-size="18" font-weight="700" fill="#F5F3EF" letter-spacing="2">RIDECORE</text>
+  <text x="32" y="44" font-family="Georgia,serif" font-size="10" fill="#b29a75" letter-spacing="4">TRAVEL</text>
+  <text x="0" y="38" font-family="Georgia,serif" font-size="36" font-weight="700" fill="#b29a75">R</text>
+</svg>`
+
+const LOGO_DATA = `data:image/svg+xml;base64,${Buffer.from(LOGO_SVG).toString('base64')}`
+
+function emailHeader(subtitle: string) {
+  return `
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#0E0E0E;border-radius:6px 6px 0 0">
+    <tr>
+      <td style="padding:28px 32px 20px">
+        <img src="${LOGO_DATA}" width="140" height="40" alt="Ridecore Travel" style="display:block;margin-bottom:14px"/>
+        <div style="width:40px;height:2px;background:#b29a75;margin-bottom:10px"></div>
+        <p style="color:#b29a75;font-family:sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;margin:0;text-transform:uppercase">${subtitle}</p>
+      </td>
+    </tr>
+  </table>`
+}
+
+function emailFooter() {
+  return `
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#0E0E0E;border-radius:0 0 6px 6px;margin-top:0">
+    <tr>
+      <td style="padding:20px 32px;border-top:1px solid rgba(255,255,255,0.08)">
+        <p style="color:#9a9a9a;font-family:sans-serif;font-size:12px;margin:0;line-height:1.6">
+          Ridecore Travel Ltd · PHV Licence 25232 · Leeds City Council<br/>
+          <a href="tel:+447356206830" style="color:#b29a75;text-decoration:none">+44 7356 206830</a>
+          &nbsp;·&nbsp;
+          <a href="mailto:booking@ridecoretravel.co.uk" style="color:#b29a75;text-decoration:none">booking@ridecoretravel.co.uk</a>
+          &nbsp;·&nbsp;
+          <a href="https://www.ridecoretravel.co.uk" style="color:#b29a75;text-decoration:none">ridecoretravel.co.uk</a>
+        </p>
+      </td>
+    </tr>
+  </table>`
+}
+
+function row(label: string, value: string, highlight = false) {
+  return `
+  <tr>
+    <td style="padding:11px 16px;color:#888;font-family:sans-serif;font-size:13px;border-bottom:1px solid #eee;width:130px;white-space:nowrap">${label}</td>
+    <td style="padding:11px 16px;font-family:sans-serif;font-size:13px;font-weight:600;border-bottom:1px solid #eee;color:${highlight ? '#b29a75' : '#1a1a1a'}">${value}</td>
+  </tr>`
+}
+
 export async function POST(req: NextRequest) {
   const data = await req.json()
 
@@ -19,76 +67,114 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  const returnRow = data.returnJourney
-    ? `<tr><td style="padding:10px 16px;color:#b29a75;font-weight:600;border-top:1px solid #eee">Return</td><td style="padding:10px 16px;font-weight:600;color:#b29a75;border-top:1px solid #eee">${data.returnDate} at ${data.returnTime}</td></tr>`
-    : ''
-
   const returnText = data.returnJourney
     ? `\nReturn Date:   ${data.returnDate}\nReturn Time:   ${data.returnTime}`
     : ''
 
-  const notifyHtml = `
-<div style="font-family:sans-serif;max-width:560px;margin:0 auto">
-  <div style="background:#0E0E0E;padding:24px 32px;border-radius:4px 4px 0 0">
-    <h1 style="color:#b29a75;margin:0;font-size:20px;letter-spacing:1px">NEW BOOKING REQUEST</h1>
-    <p style="color:#9a9a9a;margin:6px 0 0;font-size:13px">Ridecore Travel — ridecoretravel.co.uk</p>
-  </div>
-  <div style="background:#F5F3EF;padding:32px;border-radius:0 0 4px 4px">
-    <table style="width:100%;border-collapse:collapse;font-size:14px">
-      <tr><td style="padding:8px 0;color:#666;width:140px">Name</td><td style="padding:8px 0;font-weight:600">${data.name}</td></tr>
-      <tr><td style="padding:8px 0;color:#666">Phone</td><td style="padding:8px 0;font-weight:600"><a href="tel:${data.phone}" style="color:#0E0E0E">${data.phone}</a></td></tr>
-      <tr><td style="padding:8px 0;color:#666">Email</td><td style="padding:8px 0;font-weight:600"><a href="mailto:${data.email}" style="color:#0E0E0E">${data.email}</a></td></tr>
-      <tr><td colspan="2" style="padding:8px 0"><hr style="border:none;border-top:1px solid #ddd"/></td></tr>
-      <tr><td style="padding:8px 0;color:#666">Pickup</td><td style="padding:8px 0;font-weight:600">${data.pickup}</td></tr>
-      <tr><td style="padding:8px 0;color:#666">Drop-off</td><td style="padding:8px 0;font-weight:600">${data.dropoff}</td></tr>
-      <tr><td style="padding:8px 0;color:#666">Date</td><td style="padding:8px 0;font-weight:600">${data.date}</td></tr>
-      <tr><td style="padding:8px 0;color:#666">Time</td><td style="padding:8px 0;font-weight:600">${data.time}</td></tr>
-      <tr><td style="padding:8px 0;color:#666">Passengers</td><td style="padding:8px 0;font-weight:600">${data.passengers}</td></tr>
-      ${data.returnJourney ? `
-      <tr><td colspan="2" style="padding:8px 0"><hr style="border:none;border-top:1px solid #ddd"/></td></tr>
-      <tr><td style="padding:8px 0;color:#b29a75;font-weight:600">Return Journey</td><td style="padding:8px 0;font-weight:600;color:#b29a75">YES</td></tr>
-      <tr><td style="padding:8px 0;color:#666">Return Date</td><td style="padding:8px 0;font-weight:600">${data.returnDate}</td></tr>
-      <tr><td style="padding:8px 0;color:#666">Return Time</td><td style="padding:8px 0;font-weight:600">${data.returnTime}</td></tr>
-      ` : ''}
-    </table>
-    <div style="margin-top:24px">
-      <a href="tel:${data.phone}" style="background:#0E0E0E;color:#b29a75;padding:12px 24px;border-radius:4px;text-decoration:none;font-weight:600;font-size:13px;display:inline-block">Call ${data.name} →</a>
-    </div>
-  </div>
-</div>`
+  // ── Email to Ridecore (booking notification) ──────────────────────────────
+  const notifyHtml = `<!DOCTYPE html><html><body style="margin:0;padding:24px;background:#f0ede8">
+  <table width="100%" cellpadding="0" cellspacing="0"><tr><td align="center">
+  <table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%">
+    <tr><td>${emailHeader('New Booking Request')}</td></tr>
+    <tr>
+      <td style="background:#ffffff;padding:28px 32px">
+        <p style="font-family:sans-serif;font-size:13px;color:#444;margin:0 0 20px;line-height:1.6">
+          A new quote request has been submitted. Customer details below.
+        </p>
 
-  const confirmHtml = `
-<div style="font-family:sans-serif;max-width:560px;margin:0 auto">
-  <div style="background:#0E0E0E;padding:24px 32px;border-radius:4px 4px 0 0">
-    <h1 style="color:#b29a75;margin:0;font-size:20px;letter-spacing:1px">QUOTE REQUEST RECEIVED</h1>
-    <p style="color:#9a9a9a;margin:6px 0 0;font-size:13px">Ridecore Travel</p>
-  </div>
-  <div style="background:#F5F3EF;padding:32px;border-radius:0 0 4px 4px">
-    <p style="font-size:15px;margin:0 0 16px">Hi ${data.name},</p>
-    <p style="font-size:14px;color:#444;line-height:1.6;margin:0 0 20px">
-      Thanks for your request. We've received your details and will send your fixed-price quote within <strong>30 minutes</strong>.
-    </p>
-    <table style="width:100%;border-collapse:collapse;font-size:14px;background:#fff;border-radius:4px">
-      <tr style="background:#0E0E0E"><td colspan="2" style="padding:10px 16px;color:#b29a75;font-size:11px;letter-spacing:1px;font-weight:600">YOUR JOURNEY SUMMARY</td></tr>
-      <tr><td style="padding:10px 16px;color:#666;width:120px;border-bottom:1px solid #eee">From</td><td style="padding:10px 16px;font-weight:600;border-bottom:1px solid #eee">${data.pickup}</td></tr>
-      <tr><td style="padding:10px 16px;color:#666;border-bottom:1px solid #eee">To</td><td style="padding:10px 16px;font-weight:600;border-bottom:1px solid #eee">${data.dropoff}</td></tr>
-      <tr><td style="padding:10px 16px;color:#666;border-bottom:1px solid #eee">Date</td><td style="padding:10px 16px;font-weight:600;border-bottom:1px solid #eee">${data.date}</td></tr>
-      <tr><td style="padding:10px 16px;color:#666;border-bottom:1px solid #eee">Time</td><td style="padding:10px 16px;font-weight:600;border-bottom:1px solid #eee">${data.time}</td></tr>
-      <tr><td style="padding:10px 16px;color:#666">Passengers</td><td style="padding:10px 16px;font-weight:600">${data.passengers}</td></tr>
-      ${returnRow}
-    </table>
-    <p style="font-size:13px;color:#666;margin:20px 0 0">
-      Questions? Call or WhatsApp: <a href="tel:+447356206830" style="color:#0E0E0E;font-weight:600">+44 7356 206830</a>
-    </p>
-  </div>
-</div>`
+        <!-- Customer -->
+        <p style="font-family:sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;color:#b29a75;text-transform:uppercase;margin:0 0 8px">Customer</p>
+        <table width="100%" cellpadding="0" cellspacing="0" style="background:#fafafa;border:1px solid #eee;border-radius:4px;margin-bottom:20px">
+          ${row('Name', data.name)}
+          ${row('Phone', `<a href="tel:${data.phone}" style="color:#0E0E0E;text-decoration:none">${data.phone}</a>`)}
+          ${row('Email', `<a href="mailto:${data.email}" style="color:#0E0E0E;text-decoration:none">${data.email}</a>`)}
+          ${row('Passengers', data.passengers)}
+        </table>
+
+        <!-- Journey -->
+        <p style="font-family:sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;color:#b29a75;text-transform:uppercase;margin:0 0 8px">Journey</p>
+        <table width="100%" cellpadding="0" cellspacing="0" style="background:#fafafa;border:1px solid #eee;border-radius:4px;margin-bottom:20px">
+          ${row('Pickup', data.pickup)}
+          ${row('Drop-off', data.dropoff)}
+          ${row('Date', data.date)}
+          ${row('Time', data.time)}
+          ${data.returnJourney ? row('Return', `${data.returnDate} at ${data.returnTime}`, true) : ''}
+        </table>
+
+        <!-- CTA -->
+        <table cellpadding="0" cellspacing="0"><tr>
+          <td style="background:#0E0E0E;border-radius:4px;padding:13px 24px">
+            <a href="tel:${data.phone}" style="color:#b29a75;font-family:sans-serif;font-size:13px;font-weight:700;text-decoration:none;letter-spacing:1px">
+              📞 Call ${data.name}
+            </a>
+          </td>
+          <td width="12"></td>
+          <td style="background:#b29a75;border-radius:4px;padding:13px 24px">
+            <a href="mailto:${data.email}" style="color:#0E0E0E;font-family:sans-serif;font-size:13px;font-weight:700;text-decoration:none;letter-spacing:1px">
+              ✉ Reply by Email
+            </a>
+          </td>
+        </tr></table>
+      </td>
+    </tr>
+    <tr><td>${emailFooter()}</td></tr>
+  </table>
+  </td></tr></table>
+  </body></html>`
+
+  // ── Confirmation email to customer ────────────────────────────────────────
+  const confirmHtml = `<!DOCTYPE html><html><body style="margin:0;padding:24px;background:#f0ede8">
+  <table width="100%" cellpadding="0" cellspacing="0"><tr><td align="center">
+  <table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%">
+    <tr><td>${emailHeader('Quote Request Received')}</td></tr>
+    <tr>
+      <td style="background:#ffffff;padding:28px 32px">
+        <p style="font-family:sans-serif;font-size:15px;font-weight:600;color:#1a1a1a;margin:0 0 8px">Hi ${data.name},</p>
+        <p style="font-family:sans-serif;font-size:14px;color:#555;line-height:1.7;margin:0 0 24px">
+          Thank you for choosing Ridecore Travel. We've received your booking request and will send you a <strong>fixed-price quote within 30 minutes</strong>.
+        </p>
+
+        <!-- Journey summary -->
+        <p style="font-family:sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;color:#b29a75;text-transform:uppercase;margin:0 0 8px">Your Journey</p>
+        <table width="100%" cellpadding="0" cellspacing="0" style="background:#fafafa;border:1px solid #eee;border-radius:4px;margin-bottom:24px">
+          ${row('From', data.pickup)}
+          ${row('To', data.dropoff)}
+          ${row('Date', data.date)}
+          ${row('Time', data.time)}
+          ${row('Passengers', data.passengers)}
+          ${data.returnJourney ? row('Return', `${data.returnDate} at ${data.returnTime}`, true) : ''}
+        </table>
+
+        <!-- What's next -->
+        <table width="100%" cellpadding="0" cellspacing="0" style="background:#0E0E0E;border-radius:4px;margin-bottom:24px">
+          <tr><td style="padding:16px 20px">
+            <p style="font-family:sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;color:#b29a75;text-transform:uppercase;margin:0 0 10px">What Happens Next</p>
+            <p style="font-family:sans-serif;font-size:13px;color:#ccc;margin:4px 0;line-height:1.6">✓ &nbsp;We review your journey details</p>
+            <p style="font-family:sans-serif;font-size:13px;color:#ccc;margin:4px 0;line-height:1.6">✓ &nbsp;You receive a fixed price — no hidden extras</p>
+            <p style="font-family:sans-serif;font-size:13px;color:#ccc;margin:4px 0;line-height:1.6">✓ &nbsp;Confirm and your driver is booked</p>
+          </td></tr>
+        </table>
+
+        <p style="font-family:sans-serif;font-size:13px;color:#666;margin:0;line-height:1.6">
+          Need to speak to us sooner?<br/>
+          <a href="tel:+447356206830" style="color:#0E0E0E;font-weight:700;text-decoration:none">+44 7356 206830</a>
+          &nbsp;·&nbsp;
+          <a href="https://wa.me/447356206830" style="color:#0E0E0E;font-weight:700;text-decoration:none">WhatsApp</a>
+          &nbsp;·&nbsp; Available 24/7
+        </p>
+      </td>
+    </tr>
+    <tr><td>${emailFooter()}</td></tr>
+  </table>
+  </td></tr></table>
+  </body></html>`
 
   try {
     await Promise.all([
       transporter.sendMail({
-        from: `"Ridecore Travel Website" <${process.env.GMAIL_USER}>`,
+        from: `"Ridecore Travel" <${process.env.GMAIL_USER}>`,
         to: 'booking@ridecoretravel.co.uk',
-        subject: `New Quote — ${data.name} — ${data.dropoff} — ${data.date}`,
+        subject: `🚐 New Quote — ${data.name} · ${data.dropoff} · ${data.date}`,
         html: notifyHtml,
         text: `New quote request\nName: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nPickup: ${data.pickup}\nDrop-off: ${data.dropoff}\nDate: ${data.date}\nTime: ${data.time}\nPassengers: ${data.passengers}${returnText}`,
       }),
@@ -97,7 +183,7 @@ export async function POST(req: NextRequest) {
         to: data.email,
         subject: 'Quote Request Received — Ridecore Travel',
         html: confirmHtml,
-        text: `Hi ${data.name},\n\nWe've received your quote request and will be in touch within 30 minutes.\n\nPickup: ${data.pickup}\nDrop-off: ${data.dropoff}\nDate: ${data.date} at ${data.time}\nPassengers: ${data.passengers}${returnText}\n\nCall or WhatsApp: +44 7356 206830`,
+        text: `Hi ${data.name},\n\nWe've received your quote request and will be in touch within 30 minutes.\n\nFrom: ${data.pickup}\nTo: ${data.dropoff}\nDate: ${data.date} at ${data.time}\nPassengers: ${data.passengers}${returnText}\n\nCall or WhatsApp: +44 7356 206830\nridecoretravel.co.uk`,
       }),
     ])
     return NextResponse.json({ ok: true })
