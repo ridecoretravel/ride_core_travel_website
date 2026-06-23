@@ -9,22 +9,26 @@ const transporter = nodemailer.createTransport({
   },
 })
 
-// Inline SVG logo — works in all email clients, no image blocking
-const LOGO_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="160" height="46" viewBox="0 0 160 46">
-  <text x="32" y="30" font-family="Georgia,serif" font-size="18" font-weight="700" fill="#F5F3EF" letter-spacing="2">RIDECORE</text>
-  <text x="32" y="44" font-family="Georgia,serif" font-size="10" fill="#b29a75" letter-spacing="4">TRAVEL</text>
-  <text x="0" y="38" font-family="Georgia,serif" font-size="36" font-weight="700" fill="#b29a75">R</text>
-</svg>`
-
-const LOGO_DATA = `data:image/svg+xml;base64,${Buffer.from(LOGO_SVG).toString('base64')}`
+// Text-based logo — renders in all email clients without image blocking
+const LOGO_HTML = `
+  <table cellpadding="0" cellspacing="0"><tr>
+    <td style="background:#b29a75;width:36px;height:36px;border-radius:3px;text-align:center;vertical-align:middle">
+      <span style="font-family:Georgia,serif;font-size:22px;font-weight:700;color:#0E0E0E;line-height:36px">R</span>
+    </td>
+    <td width="10"></td>
+    <td style="vertical-align:middle">
+      <span style="font-family:Georgia,serif;font-size:16px;font-weight:700;color:#F5F3EF;letter-spacing:3px;display:block;line-height:1">RIDECORE</span>
+      <span style="font-family:Georgia,serif;font-size:9px;color:#b29a75;letter-spacing:4px;display:block;margin-top:2px">TRAVEL</span>
+    </td>
+  </tr></table>`
 
 function emailHeader(subtitle: string) {
   return `
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#0E0E0E;border-radius:6px 6px 0 0">
     <tr>
       <td style="padding:28px 32px 20px">
-        <img src="${LOGO_DATA}" width="140" height="40" alt="Ridecore Travel" style="display:block;margin-bottom:14px"/>
-        <div style="width:40px;height:2px;background:#b29a75;margin-bottom:10px"></div>
+        ${LOGO_HTML}
+        <div style="width:40px;height:2px;background:#b29a75;margin:16px 0 10px"></div>
         <p style="color:#b29a75;font-family:sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;margin:0;text-transform:uppercase">${subtitle}</p>
       </td>
     </tr>
