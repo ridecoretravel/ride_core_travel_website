@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { site } from '@/lib/site'
 
 const AIRPORTS = [
@@ -37,27 +37,33 @@ export default function Hero() {
   const [pcLookup, setPcLookup]     = useState<'idle'|'loading'|'ok'|'err'>('idle')
 
   const today = new Date().toISOString().split('T')[0]
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  const UK_PC = /^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i
-
-  async function lookupPostcode() {
-    const pc = pickup.trim().replace(/\s+/g, '')
-    if (!UK_PC.test(pc)) return
+  // Auto-lookup as user types a complete UK postcode
+  useEffect(() => {
+    const UK_PC = /^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i
+    const trimmed = pickup.trim()
+    if (!UK_PC.test(trimmed)) { setPcLookup('idle'); return }
+    if (timerRef.current) clearTimeout(timerRef.current)
     setPcLookup('loading')
-    try {
-      const res = await fetch(`https://api.postcodes.io/postcodes/${pc}`)
-      const json = await res.json()
-      if (json.status === 200) {
-        const { postcode, admin_ward, admin_district } = json.result
-        setPickup(`${postcode}, ${admin_ward}, ${admin_district}`)
-        setPcLookup('ok')
-      } else {
+    timerRef.current = setTimeout(async () => {
+      try {
+        const pc = trimmed.replace(/\s+/g, '')
+        const res = await fetch(`https://api.postcodes.io/postcodes/${pc}`)
+        const json = await res.json()
+        if (json.status === 200) {
+          const { postcode, admin_ward, admin_district } = json.result
+          setPickup(`${postcode}, ${admin_ward}, ${admin_district}`)
+          setPcLookup('ok')
+        } else {
+          setPcLookup('err')
+        }
+      } catch {
         setPcLookup('err')
       }
-    } catch {
-      setPcLookup('err')
-    }
-  }
+    }, 400)
+    return () => { if (timerRef.current) clearTimeout(timerRef.current) }
+  }, [pickup])
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -140,29 +146,31 @@ export default function Hero() {
 
                 {/* Journey row */}
                 <Field label="Pickup address">
-                  <div className="flex gap-2">
+                  <div className="relative">
                     <input
                       type="text"
                       value={pickup}
                       onChange={e => { setPickup(e.target.value); setPcLookup('idle') }}
                       placeholder="e.g. LS11 0HH or full address"
                       required
-                      className={`${input} flex-1`}
+                      className={`${input} w-full pr-8 ${pcLookup === 'ok' ? 'border-gold/60' : ''}`}
                     />
-                    {UK_PC.test(pickup.trim()) && pcLookup !== 'ok' && (
-                      <button
-                        type="button"
-                        onClick={lookupPostcode}
-                        disabled={pcLookup === 'loading'}
-                        className="flex-shrink-0 px-3 py-2.5 bg-gold/15 border border-gold/40 text-gold text-xs font-semibold rounded-sm hover:bg-gold/25 transition-all disabled:opacity-50 whitespace-nowrap"
-                      >
-                        {pcLookup === 'loading' ? '…' : pcLookup === 'err' ? 'Not found' : 'Look up →'}
-                      </button>
+                    {pcLookup === 'loading' && (
+                      <span className="absolute right-2.5 top-1/2 -translate-y-1/2">
+                        <svg className="animate-spin text-gold" width="14" height="14" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"/>
+                        </svg>
+                      </span>
                     )}
                     {pcLookup === 'ok' && (
-                      <span className="flex-shrink-0 flex items-center px-2 text-gold text-sm">✓</span>
+                      <span className="absolute right-2.5 top-1/2 -translate-y-1/2 text-gold text-sm">✓</span>
+                    )}
+                    {pcLookup === 'err' && (
+                      <span className="absolute right-2.5 top-1/2 -translate-y-1/2 text-red-400 text-xs">?</span>
                     )}
                   </div>
+                  <p className="text-grey/50 text-[10px] mt-1">Type your postcode and it will auto-fill your area</p>
                 </Field>
                 <Field label="Drop-off / Airport">
                   <div className="relative">
