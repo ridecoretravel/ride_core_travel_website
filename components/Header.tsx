@@ -106,10 +106,10 @@ export default function Header() {
             )}
           </div>
 
-          <Link href="/services" className="text-sm tracking-wide text-cream/80 hover:text-gold transition-colors">
+          <Link href="/fleet" className="text-sm tracking-wide text-cream/80 hover:text-gold transition-colors">
             Services
           </Link>
-          <Link href="/services" className="text-sm tracking-wide text-cream/80 hover:text-gold transition-colors">
+          <Link href="/fleet" className="text-sm tracking-wide text-cream/80 hover:text-gold transition-colors">
             Fleet
           </Link>
           <Link href="/airport-transfers" className="text-sm tracking-wide text-cream/80 hover:text-gold transition-colors">
@@ -188,8 +188,8 @@ export default function Header() {
           <nav className="flex-1 overflow-y-auto px-6 py-6 flex flex-col gap-1">
 
             <NavItem href="/" onClick={() => setMenuOpen(false)}>Home</NavItem>
-            <NavItem href="/services" onClick={() => setMenuOpen(false)}>Services</NavItem>
-            <NavItem href="/services" onClick={() => setMenuOpen(false)}>Fleet</NavItem>
+            <NavItem href="/fleet" onClick={() => setMenuOpen(false)}>Services</NavItem>
+            <NavItem href="/fleet" onClick={() => setMenuOpen(false)}>Fleet</NavItem>
             <NavItem href="/airport-transfers" onClick={() => setMenuOpen(false)}>Fares</NavItem>
             <NavItem href="/blog" onClick={() => setMenuOpen(false)}>Blog</NavItem>
             <NavItem href="/about-us" onClick={() => setMenuOpen(false)}>About Us</NavItem>
