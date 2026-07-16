@@ -34,7 +34,7 @@ export default function Footer() {
               height={46}
             />
             <p className="text-grey text-sm leading-relaxed">
-              Premium 8-seater airport transfers from Leeds. Fixed prices, professional service.
+              Premium airport transfers from Leeds. Fixed prices, professional fleet.
             </p>
             <p className="text-grey text-xs leading-relaxed">
               Licensed by Leeds City Council · PHV Licence 25232<br />

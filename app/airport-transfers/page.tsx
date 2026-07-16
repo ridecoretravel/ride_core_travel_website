@@ -9,12 +9,12 @@ import FareTable from '@/components/FareTable'
 export const metadata: Metadata = {
   title: 'Airport Transfers from Leeds | Fixed Prices | Ridecore Travel',
   description:
-    'Fixed-price airport transfers from Leeds to Leeds Bradford, Manchester, Liverpool, London Heathrow and all UK airports. 8-seater Mercedes Vito, 24/7, licensed.',
+    'Fixed-price airport transfers from Leeds to Leeds Bradford, Manchester, Liverpool, London Heathrow and all UK airports. Premium fleet, 24/7, licensed.',
   alternates: { canonical: '/airport-transfers' },
   openGraph: {
     title: 'Airport Transfers from Leeds | Fixed Prices | Ridecore Travel',
     description:
-      'Fixed-price 8-seater Mercedes Vito transfers from Leeds to all major UK airports. 24/7, licensed by Leeds City Council.',
+      'Fixed-price premium transfers from Leeds to all major UK airports. 24/7, licensed by Leeds City Council.',
     locale: 'en_GB',
     type: 'website',
   },
@@ -66,7 +66,7 @@ export default function AirportTransfersPage() {
               Airport Transfers from Leeds
             </h1>
             <p className="text-cream/70 text-lg leading-relaxed mb-8">
-              Fixed-price transfers to all major UK airports in our premium 8-seater Mercedes-Benz Vito Tourer.
+              Fixed-price transfers to all major UK airports in our premium fleet.
               Licensed by Leeds City Council. Available 24 hours, 7 days a week.
             </p>
             <div className="flex flex-wrap gap-3">
@@ -148,7 +148,7 @@ export default function AirportTransfersPage() {
             {[
               { title: 'Fixed Prices', body: 'Agreed before you travel. No surge pricing, ever.' },
               { title: 'Flight Tracking', body: 'We monitor your flight and adjust pickup automatically.' },
-              { title: '8-Seater Mercedes Vito', body: 'Spacious, clean, climate-controlled people carrier.' },
+              { title: 'Premium Fleet', body: 'Spacious, clean, climate-controlled vehicles.' },
               { title: 'Licensed & Insured', body: 'PHV Licence 25232 · Leeds City Council · Co. 16758874.' },
             ].map((item) => (
               <div key={item.title} className="flex flex-col gap-2">

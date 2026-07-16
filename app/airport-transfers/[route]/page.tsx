@@ -75,7 +75,7 @@ export default async function RoutePage({
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.ridecoretravel.co.uk' },
-      { '@type': 'ListItem', position: 2, name: 'Airport Transfers', item: 'https://www.ridecoretravel.co.uk/#fares' },
+      { '@type': 'ListItem', position: 2, name: 'Airport Transfers', item: 'https://www.ridecoretravel.co.uk/airport-transfers' },
       { '@type': 'ListItem', position: 3, name: data.airportName, item: `https://www.ridecoretravel.co.uk/airport-transfers/${data.slug}` },
     ],
   }
@@ -91,7 +91,7 @@ export default async function RoutePage({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-2 text-xs text-grey">
           <Link href="/" className="hover:text-gold transition-colors">Home</Link>
           <span>/</span>
-          <Link href="/#fares" className="hover:text-gold transition-colors">Airport Transfers</Link>
+          <Link href="/airport-transfers" className="hover:text-gold transition-colors">Airport Transfers</Link>
           <span>/</span>
           <span className="text-cream/60">{data.airportName}</span>
         </div>
@@ -121,11 +121,11 @@ export default async function RoutePage({
               Leeds to {data.airportName} Taxi — Fixed Price, 24/7
             </h1>
             <p className="text-cream/70 text-lg mb-8">
-              {data.journeyTime} · {data.distance} · 8-Seater Mercedes Vito
+              {data.journeyTime} · {data.distance} · Premium Fleet
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <a
-                href="#booking"
+                href="/#booking"
                 className="bg-gold text-charcoal font-semibold px-7 py-4 rounded-sm text-center tracking-wide hover:bg-gold/90 transition-colors text-sm"
               >
                 Get a Quote
@@ -160,7 +160,7 @@ export default async function RoutePage({
                 Book via WhatsApp
               </a>
               <a
-                href="#booking"
+                href="/#booking"
                 className="border border-white/20 text-cream font-semibold text-sm px-6 py-3 rounded-sm tracking-wide hover:border-gold/40 transition-colors"
               >
                 Online Quote Form

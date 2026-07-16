@@ -8,11 +8,11 @@ import { routes as prices } from '@/lib/prices'
 export const metadata: Metadata = {
   title: 'Our Services | Airport Transfers Leeds | Ridecore Travel',
   description:
-    'Ridecore Travel offers fixed-price airport transfers, group travel, corporate transfers and long-distance journeys from Leeds in a premium 8-seater Mercedes Vito.',
+    'Ridecore Travel offers fixed-price airport transfers, group travel, corporate transfers and long-distance journeys from Leeds. Premium fleet, 24/7.',
   alternates: { canonical: '/services' },
   openGraph: {
     title: 'Our Services | Airport Transfers Leeds | Ridecore Travel',
-    description: 'Premium 8-seater airport transfers, group travel and corporate journeys from Leeds. Fixed prices, 24/7.',
+    description: 'Premium airport transfers, group travel and corporate journeys from Leeds. Fixed prices, 24/7.',
     locale: 'en_GB',
     type: 'website',
   },
@@ -31,7 +31,7 @@ const services = [
     icon: <GroupIcon />,
     title: 'Group Travel',
     description:
-      'Our 8-seater Mercedes-Benz Vito Tourer is perfect for families, sports teams, hen & stag parties, and any group up to 8 passengers. Everyone travels together in comfort.',
+      'Our premium vehicles are perfect for families, sports teams, hen & stag parties, and any group up to 8 passengers. Everyone travels together in comfort.',
     link: '/#booking',
     linkLabel: 'Get a group quote',
   },
@@ -169,12 +169,12 @@ export default function ServicesPage() {
               </div>
             </div>
             <div className="flex flex-col gap-5">
-              <span className="text-gold text-xs font-semibold tracking-widest uppercase">The Vehicle</span>
+              <span className="text-gold text-xs font-semibold tracking-widest uppercase">The Fleet</span>
               <h2 className="text-2xl md:text-3xl font-bold text-cream tracking-tight">
-                Mercedes-Benz Vito Tourer — 8 Seats
+                Premium Vehicles — Up to 8 Seats
               </h2>
               <p className="text-grey leading-relaxed">
-                Every journey is made in our immaculately maintained Mercedes-Benz Vito Tourer. Spacious, comfortable,
+                Every journey is made in our immaculately maintained premium fleet. Spacious, comfortable,
                 and climate-controlled — with ample boot space for all your luggage.
               </p>
               <div className="grid grid-cols-2 gap-3 mt-2">

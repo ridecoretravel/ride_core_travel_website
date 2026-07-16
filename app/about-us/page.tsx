@@ -6,11 +6,11 @@ import { site } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'About Us | Ridecore Travel | Leeds Airport Transfers',
   description:
-    'Ridecore Travel is a licensed Leeds-based airport transfer company. 8-seater Mercedes Vito, fixed prices, 24/7. Licensed by Leeds City Council — PHV Licence 25232.',
+    'Ridecore Travel is a licensed Leeds-based airport transfer company. Premium fleet, fixed prices, 24/7. Licensed by Leeds City Council — PHV Licence 25232.',
   alternates: { canonical: '/about-us' },
   openGraph: {
     title: 'About Ridecore Travel | Leeds Airport Transfers',
-    description: 'Licensed Leeds airport transfer company. Fixed prices, professional drivers, 8-seater Mercedes Vito. Available 24/7.',
+    description: 'Licensed Leeds airport transfer company. Fixed prices, professional drivers, premium fleet. Available 24/7.',
     locale: 'en_GB',
     type: 'website',
   },
@@ -69,7 +69,7 @@ export default function AboutPage() {
               <div className="flex flex-col gap-4 text-grey text-sm leading-relaxed">
                 <p>
                   Ridecore Travel is a private hire transfer company based in Leeds, West Yorkshire. We specialise in
-                  fixed-price airport transfers, operating a premium 8-seater Mercedes-Benz Vito Tourer to provide
+                  fixed-price airport transfers with a premium fleet to provide
                   comfortable, reliable journeys for individuals, families, and groups.
                 </p>
                 <p>
@@ -93,7 +93,7 @@ export default function AboutPage() {
                 { label: 'Company Number', value: '16758874' },
                 { label: 'Incorporated', value: '2nd October 2025' },
                 { label: 'Registered In', value: 'England & Wales' },
-                { label: 'Vehicle', value: 'Mercedes-Benz Vito Tourer' },
+                { label: 'Fleet', value: 'Premium Vehicles' },
                 { label: 'Capacity', value: 'Up to 8 passengers' },
                 { label: 'Availability', value: '24/7 · Mon–Sun · 365 days' },
               ].map((item) => (
@@ -119,7 +119,7 @@ export default function AboutPage() {
               { title: 'Fixed Prices Always', body: 'Your price is agreed before your journey begins. No surge pricing, no hidden extras, no surprises on arrival.' },
               { title: 'Punctuality', body: 'We track your flight and monitor traffic in real time. Your driver will be ready when you are — not a minute later.' },
               { title: 'Professionalism', body: 'Every driver is DBS-checked, licensed by Leeds City Council, and committed to a courteous, professional service.' },
-              { title: 'Premium Vehicle', body: 'One immaculately maintained Mercedes-Benz Vito Tourer. Clean, comfortable, and climate-controlled every single journey.' },
+              { title: 'Premium Fleet', body: 'Immaculately maintained vehicles. Clean, comfortable, and climate-controlled every single journey.' },
               { title: 'Transparency', body: 'No small print surprises. Our cancellation policy, payment terms, and pricing are clear from the start.' },
               { title: '24/7 Availability', body: 'Early departures, late-night arrivals, bank holidays — we operate around your schedule, not ours.' },
             ].map((v) => (
@@ -149,11 +149,10 @@ export default function AboutPage() {
             </div>
             <div className="flex flex-col gap-5">
               <span className="text-gold text-xs font-semibold tracking-widest uppercase">The Fleet</span>
-              <h2 className="text-2xl font-bold text-cream tracking-tight">One Vehicle. Done Right.</h2>
+              <h2 className="text-2xl font-bold text-cream tracking-tight">Premium Fleet. Done Right.</h2>
               <p className="text-grey text-sm leading-relaxed">
-                We operate a single, carefully chosen vehicle — the Mercedes-Benz Vito Tourer. By focusing on one
-                we ensure every journey meets the same high standard.
-                Our vehicles are kept immaculately clean and maintained to the highest level.
+                We operate a carefully maintained premium fleet, ensuring every journey meets the same high standard.
+                Our vehicles are kept immaculately clean and serviced to the highest level.
               </p>
               <Link
                 href="/services"
