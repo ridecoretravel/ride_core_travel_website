@@ -32,7 +32,7 @@ const services = [
     title: 'Group Travel',
     description:
       'Our premium vehicles are perfect for families, sports teams, hen & stag parties, and any group up to 8 passengers. Everyone travels together in comfort.',
-    link: '/#booking',
+    link: '/booking',
     linkLabel: 'Get a group quote',
   },
   {
@@ -40,7 +40,7 @@ const services = [
     title: 'Corporate Travel',
     description:
       'Reliable, professional transfers for business travellers. Fixed pricing, punctual drivers, and a premium vehicle — everything you need for a stress-free business journey.',
-    link: '/#booking',
+    link: '/booking',
     linkLabel: 'Book corporate transfer',
   },
   {
@@ -195,7 +195,7 @@ export default function ServicesPage() {
           <h2 className="text-2xl font-bold text-cream tracking-tight">Ready to Book?</h2>
           <p className="text-grey max-w-md">Get your fixed price confirmed as soon as possible.</p>
           <div className="flex flex-wrap gap-3 justify-center">
-            <Link href="/#booking" className="bg-gold text-charcoal font-bold text-sm px-7 py-4 rounded-sm tracking-wide hover:bg-gold/90 transition-colors">
+            <Link href="/booking" className="bg-gold text-charcoal font-bold text-sm px-7 py-4 rounded-sm tracking-wide hover:bg-gold/90 transition-colors">
               Get a Quote
             </Link>
             <a href={site.whatsapp} target="_blank" rel="noopener noreferrer"
@@ -223,3 +223,4 @@ function BriefcaseIcon() {
 function RouteIcon() {
   return <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" /></svg>
 }
+

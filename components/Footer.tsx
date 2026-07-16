@@ -9,7 +9,7 @@ const footerNav = [
   { label: 'Fleet', href: '/#fleet' },
   { label: 'Blog', href: '/blog' },
   { label: 'About', href: '/about-us' },
-  { label: 'Book a Transfer', href: '/#booking' },
+  { label: 'Book a Transfer', href: '/booking' },
   { label: 'Terms & Conditions', href: '/terms-conditions' },
 ]
 
@@ -181,3 +181,4 @@ function GoogleIcon() {
     </svg>
   )
 }
+

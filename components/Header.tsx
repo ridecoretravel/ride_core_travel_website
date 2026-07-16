@@ -136,7 +136,7 @@ export default function Header() {
             </span>
           </a>
           <Link
-            href="/#booking"
+            href="/booking"
             className="bg-gold text-charcoal text-sm font-semibold px-5 py-2.5 rounded-sm tracking-wide hover:bg-gold/90 transition-colors"
           >
             Get a Quote
@@ -247,7 +247,7 @@ export default function Header() {
             </div>
             {/* Primary CTA */}
             <Link
-              href="/#booking"
+              href="/booking"
               onClick={() => setMenuOpen(false)}
               className="bg-gold text-charcoal font-bold text-sm tracking-wide py-3.5 rounded-sm text-center hover:bg-gold/90 transition-colors"
             >
@@ -306,3 +306,4 @@ function CloseIcon() {
     </svg>
   )
 }
+

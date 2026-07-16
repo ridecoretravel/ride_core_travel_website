@@ -151,7 +151,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             </div>
             <div className="flex flex-wrap gap-3">
               <Link
-                href="/#booking"
+                href="/booking"
                 className="bg-gold text-charcoal text-sm font-semibold px-5 py-2.5 rounded-sm tracking-wide hover:bg-gold/90 transition-colors"
               >
                 Get a Quote

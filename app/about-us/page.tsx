@@ -184,7 +184,7 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="flex flex-col sm:items-end gap-3">
-              <Link href="/#booking"
+              <Link href="/booking"
                 className="bg-gold text-charcoal font-bold text-sm px-7 py-4 rounded-sm tracking-wide hover:bg-gold/90 transition-colors text-center">
                 Book a Transfer
               </Link>
@@ -201,3 +201,4 @@ export default function AboutPage() {
     </>
   )
 }
+

@@ -125,7 +125,7 @@ export default async function RoutePage({
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <a
-                href="/#booking"
+                href="/booking"
                 className="bg-gold text-charcoal font-semibold px-7 py-4 rounded-sm text-center tracking-wide hover:bg-gold/90 transition-colors text-sm"
               >
                 Get a Quote
@@ -160,7 +160,7 @@ export default async function RoutePage({
                 Book via WhatsApp
               </a>
               <a
-                href="/#booking"
+                href="/booking"
                 className="border border-white/20 text-cream font-semibold text-sm px-6 py-3 rounded-sm tracking-wide hover:border-gold/40 transition-colors"
               >
                 Online Quote Form
