@@ -30,6 +30,9 @@ export default function Hero() {
   const [returnOn, setReturnOn]     = useState(false)
   const [returnDate, setReturnDate] = useState('')
   const [returnTime, setReturnTime] = useState('')
+  const [luggage, setLuggage]       = useState('')
+  const [stopsOn, setStopsOn]       = useState(false)
+  const [stops, setStops]           = useState('')
   const [status, setStatus]         = useState<Status>('idle')
 
   const today = new Date().toISOString().split('T')[0]
@@ -44,6 +47,8 @@ export default function Hero() {
         body: JSON.stringify({
           name, email, phone, passengers,
           pickup, dropoff, date, time,
+          luggage,
+          additionalStops: stopsOn ? stops : '',
           returnJourney: returnOn,
           returnDate: returnOn ? returnDate : '',
           returnTime: returnOn ? returnTime : '',
@@ -98,10 +103,10 @@ export default function Hero() {
               </div>
               <h3 className="text-cream text-xl font-semibold">Quote Request Sent!</h3>
               <p className="text-grey text-sm max-w-sm leading-relaxed">
-                We've received your details and will send your fixed price within 30 minutes. Check your email or phone.
+                We've received your details and will be in touch as soon as possible with your fixed price. Check your email or phone.
               </p>
               <button
-                onClick={() => { setStatus('idle'); setName(''); setEmail(''); setPhone(''); setPickup(''); setDropoff(''); setDate(''); setTime(''); setPassengers('1'); setReturnOn(false) }}
+                onClick={() => { setStatus('idle'); setName(''); setEmail(''); setPhone(''); setPickup(''); setDropoff(''); setDate(''); setTime(''); setPassengers('1'); setReturnOn(false); setLuggage(''); setStopsOn(false); setStops('') }}
                 className="mt-2 text-gold text-xs tracking-widest uppercase font-semibold hover:underline"
               >
                 Submit another →
@@ -165,6 +170,36 @@ export default function Hero() {
                     </Field>
                   </>
                 )}
+
+                {/* Luggage */}
+                <Field label="Luggage">
+                  <div className="relative">
+                    <select value={luggage} onChange={e => setLuggage(e.target.value)} required className={`${input} appearance-none pr-8 [&>option]:bg-charcoal`}>
+                      <option value="">Select luggage amount</option>
+                      <option>1–2 bags</option>
+                      <option>3–4 bags</option>
+                      <option>5–6 bags</option>
+                      <option>7+ / oversized bags</option>
+                    </select>
+                    <Chevron />
+                  </div>
+                </Field>
+
+                {/* Additional stops */}
+                <Field label="Additional stops?">
+                  <div className="flex flex-col gap-2">
+                    <div className="flex items-center h-[42px] gap-3">
+                      <button type="button" role="switch" aria-checked={stopsOn} onClick={() => setStopsOn(v => !v)}
+                        className={`relative w-10 h-5 rounded-full border transition-all flex-shrink-0 ${stopsOn ? 'bg-gold border-gold' : 'bg-white/8 border-white/15'}`}>
+                        <span className={`absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white transition-transform duration-200 ${stopsOn ? 'translate-x-5' : ''}`} />
+                      </button>
+                      <span className="text-cream/70 text-sm">{stopsOn ? 'Yes — add stop details' : 'No additional stops'}</span>
+                    </div>
+                    {stopsOn && (
+                      <input type="text" value={stops} onChange={e => setStops(e.target.value)} placeholder="e.g. Pick up from Hotel Indigo, Leeds" required className={input} />
+                    )}
+                  </div>
+                </Field>
 
                 {/* Divider */}
                 <div className="sm:col-span-2 lg:col-span-3 border-t border-white/8 pt-1">

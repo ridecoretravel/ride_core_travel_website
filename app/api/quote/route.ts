@@ -102,6 +102,8 @@ export async function POST(req: NextRequest) {
           ${row('Drop-off', data.dropoff)}
           ${row('Date', data.date)}
           ${row('Time', data.time)}
+          ${row('Luggage', data.luggage || '—')}
+          ${data.additionalStops ? row('Extra Stops', data.additionalStops, true) : ''}
           ${data.returnJourney ? row('Return', `${data.returnDate} at ${data.returnTime}`, true) : ''}
         </table>
 
@@ -135,7 +137,7 @@ export async function POST(req: NextRequest) {
       <td style="background:#ffffff;padding:28px 32px">
         <p style="font-family:sans-serif;font-size:15px;font-weight:600;color:#1a1a1a;margin:0 0 8px">Hi ${data.name},</p>
         <p style="font-family:sans-serif;font-size:14px;color:#555;line-height:1.7;margin:0 0 24px">
-          Thank you for choosing Ridecore Travel. We've received your booking request and will send you a <strong>fixed-price quote within 30 minutes</strong>.
+          Thank you for choosing Ridecore Travel. We've received your booking request and will send you a <strong>fixed-price quote as soon as possible</strong>.
         </p>
 
         <!-- Journey summary -->
@@ -146,6 +148,8 @@ export async function POST(req: NextRequest) {
           ${row('Date', data.date)}
           ${row('Time', data.time)}
           ${row('Passengers', data.passengers)}
+          ${row('Luggage', data.luggage || '—')}
+          ${data.additionalStops ? row('Extra Stops', data.additionalStops) : ''}
           ${data.returnJourney ? row('Return', `${data.returnDate} at ${data.returnTime}`, true) : ''}
         </table>
 
@@ -187,7 +191,7 @@ export async function POST(req: NextRequest) {
         to: data.email,
         subject: 'Quote Request Received — Ridecore Travel',
         html: confirmHtml,
-        text: `Hi ${data.name},\n\nWe've received your quote request and will be in touch within 30 minutes.\n\nFrom: ${data.pickup}\nTo: ${data.dropoff}\nDate: ${data.date} at ${data.time}\nPassengers: ${data.passengers}${returnText}\n\nCall or WhatsApp: +44 7356 206830\nridecoretravel.co.uk`,
+        text: `Hi ${data.name},\n\nWe've received your quote request and will be in touch as soon as possible.\n\nFrom: ${data.pickup}\nTo: ${data.dropoff}\nDate: ${data.date} at ${data.time}\nPassengers: ${data.passengers}${returnText}\n\nCall or WhatsApp: +44 7356 206830\nridecoretravel.co.uk`,
       }),
     ])
     return NextResponse.json({ ok: true })

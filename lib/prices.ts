@@ -1,15 +1,16 @@
 export interface RoutePrice {
   route: string
   slug: string
-  minibus8: number  // 8-Seater Minibus
-  car4: number      // 4-Seater Vehicle
+  exec8: number   // 8-Seater Executive
+  any4: number    // 4-Seater (Any)
+  exec4: number   // 4-Seater Executive
 }
 
 export const routes: RoutePrice[] = [
-  { route: 'Leeds City Centre → Manchester Airport',       slug: 'manchester', minibus8: 135, car4: 100 },
-  { route: 'Leeds City Centre → Leeds Bradford Airport',   slug: 'lba',        minibus8: 60,  car4: 35  },
-  { route: 'Leeds City Centre → London Heathrow Airport',  slug: 'heathrow',   minibus8: 420, car4: 320 },
-  { route: 'Leeds City Centre → Liverpool Airport',        slug: 'liverpool',  minibus8: 160, car4: 120 },
+  { route: 'Leeds City Centre → Leeds Bradford Airport',   slug: 'lba',        exec8: 60,  any4: 45,  exec4: 50  },
+  { route: 'Leeds City Centre → Manchester Airport',       slug: 'manchester', exec8: 135, any4: 90,  exec4: 125 },
+  { route: 'Leeds City Centre → Liverpool Airport',        slug: 'liverpool',  exec8: 160, any4: 125, exec4: 145 },
+  { route: 'Leeds City Centre → London Heathrow Airport',  slug: 'heathrow',   exec8: 420, any4: 320, exec4: 390 },
 ]
 
 export const pricesNote = 'Prices may vary for pickups outside Leeds City Centre.'

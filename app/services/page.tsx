@@ -140,7 +140,7 @@ export default function ServicesPage() {
                   <p className="text-grey text-xs">{route.journeyTime} · {route.distance}</p>
                   {price && (
                     <p className="text-gold font-bold text-lg mt-auto pt-3 border-t border-white/8">
-                      from £{price.car4}
+                      from £{price.any4}
                     </p>
                   )}
                 </Link>

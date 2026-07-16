@@ -24,6 +24,8 @@ interface Fields {
   dropoff: string
   date: string
   time: string
+  luggage: string
+  additionalStops: string
   returnJourney: boolean
   returnDate: string
   returnTime: string
@@ -32,6 +34,7 @@ interface Fields {
 const empty: Fields = {
   name: '', email: '', phone: '', passengers: '1',
   pickup: '', dropoff: '', date: '', time: '',
+  luggage: '', additionalStops: '',
   returnJourney: false, returnDate: '', returnTime: '',
 }
 
@@ -88,7 +91,7 @@ export default function BookingForm({ defaultDropoff }: { defaultDropoff?: strin
             Get Your Fixed-Price Quote
           </h2>
           <p className="text-grey mt-3 text-sm max-w-md mx-auto">
-            Fill in your details and we&apos;ll confirm your fixed fare within 30 minutes.
+            Fill in your details and we&apos;ll confirm your fixed fare as soon as possible.
           </p>
         </div>
 
@@ -105,7 +108,7 @@ export default function BookingForm({ defaultDropoff }: { defaultDropoff?: strin
                 </div>
                 <h3 className="text-cream text-xl font-semibold tracking-tight">Quote Request Received</h3>
                 <p className="text-grey text-sm max-w-xs leading-relaxed">
-                  We&apos;ll send your fixed-price quote within 30 minutes. Check your email or phone.
+                  We&apos;ll send your fixed-price quote as soon as possible. Check your email or phone.
                 </p>
                 <button
                   onClick={() => { setFields(empty); setStatus('idle') }}
@@ -176,6 +179,41 @@ export default function BookingForm({ defaultDropoff }: { defaultDropoff?: strin
                     onChange={set('time')}
                     required
                   />
+
+                  {/* Luggage */}
+                  <div className="flex flex-col gap-1.5">
+                    <label className="flex items-center gap-2 text-grey text-[10px] font-semibold tracking-widest uppercase">
+                      <span className="text-gold"><LuggageIcon /></span>
+                      Luggage
+                    </label>
+                    <div className="relative">
+                      <select name="luggage" value={fields.luggage} onChange={set('luggage')} required
+                        className="w-full appearance-none bg-graphite border border-white/10 text-cream text-sm px-4 py-3.5 rounded-sm focus:outline-none focus:border-gold/50 transition-all pr-9 [&>option]:bg-charcoal">
+                        <option value="">Select luggage amount</option>
+                        <option>1–2 bags</option>
+                        <option>3–4 bags</option>
+                        <option>5–6 bags</option>
+                        <option>7+ / oversized bags</option>
+                      </select>
+                      <DropdownArrow />
+                    </div>
+                  </div>
+
+                  {/* Additional stops */}
+                  <div className="flex flex-col gap-1.5">
+                    <label className="flex items-center gap-2 text-grey text-[10px] font-semibold tracking-widest uppercase">
+                      <span className="text-gold"><StopsIcon /></span>
+                      Additional stops
+                    </label>
+                    <input
+                      name="additionalStops"
+                      type="text"
+                      placeholder="e.g. Pick up from Hotel Indigo, Leeds (optional)"
+                      value={fields.additionalStops}
+                      onChange={set('additionalStops')}
+                      className="bg-graphite border border-white/10 text-cream text-sm px-4 py-3.5 rounded-sm focus:outline-none focus:border-gold/50 transition-all placeholder:text-grey/50"
+                    />
+                  </div>
 
                   {/* Return journey toggle */}
                   <div className="sm:col-span-2">
@@ -299,7 +337,7 @@ export default function BookingForm({ defaultDropoff }: { defaultDropoff?: strin
                       )}
                     </button>
                     <p className="text-grey text-[11px] text-center mt-3">
-                      No payment taken now. We confirm your price within 30 minutes.
+                      No payment taken now. We confirm your price as soon as possible.
                     </p>
                   </div>
                 </div>
@@ -417,6 +455,8 @@ function SpinnerIcon() {
   )
 }
 function LocIcon() { return <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg> }
+function LuggageIcon() { return <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path strokeLinecap="round" strokeLinejoin="round" d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg> }
+function StopsIcon() { return <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 21v-6m0 0V3m0 12H6m6 0h6"/></svg> }
 function DestIcon() { return <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/></svg> }
 function CalIcon() { return <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg> }
 function TimeIcon() { return <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> }
