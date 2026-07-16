@@ -38,9 +38,31 @@ const empty: Fields = {
   returnJourney: false, returnDate: '', returnTime: '',
 }
 
+const UK_PC = /^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i
+
 export default function BookingForm({ defaultDropoff }: { defaultDropoff?: string } = {}) {
   const [fields, setFields] = useState<Fields>({ ...empty, dropoff: defaultDropoff ?? '' })
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle')
+  const [pcLookup, setPcLookup] = useState<'idle'|'loading'|'ok'|'err'>('idle')
+
+  async function lookupPostcode() {
+    const pc = fields.pickup.trim().replace(/\s+/g, '')
+    if (!UK_PC.test(pc)) return
+    setPcLookup('loading')
+    try {
+      const res = await fetch(`https://api.postcodes.io/postcodes/${pc}`)
+      const json = await res.json()
+      if (json.status === 200) {
+        const { postcode, admin_ward, admin_district } = json.result
+        setFields(prev => ({ ...prev, pickup: `${postcode}, ${admin_ward}, ${admin_district}` }))
+        setPcLookup('ok')
+      } else {
+        setPcLookup('err')
+      }
+    } catch {
+      setPcLookup('err')
+    }
+  }
 
   // Receive pre-fill from hero widget
   useEffect(() => {
@@ -129,16 +151,33 @@ export default function BookingForm({ defaultDropoff }: { defaultDropoff?: strin
                 <div className="px-8 py-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
 
                   {/* Route row */}
-                  <PremiumInput
-                    label="Pickup address"
-                    icon={<LocIcon />}
-                    name="pickup"
-                    type="text"
-                    placeholder="Street address or postcode"
-                    value={fields.pickup}
-                    onChange={set('pickup')}
-                    required
-                  />
+                  <div className="flex flex-col gap-1.5">
+                    <label className="flex items-center gap-2 text-grey text-[10px] font-semibold tracking-widest uppercase">
+                      <span className="text-gold"><LocIcon /></span>Pickup address
+                    </label>
+                    <div className="flex gap-2">
+                      <input
+                        name="pickup"
+                        type="text"
+                        placeholder="e.g. LS11 0HH or full address"
+                        value={fields.pickup}
+                        onChange={e => { setFields(prev => ({ ...prev, pickup: e.target.value })); setPcLookup('idle') }}
+                        required
+                        className="flex-1 bg-white/5 border border-white/12 text-cream text-sm px-3.5 py-3 rounded-sm placeholder:text-grey/40 focus:outline-none focus:border-gold/50 focus:bg-white/8 transition-all"
+                      />
+                      {UK_PC.test(fields.pickup.trim()) && pcLookup !== 'ok' && (
+                        <button
+                          type="button"
+                          onClick={lookupPostcode}
+                          disabled={pcLookup === 'loading'}
+                          className="flex-shrink-0 px-3 py-2 bg-gold/15 border border-gold/40 text-gold text-xs font-semibold rounded-sm hover:bg-gold/25 transition-all disabled:opacity-50 whitespace-nowrap"
+                        >
+                          {pcLookup === 'loading' ? '…' : pcLookup === 'err' ? 'Not found' : 'Look up →'}
+                        </button>
+                      )}
+                      {pcLookup === 'ok' && <span className="flex items-center px-2 text-gold text-sm">✓</span>}
+                    </div>
+                  </div>
                   <div className="flex flex-col gap-1.5">
                     <label className="flex items-center gap-2 text-grey text-[10px] font-semibold tracking-widest uppercase">
                       <span className="text-gold"><DestIcon /></span>

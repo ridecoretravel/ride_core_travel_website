@@ -34,8 +34,30 @@ export default function Hero() {
   const [stopsOn, setStopsOn]       = useState(false)
   const [stops, setStops]           = useState('')
   const [status, setStatus]         = useState<Status>('idle')
+  const [pcLookup, setPcLookup]     = useState<'idle'|'loading'|'ok'|'err'>('idle')
 
   const today = new Date().toISOString().split('T')[0]
+
+  const UK_PC = /^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i
+
+  async function lookupPostcode() {
+    const pc = pickup.trim().replace(/\s+/g, '')
+    if (!UK_PC.test(pc)) return
+    setPcLookup('loading')
+    try {
+      const res = await fetch(`https://api.postcodes.io/postcodes/${pc}`)
+      const json = await res.json()
+      if (json.status === 200) {
+        const { postcode, admin_ward, admin_district } = json.result
+        setPickup(`${postcode}, ${admin_ward}, ${admin_district}`)
+        setPcLookup('ok')
+      } else {
+        setPcLookup('err')
+      }
+    } catch {
+      setPcLookup('err')
+    }
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -118,7 +140,29 @@ export default function Hero() {
 
                 {/* Journey row */}
                 <Field label="Pickup address">
-                  <input type="text" value={pickup} onChange={e => setPickup(e.target.value)} placeholder="Your address or postcode" required className={input} />
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={pickup}
+                      onChange={e => { setPickup(e.target.value); setPcLookup('idle') }}
+                      placeholder="e.g. LS11 0HH or full address"
+                      required
+                      className={`${input} flex-1`}
+                    />
+                    {UK_PC.test(pickup.trim()) && pcLookup !== 'ok' && (
+                      <button
+                        type="button"
+                        onClick={lookupPostcode}
+                        disabled={pcLookup === 'loading'}
+                        className="flex-shrink-0 px-3 py-2.5 bg-gold/15 border border-gold/40 text-gold text-xs font-semibold rounded-sm hover:bg-gold/25 transition-all disabled:opacity-50 whitespace-nowrap"
+                      >
+                        {pcLookup === 'loading' ? '…' : pcLookup === 'err' ? 'Not found' : 'Look up →'}
+                      </button>
+                    )}
+                    {pcLookup === 'ok' && (
+                      <span className="flex-shrink-0 flex items-center px-2 text-gold text-sm">✓</span>
+                    )}
+                  </div>
                 </Field>
                 <Field label="Drop-off / Airport">
                   <div className="relative">
