@@ -193,7 +193,7 @@ export default function ServicesPage() {
       <section className="bg-graphite py-16 border-t border-white/8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center gap-5">
           <h2 className="text-2xl font-bold text-cream tracking-tight">Ready to Book?</h2>
-          <p className="text-grey max-w-md">Get your fixed price confirmed within 30 minutes.</p>
+          <p className="text-grey max-w-md">Get your fixed price confirmed as soon as possible.</p>
           <div className="flex flex-wrap gap-3 justify-center">
             <Link href="/#booking" className="bg-gold text-charcoal font-bold text-sm px-7 py-4 rounded-sm tracking-wide hover:bg-gold/90 transition-colors">
               Get a Quote

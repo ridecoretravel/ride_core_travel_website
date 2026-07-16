@@ -91,7 +91,7 @@ export default function Hero() {
           {/* Card header */}
           <div className="px-5 py-3.5 border-b border-white/8 flex items-center justify-between">
             <span className="text-cream text-sm font-semibold">Get Your Fixed-Price Quote</span>
-            <span className="text-grey text-xs">No payment now · Reply within 30 min</span>
+            <span className="text-grey text-xs">No payment now · Reply as soon as possible</span>
           </div>
 
           {status === 'sent' ? (
