@@ -108,7 +108,7 @@ export default function BookingForm({ defaultDropoff }: { defaultDropoff?: strin
   const today = new Date().toISOString().split('T')[0]
 
   return (
-    <section id="booking" className="bg-graphite py-24">
+    <section id="booking" className="bg-graphite py-24 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section heading */}

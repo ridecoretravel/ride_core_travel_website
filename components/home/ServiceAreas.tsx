@@ -3,10 +3,10 @@ const airports = [
   { label: 'Manchester Airport', href: '/airport-transfers/leeds-to-manchester-airport' },
   { label: 'Liverpool Airport', href: '/airport-transfers/leeds-to-liverpool-airport' },
   { label: 'London Heathrow', href: '/airport-transfers/leeds-to-heathrow' },
-  { label: 'London Gatwick', href: '#booking' },
-  { label: 'Birmingham Airport', href: '#booking' },
-  { label: 'Edinburgh Airport', href: '#booking' },
-  { label: 'Any UK Airport', href: '#booking' },
+  { label: 'London Gatwick', href: '/#booking' },
+  { label: 'Birmingham Airport', href: '/#booking' },
+  { label: 'Edinburgh Airport', href: '/#booking' },
+  { label: 'Any UK Airport', href: '/#booking' },
 ]
 
 export default function ServiceAreas() {
@@ -32,7 +32,7 @@ export default function ServiceAreas() {
             ))}
           </p>
           <a
-            href="#booking"
+            href="/#booking"
             className="inline-flex mx-auto bg-gold text-charcoal font-semibold px-7 py-3.5 rounded-sm tracking-wide hover:bg-gold/90 transition-colors text-sm"
           >
             Get a Quote for Your Route

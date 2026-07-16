@@ -20,7 +20,7 @@ export default function MobileStickyBar() {
         WhatsApp
       </a>
       <a
-        href="#booking"
+        href="/#booking"
         className="flex-1 flex flex-col items-center justify-center gap-1 py-3 text-xs font-semibold bg-gold text-charcoal hover:bg-gold/90 transition-colors"
       >
         <QuoteIcon />
