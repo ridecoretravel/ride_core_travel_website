@@ -102,6 +102,7 @@ export async function POST(req: NextRequest) {
           ${row('Drop-off', data.dropoff)}
           ${row('Date', data.date)}
           ${row('Time', data.time)}
+          ${row('Vehicle', data.vehicle || '—')}
           ${row('Luggage', data.luggage || '—')}
           ${data.additionalStops ? row('Extra Stops', data.additionalStops, true) : ''}
           ${data.returnJourney ? row('Return', `${data.returnDate} at ${data.returnTime}`, true) : ''}
@@ -148,6 +149,7 @@ export async function POST(req: NextRequest) {
           ${row('Date', data.date)}
           ${row('Time', data.time)}
           ${row('Passengers', data.passengers)}
+          ${row('Vehicle', data.vehicle || '—')}
           ${row('Luggage', data.luggage || '—')}
           ${data.additionalStops ? row('Extra Stops', data.additionalStops) : ''}
           ${data.returnJourney ? row('Return', `${data.returnDate} at ${data.returnTime}`, true) : ''}

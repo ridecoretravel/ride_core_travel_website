@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useState, useEffect, useRef } from 'react'
+import { useState } from 'react'
 import { site } from '@/lib/site'
 
 const AIRPORTS = [
@@ -16,6 +16,12 @@ const AIRPORTS = [
   'Other destination',
 ]
 
+const VEHICLES = [
+  '4-Seater (Any)',
+  '4-Seater Executive',
+  '8-Seater Executive',
+]
+
 type Status = 'idle' | 'sending' | 'sent' | 'error'
 
 export default function Hero() {
@@ -24,6 +30,7 @@ export default function Hero() {
   const [date, setDate]             = useState('')
   const [time, setTime]             = useState('')
   const [passengers, setPassengers] = useState('1')
+  const [vehicle, setVehicle]       = useState('')
   const [name, setName]             = useState('')
   const [phone, setPhone]           = useState('')
   const [email, setEmail]           = useState('')
@@ -34,36 +41,8 @@ export default function Hero() {
   const [stopsOn, setStopsOn]       = useState(false)
   const [stops, setStops]           = useState('')
   const [status, setStatus]         = useState<Status>('idle')
-  const [pcLookup, setPcLookup]     = useState<'idle'|'loading'|'ok'|'err'>('idle')
 
   const today = new Date().toISOString().split('T')[0]
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-
-  // Auto-lookup as user types a complete UK postcode
-  useEffect(() => {
-    const UK_PC = /^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i
-    const trimmed = pickup.trim()
-    if (!UK_PC.test(trimmed)) { setPcLookup('idle'); return }
-    if (timerRef.current) clearTimeout(timerRef.current)
-    setPcLookup('loading')
-    timerRef.current = setTimeout(async () => {
-      try {
-        const pc = trimmed.replace(/\s+/g, '')
-        const res = await fetch(`https://api.postcodes.io/postcodes/${pc}`)
-        const json = await res.json()
-        if (json.status === 200) {
-          const { postcode, admin_ward, admin_district } = json.result
-          setPickup(`${postcode}, ${admin_ward}, ${admin_district}`)
-          setPcLookup('ok')
-        } else {
-          setPcLookup('err')
-        }
-      } catch {
-        setPcLookup('err')
-      }
-    }, 400)
-    return () => { if (timerRef.current) clearTimeout(timerRef.current) }
-  }, [pickup])
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -75,6 +54,7 @@ export default function Hero() {
         body: JSON.stringify({
           name, email, phone, passengers,
           pickup, dropoff, date, time,
+          vehicle,
           luggage,
           additionalStops: stopsOn ? stops : '',
           returnJourney: returnOn,
@@ -91,7 +71,6 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[100svh] flex flex-col justify-end overflow-hidden">
-      {/* Background images */}
       <Image src="/images/hero/hero-vito.webp" alt="Ridecore Travel premium airport transfer" fill priority className="object-cover hidden md:block" sizes="100vw" />
       <Image src="/images/hero/hero-vito-mobile.webp" alt="Ridecore Travel premium airport transfer" fill priority className="object-cover md:hidden" sizes="100vw" />
       <div className="absolute inset-0 bg-gradient-to-b from-charcoal/50 via-charcoal/30 to-charcoal/95" />
@@ -116,7 +95,6 @@ export default function Hero() {
         {/* ── Booking form card ── */}
         <div className="bg-charcoal/85 backdrop-blur-md border border-white/10 rounded-sm overflow-hidden">
 
-          {/* Card header */}
           <div className="px-5 py-3.5 border-b border-white/8 flex items-center justify-between">
             <span className="text-cream text-sm font-semibold">Get Your Fixed-Price Quote</span>
             <span className="text-grey text-xs">No payment now · Reply as soon as possible</span>
@@ -134,7 +112,7 @@ export default function Hero() {
                 We've received your details and will be in touch as soon as possible with your fixed price. Check your email or phone.
               </p>
               <button
-                onClick={() => { setStatus('idle'); setName(''); setEmail(''); setPhone(''); setPickup(''); setDropoff(''); setDate(''); setTime(''); setPassengers('1'); setReturnOn(false); setLuggage(''); setStopsOn(false); setStops('') }}
+                onClick={() => { setStatus('idle'); setName(''); setEmail(''); setPhone(''); setPickup(''); setDropoff(''); setDate(''); setTime(''); setPassengers('1'); setVehicle(''); setReturnOn(false); setLuggage(''); setStopsOn(false); setStops('') }}
                 className="mt-2 text-gold text-xs tracking-widest uppercase font-semibold hover:underline"
               >
                 Submit another →
@@ -144,34 +122,19 @@ export default function Hero() {
             <form onSubmit={handleSubmit} className="p-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
 
-                {/* Journey row */}
+                {/* Pickup */}
                 <Field label="Pickup address">
-                  <div className="relative">
-                    <input
-                      type="text"
-                      value={pickup}
-                      onChange={e => { setPickup(e.target.value); setPcLookup('idle') }}
-                      placeholder="e.g. LS11 0HH or full address"
-                      required
-                      className={`${input} w-full pr-8 ${pcLookup === 'ok' ? 'border-gold/60' : ''}`}
-                    />
-                    {pcLookup === 'loading' && (
-                      <span className="absolute right-2.5 top-1/2 -translate-y-1/2">
-                        <svg className="animate-spin text-gold" width="14" height="14" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"/>
-                        </svg>
-                      </span>
-                    )}
-                    {pcLookup === 'ok' && (
-                      <span className="absolute right-2.5 top-1/2 -translate-y-1/2 text-gold text-sm">✓</span>
-                    )}
-                    {pcLookup === 'err' && (
-                      <span className="absolute right-2.5 top-1/2 -translate-y-1/2 text-red-400 text-xs">?</span>
-                    )}
-                  </div>
-                  <p className="text-grey/50 text-[10px] mt-1">Type your postcode and it will auto-fill your area</p>
+                  <input
+                    type="text"
+                    value={pickup}
+                    onChange={e => setPickup(e.target.value)}
+                    placeholder="Full address including postcode"
+                    required
+                    className={input}
+                  />
                 </Field>
+
+                {/* Drop-off */}
                 <Field label="Drop-off / Airport">
                   <div className="relative">
                     <select value={dropoff} onChange={e => setDropoff(e.target.value)} required className={`${input} appearance-none pr-8 [&>option]:bg-charcoal`}>
@@ -181,9 +144,24 @@ export default function Hero() {
                     <Chevron />
                   </div>
                 </Field>
+
+                {/* Vehicle type */}
+                <Field label="Vehicle type">
+                  <div className="relative">
+                    <select value={vehicle} onChange={e => setVehicle(e.target.value)} required className={`${input} appearance-none pr-8 [&>option]:bg-charcoal`}>
+                      <option value="">Select vehicle</option>
+                      {VEHICLES.map(v => <option key={v} value={v}>{v}</option>)}
+                    </select>
+                    <Chevron />
+                  </div>
+                </Field>
+
+                {/* Date */}
                 <Field label="Date">
                   <input type="date" value={date} onChange={e => setDate(e.target.value)} min={today} required className={`${input} [color-scheme:dark]`} />
                 </Field>
+
+                {/* Time */}
                 <Field label="Time">
                   <input type="time" value={time} onChange={e => setTime(e.target.value)} required className={`${input} [color-scheme:dark]`} />
                 </Field>
@@ -200,29 +178,6 @@ export default function Hero() {
                   </div>
                 </Field>
 
-                {/* Return journey toggle */}
-                <Field label="Return journey?">
-                  <div className="flex items-center h-[42px] gap-3">
-                    <button type="button" role="switch" aria-checked={returnOn} onClick={() => setReturnOn(v => !v)}
-                      className={`relative w-10 h-5 rounded-full border transition-all flex-shrink-0 ${returnOn ? 'bg-gold border-gold' : 'bg-white/8 border-white/15'}`}>
-                      <span className={`absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white transition-transform duration-200 ${returnOn ? 'translate-x-5' : ''}`} />
-                    </button>
-                    <span className="text-cream/70 text-sm">{returnOn ? 'Yes — add return details' : 'One way'}</span>
-                  </div>
-                </Field>
-
-                {/* Return fields */}
-                {returnOn && (
-                  <>
-                    <Field label="Return date">
-                      <input type="date" value={returnDate} onChange={e => setReturnDate(e.target.value)} min={date || today} required className={`${input} [color-scheme:dark]`} />
-                    </Field>
-                    <Field label="Return time">
-                      <input type="time" value={returnTime} onChange={e => setReturnTime(e.target.value)} required className={`${input} [color-scheme:dark]`} />
-                    </Field>
-                  </>
-                )}
-
                 {/* Luggage */}
                 <Field label="Luggage">
                   <div className="relative">
@@ -234,6 +189,17 @@ export default function Hero() {
                       <option>7+ / oversized bags</option>
                     </select>
                     <Chevron />
+                  </div>
+                </Field>
+
+                {/* Return journey toggle */}
+                <Field label="Return journey?">
+                  <div className="flex items-center h-[42px] gap-3">
+                    <button type="button" role="switch" aria-checked={returnOn} onClick={() => setReturnOn(v => !v)}
+                      className={`relative w-10 h-5 rounded-full border transition-all flex-shrink-0 ${returnOn ? 'bg-gold border-gold' : 'bg-white/8 border-white/15'}`}>
+                      <span className={`absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white transition-transform duration-200 ${returnOn ? 'translate-x-5' : ''}`} />
+                    </button>
+                    <span className="text-cream/70 text-sm">{returnOn ? 'Yes — add return details' : 'One way'}</span>
                   </div>
                 </Field>
 
@@ -252,6 +218,18 @@ export default function Hero() {
                     )}
                   </div>
                 </Field>
+
+                {/* Return fields — date & time only, no luggage */}
+                {returnOn && (
+                  <>
+                    <Field label="Return date">
+                      <input type="date" value={returnDate} onChange={e => setReturnDate(e.target.value)} min={date || today} required className={`${input} [color-scheme:dark]`} />
+                    </Field>
+                    <Field label="Return time">
+                      <input type="time" value={returnTime} onChange={e => setReturnTime(e.target.value)} required className={`${input} [color-scheme:dark]`} />
+                    </Field>
+                  </>
+                )}
 
                 {/* Divider */}
                 <div className="sm:col-span-2 lg:col-span-3 border-t border-white/8 pt-1">
