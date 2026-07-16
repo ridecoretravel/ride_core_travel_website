@@ -6,7 +6,7 @@ const footerNav = [
   { label: 'Home', href: '/' },
   { label: 'Services', href: '/services' },
   { label: 'Airport Transfers', href: '/airport-transfers' },
-  { label: 'Fleet', href: '/#fleet' },
+  { label: 'Fleet', href: '/services' },
   { label: 'Blog', href: '/blog' },
   { label: 'About', href: '/about-us' },
   { label: 'Book a Transfer', href: '/booking' },

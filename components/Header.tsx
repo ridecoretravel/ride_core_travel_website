@@ -109,7 +109,7 @@ export default function Header() {
           <Link href="/services" className="text-sm tracking-wide text-cream/80 hover:text-gold transition-colors">
             Services
           </Link>
-          <Link href="/#fleet" className="text-sm tracking-wide text-cream/80 hover:text-gold transition-colors">
+          <Link href="/services" className="text-sm tracking-wide text-cream/80 hover:text-gold transition-colors">
             Fleet
           </Link>
           <Link href="/airport-transfers" className="text-sm tracking-wide text-cream/80 hover:text-gold transition-colors">
@@ -189,7 +189,7 @@ export default function Header() {
 
             <NavItem href="/" onClick={() => setMenuOpen(false)}>Home</NavItem>
             <NavItem href="/services" onClick={() => setMenuOpen(false)}>Services</NavItem>
-            <NavItem href="/#fleet" onClick={() => setMenuOpen(false)}>Fleet</NavItem>
+            <NavItem href="/services" onClick={() => setMenuOpen(false)}>Fleet</NavItem>
             <NavItem href="/airport-transfers" onClick={() => setMenuOpen(false)}>Fares</NavItem>
             <NavItem href="/blog" onClick={() => setMenuOpen(false)}>Blog</NavItem>
             <NavItem href="/about-us" onClick={() => setMenuOpen(false)}>About Us</NavItem>
