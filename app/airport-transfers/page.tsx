@@ -119,8 +119,8 @@ export default function AirportTransfersPage() {
                   {price && (
                     <div className="flex items-baseline gap-2 mt-auto pt-3 border-t border-white/8">
                       <span className="text-grey text-xs">from</span>
-                      <span className="text-gold font-bold text-xl">£{price.any4}</span>
-                      <span className="text-grey text-xs">/ 4-seater</span>
+                      <span className="text-gold font-bold text-xl">£{price.exec8}</span>
+                      <span className="text-grey text-xs">/ 8-seater</span>
                     </div>
                   )}
                   <span className="text-gold text-xs font-semibold tracking-wide group-hover:underline">

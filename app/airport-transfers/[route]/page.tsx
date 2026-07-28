@@ -266,7 +266,7 @@ export default async function RoutePage({
                     <p className="text-grey text-xs mt-0.5">{r.journeyTime} · {r.distance}</p>
                   </div>
                   {price && (
-                    <span className="text-gold font-bold text-sm flex-shrink-0 ml-4">from £{price.any4}</span>
+                    <span className="text-gold font-bold text-sm flex-shrink-0 ml-4">from £{price.exec8}</span>
                   )}
                 </Link>
               )

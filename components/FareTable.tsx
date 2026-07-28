@@ -21,11 +21,9 @@ export default function FareTable({ priceKey, compact }: Props) {
     <div className="flex flex-col gap-4">
 
       {/* Header */}
-      <div className="hidden sm:grid grid-cols-5 gap-px bg-white/8 rounded-t-sm overflow-hidden text-[10px] font-semibold tracking-widest uppercase">
+      <div className="hidden sm:grid grid-cols-3 gap-px bg-white/8 rounded-t-sm overflow-hidden text-[10px] font-semibold tracking-widest uppercase">
         <div className="bg-graphite col-span-2 px-5 py-3 text-grey">Route</div>
         <div className="bg-graphite px-3 py-3 text-gold text-center">8-Seater<br/>Executive</div>
-        <div className="bg-graphite px-3 py-3 text-cream/60 text-center">4-Seater<br/>(Any)</div>
-        <div className="bg-graphite px-3 py-3 text-cream/80 text-center">4-Seater<br/>Executive</div>
       </div>
 
       {/* Rows */}
@@ -35,7 +33,7 @@ export default function FareTable({ priceKey, compact }: Props) {
           return (
             <div
               key={r.slug}
-              className={`grid grid-cols-1 sm:grid-cols-5 gap-px ${i % 2 === 0 ? 'bg-graphite' : 'bg-charcoal'}`}
+              className={`grid grid-cols-1 sm:grid-cols-3 gap-px ${i % 2 === 0 ? 'bg-graphite' : 'bg-charcoal'}`}
             >
               {/* Route name */}
               <div className="bg-inherit sm:col-span-2 px-5 py-4 text-sm font-medium flex items-center justify-between gap-3">
@@ -57,18 +55,6 @@ export default function FareTable({ priceKey, compact }: Props) {
               <div className="bg-inherit px-3 py-4 flex sm:flex-col sm:items-center sm:justify-center items-center gap-2">
                 <span className="sm:hidden text-grey text-xs w-36">8-Seater Executive:</span>
                 <span className="text-gold font-bold text-lg">£{r.exec8}</span>
-              </div>
-
-              {/* 4-Seater Any */}
-              <div className="bg-inherit px-3 py-4 flex sm:flex-col sm:items-center sm:justify-center items-center gap-2">
-                <span className="sm:hidden text-grey text-xs w-36">4-Seater (Any):</span>
-                <span className="text-cream font-semibold text-lg">£{r.any4}</span>
-              </div>
-
-              {/* 4-Seater Executive */}
-              <div className="bg-inherit px-3 py-4 flex sm:flex-col sm:items-center sm:justify-center items-center gap-2">
-                <span className="sm:hidden text-grey text-xs w-36">4-Seater Executive:</span>
-                <span className="text-cream/80 font-semibold text-lg">£{r.exec4}</span>
               </div>
             </div>
           )

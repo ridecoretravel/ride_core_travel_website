@@ -16,12 +16,6 @@ const AIRPORTS = [
   'Other destination',
 ]
 
-const VEHICLES = [
-  '4-Seater (Any)',
-  '4-Seater Executive',
-  '8-Seater Executive',
-]
-
 type Status = 'idle' | 'sending' | 'sent' | 'error'
 
 export default function Hero() {
@@ -30,13 +24,13 @@ export default function Hero() {
   const [date, setDate]             = useState('')
   const [time, setTime]             = useState('')
   const [passengers, setPassengers] = useState('1')
-  const [vehicle, setVehicle]       = useState('')
   const [name, setName]             = useState('')
   const [phone, setPhone]           = useState('')
   const [email, setEmail]           = useState('')
   const [returnOn, setReturnOn]     = useState(false)
   const [returnDate, setReturnDate] = useState('')
   const [returnTime, setReturnTime] = useState('')
+  const [flightNumber, setFlightNumber] = useState('')
   const [luggage, setLuggage]       = useState('')
   const [stopsOn, setStopsOn]       = useState(false)
   const [stops, setStops]           = useState('')
@@ -54,12 +48,12 @@ export default function Hero() {
         body: JSON.stringify({
           name, email, phone, passengers,
           pickup, dropoff, date, time,
-          vehicle,
           luggage,
           additionalStops: stopsOn ? stops : '',
           returnJourney: returnOn,
           returnDate: returnOn ? returnDate : '',
           returnTime: returnOn ? returnTime : '',
+          flightNumber: returnOn ? flightNumber : '',
         }),
       })
       if (!res.ok) throw new Error()
@@ -112,7 +106,7 @@ export default function Hero() {
                 We've received your details and will be in touch as soon as possible with your fixed price. Check your email or phone.
               </p>
               <button
-                onClick={() => { setStatus('idle'); setName(''); setEmail(''); setPhone(''); setPickup(''); setDropoff(''); setDate(''); setTime(''); setPassengers('1'); setVehicle(''); setReturnOn(false); setLuggage(''); setStopsOn(false); setStops('') }}
+                onClick={() => { setStatus('idle'); setName(''); setEmail(''); setPhone(''); setPickup(''); setDropoff(''); setDate(''); setTime(''); setPassengers('1'); setReturnOn(false); setLuggage(''); setStopsOn(false); setStops(''); setFlightNumber('') }}
                 className="mt-2 text-gold text-xs tracking-widest uppercase font-semibold hover:underline"
               >
                 Submit another →
@@ -140,17 +134,6 @@ export default function Hero() {
                     <select value={dropoff} onChange={e => setDropoff(e.target.value)} required className={`${input} appearance-none pr-8 [&>option]:bg-charcoal`}>
                       <option value="">Select airport</option>
                       {AIRPORTS.map(a => <option key={a} value={a}>{a}</option>)}
-                    </select>
-                    <Chevron />
-                  </div>
-                </Field>
-
-                {/* Vehicle type */}
-                <Field label="Vehicle type">
-                  <div className="relative">
-                    <select value={vehicle} onChange={e => setVehicle(e.target.value)} required className={`${input} appearance-none pr-8 [&>option]:bg-charcoal`}>
-                      <option value="">Select vehicle</option>
-                      {VEHICLES.map(v => <option key={v} value={v}>{v}</option>)}
                     </select>
                     <Chevron />
                   </div>
@@ -219,7 +202,7 @@ export default function Hero() {
                   </div>
                 </Field>
 
-                {/* Return fields — date & time only, no luggage */}
+                {/* Return fields — date, time & flight number */}
                 {returnOn && (
                   <>
                     <Field label="Return date">
@@ -227,6 +210,9 @@ export default function Hero() {
                     </Field>
                     <Field label="Return time">
                       <input type="time" value={returnTime} onChange={e => setReturnTime(e.target.value)} required className={`${input} [color-scheme:dark]`} />
+                    </Field>
+                    <Field label="Flight number">
+                      <input type="text" value={flightNumber} onChange={e => setFlightNumber(e.target.value)} placeholder="e.g. BA1234" className={input} />
                     </Field>
                   </>
                 )}

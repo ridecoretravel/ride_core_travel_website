@@ -72,7 +72,7 @@ export async function POST(req: NextRequest) {
   }
 
   const returnText = data.returnJourney
-    ? `\nReturn Date:   ${data.returnDate}\nReturn Time:   ${data.returnTime}`
+    ? `\nReturn Date:   ${data.returnDate}\nReturn Time:   ${data.returnTime}${data.flightNumber ? `\nFlight Number: ${data.flightNumber}` : ''}`
     : ''
 
   // ── Email to Ridecore (booking notification) ──────────────────────────────
@@ -102,10 +102,10 @@ export async function POST(req: NextRequest) {
           ${row('Drop-off', data.dropoff)}
           ${row('Date', data.date)}
           ${row('Time', data.time)}
-          ${row('Vehicle', data.vehicle || '—')}
           ${row('Luggage', data.luggage || '—')}
           ${data.additionalStops ? row('Extra Stops', data.additionalStops, true) : ''}
           ${data.returnJourney ? row('Return', `${data.returnDate} at ${data.returnTime}`, true) : ''}
+          ${data.returnJourney && data.flightNumber ? row('Flight Number', data.flightNumber, true) : ''}
         </table>
 
         <!-- CTA -->
@@ -149,10 +149,10 @@ export async function POST(req: NextRequest) {
           ${row('Date', data.date)}
           ${row('Time', data.time)}
           ${row('Passengers', data.passengers)}
-          ${row('Vehicle', data.vehicle || '—')}
           ${row('Luggage', data.luggage || '—')}
           ${data.additionalStops ? row('Extra Stops', data.additionalStops) : ''}
           ${data.returnJourney ? row('Return', `${data.returnDate} at ${data.returnTime}`, true) : ''}
+          ${data.returnJourney && data.flightNumber ? row('Flight Number', data.flightNumber, true) : ''}
         </table>
 
         <!-- What's next -->
