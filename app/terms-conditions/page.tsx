@@ -11,63 +11,63 @@ export const metadata: Metadata = {
 const sections = [
   {
     title: '1. Company Information',
-    body: `These terms and conditions apply to all bookings made with Ridecore Travel Ltd, registered in England and Wales (Company No. 16758874), operating under Leeds City Council PHV Licence 25232. Registered address: 114 Cottingley Approach, Leeds, LS11 0HH. Contact: ${site.email} · ${site.phone}.`,
+    body: `These Terms & Conditions apply to all bookings made with Ridecore Travel Ltd, a company registered in England and Wales (Company No. 16758874), operating under Leeds City Council Private Hire Vehicle Licence No. 25232. Registered address: 114 Cottingley Approach, Leeds, LS11 0HH. Contact: ${site.email} · ${site.phone}.`,
   },
   {
     title: '2. Bookings',
-    body: 'All bookings must be made in advance via phone, WhatsApp, email, or our online quote form. A booking is confirmed only when you receive written confirmation from Ridecore Travel. We reserve the right to decline any booking at our discretion.',
+    body: 'All bookings must be made in advance via phone, WhatsApp, email, or our online quote form. A booking is only confirmed once you have received written confirmation from Ridecore Travel. We reserve the right to refuse or decline any booking at our discretion.',
   },
   {
     title: '3. Pricing',
-    body: 'All fares are fixed and confirmed at the time of booking. The price you are quoted is the price you pay. There are no surge charges, congestion charges, or hidden extras unless expressly agreed in writing at the time of booking. Prices may vary for pickups outside Leeds City Centre.',
+    body: 'All fares are fixed and confirmed at the time of booking. The price you are quoted is the price you pay. There are no surge charges, congestion charges, or hidden fees unless agreed in writing before your journey. Prices are based on the pickup and destination locations and will be confirmed before your booking is accepted.',
   },
   {
     title: '4. Payment',
-    body: 'Payment is accepted by bank transfer, cash, or card. Full payment or a deposit may be required at the time of booking for certain journeys. Details will be confirmed in your booking confirmation.',
+    body: 'A 10% deposit is required to secure your booking. Your booking is not confirmed until the deposit has been received. The remaining balance must be paid at least 2 days before the journey, unless otherwise agreed or payment by cash on the day of travel has been arranged in advance.',
   },
   {
     title: '5. Cancellations & Amendments',
-    body: 'Cancellations made more than 24 hours before the scheduled pickup time will receive a full refund. Cancellations made within 24 hours of the scheduled pickup may be subject to a cancellation fee of up to 50% of the fare. No-shows (where the passenger is not present at the agreed time and location) will be charged the full fare. Amendments to bookings are subject to availability and must be requested as soon as possible.',
+    body: 'Cancellations made more than 24 hours before the scheduled pickup time will receive a full refund. Cancellations made within 24 hours of the scheduled pickup time may be subject to a cancellation fee of up to 50% of the fare. No-shows (where the passenger is not present at the agreed pickup location and time) will be charged the full fare. Any amendments to your booking are subject to availability and should be requested as early as possible.',
   },
   {
     title: '6. Waiting Time',
-    body: 'For airport collections, we provide free waiting time to account for flight delays — we track all flights in real time. For non-airport pickups, drivers will wait up to 15 minutes at the agreed pickup time. Additional waiting time beyond this may be charged.',
+    body: 'For airport arrivals, we monitor all flights in real time and adjust your pickup time if your flight is delayed. We provide up to 45 minutes of free waiting time from the time your flight lands. For all other pickups, drivers will wait up to 10 minutes from the agreed pickup time. Additional waiting time may be charged.',
   },
   {
     title: '7. Passenger Conduct',
-    body: 'Passengers are expected to behave in a safe and respectful manner at all times. The driver reserves the right to refuse travel to, or terminate the journey of, any passenger whose behaviour is deemed unsafe, abusive, or disruptive. No refund will be issued in such circumstances. Smoking, vaping, and the consumption of alcohol are strictly prohibited in the vehicle.',
+    body: 'Passengers must behave in a safe and respectful manner throughout the journey. Drivers reserve the right to refuse travel or terminate the journey if a passenger behaves in a threatening, abusive, violent, or unsafe manner. No refund will be given in these circumstances. Smoking, vaping, and the consumption of alcohol are strictly prohibited in our vehicles.',
   },
   {
     title: '8. Luggage',
-    body: 'Passengers are responsible for loading and unloading their own luggage. Ridecore Travel accepts no liability for damage to or loss of luggage during transit. Please inform us of any oversized, fragile, or unusual items at the time of booking.',
+    body: 'Passengers must ensure that the amount of luggage booked is suitable for the vehicle requested. Please inform us in advance if you are travelling with oversized luggage, bicycles, golf clubs, wheelchairs, pushchairs, or any other large items. Ridecore Travel reserves the right to refuse luggage that cannot be transported safely. We are not responsible for loss or damage to luggage unless caused by our negligence.',
   },
   {
-    title: '9. Child Safety',
-    body: 'Under UK law, children must use an appropriate child seat. Ridecore Travel can provide child seats upon request — please request these at the time of booking. Passengers who do not request a child seat in advance travel at their own risk.',
+    title: '9. Delays & Circumstances Beyond Our Control',
+    body: 'Ridecore Travel will make every reasonable effort to arrive on time. However, we cannot accept liability for delays caused by traffic, road closures, accidents, severe weather, vehicle breakdowns, or any other circumstances beyond our reasonable control. If a delay occurs, we will keep you informed as soon as reasonably possible.',
   },
   {
-    title: '10. Delays & Circumstances Beyond Our Control',
-    body: 'Ridecore Travel will make every reasonable effort to arrive on time. However, we accept no liability for delays caused by traffic, road closures, adverse weather, or other circumstances beyond our reasonable control. We will communicate any anticipated delay as soon as possible.',
+    title: '10. Liability',
+    body: 'Ridecore Travel is fully insured for private hire journeys. Our liability is limited to the value of the booked journey. We are not liable for indirect or consequential losses, including missed flights, missed connections, missed appointments, or business losses, except where such loss results directly from our negligence. Nothing in these Terms excludes or limits any liability that cannot legally be excluded under the laws of England and Wales.',
   },
   {
-    title: '11. Liability',
-    body: 'Ridecore Travel is fully insured for private hire journeys. Our liability is limited to the value of the journey fare. We accept no liability for consequential losses, including missed flights, missed connections, or missed appointments, except where caused by our negligence.',
+    title: '11. Complaints',
+    body: `Any complaints should be submitted in writing within 7 days of your journey by emailing ${site.email}. We will acknowledge your complaint within 2 working days and aim to resolve it within 14 working days.`,
   },
   {
-    title: '12. Complaints',
-    body: `Any complaints should be submitted in writing within 7 days of the journey to ${site.email}. We will acknowledge your complaint within 2 working days and aim to resolve it within 14 working days.`,
+    title: '12. Privacy',
+    body: 'Personal information collected during the booking process, including your name, email address, telephone number, and journey details, will only be used to provide and manage your booking. Your information will never be sold or shared with third parties except where required by law or where necessary to complete your booking.',
   },
   {
-    title: '13. Privacy',
-    body: 'Personal data collected during booking (name, email, phone number, address) is used solely for the purpose of fulfilling your transfer and will not be shared with third parties without your consent, except where required by law.',
+    title: '13. Governing Law',
+    body: 'These Terms & Conditions are governed by the laws of England and Wales. Any disputes arising from these Terms shall be subject to the exclusive jurisdiction of the courts of England and Wales.',
   },
   {
-    title: '14. Governing Law',
-    body: 'These terms and conditions are governed by the laws of England and Wales. Any disputes shall be subject to the exclusive jurisdiction of the courts of England and Wales.',
+    title: '14. Changes to These Terms',
+    body: 'Ridecore Travel reserves the right to amend these Terms & Conditions at any time. The version in force at the time your booking is confirmed will apply to your journey.',
   },
   {
-    title: '15. Changes to These Terms',
-    body: 'Ridecore Travel reserves the right to update these terms at any time. The version in effect at the time of your booking confirmation will apply to your journey.',
+    title: '15. Business & Travel Agent Bookings',
+    body: 'This section applies only to bookings made by travel agents, tour operators, businesses, corporate clients, booking partners, or any third party booking on behalf of passengers. All quotations issued by Ridecore Travel for business and travel agent bookings are valid for 24 hours unless otherwise stated. Full payment must be received within 24 hours of accepting the quotation. If payment is not received within this period, the quotation will automatically expire, and Ridecore Travel reserves the right to release vehicle and driver availability. Once a booking has been confirmed by the business, travel agent, corporate client, or third party, the booking is considered final. Payments made for business and travel agent bookings are non-refundable if the passenger changes their plans, no longer requires the service, or the booking is cancelled after confirmation, except where required by law or agreed in writing by Ridecore Travel. Ridecore Travel reserves vehicles and drivers specifically for confirmed business and travel agent bookings. Cancellations, amendments, reductions in booked journeys, or no-shows will not qualify for refunds, credits, or transfers to another booking unless agreed in writing by Ridecore Travel. Ridecore Travel reserves the right to refuse future bookings from any business, travel agent, or booking partner with a history of repeated cancellations, non-payment, disputes, or failure to comply with these Terms & Conditions. By confirming a booking, the client acknowledges that they have read, understood, and accepted these terms in full.',
   },
 ]
 
@@ -94,7 +94,7 @@ export default function TermsPage() {
             Terms & Conditions
           </h1>
           <p className="text-grey text-sm">
-            Ridecore Travel Ltd · Company No. 16758874 · Last updated June 2026
+            Ridecore Travel Ltd · Company No. 16758874 · Last updated July 2026
           </p>
         </div>
       </section>
