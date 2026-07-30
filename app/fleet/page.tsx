@@ -58,7 +58,7 @@ export default function FleetPage() {
           <div className="max-w-xl">
             <div className="flex items-center gap-2 mb-4">
               <span className="w-6 h-px bg-gold" />
-              <span className="text-gold text-xs font-semibold tracking-widest uppercase">Premium Fleet</span>
+              <span className="text-gold text-xs font-semibold tracking-widest uppercase">Premium 8-Seater Mercedes-Benz</span>
             </div>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-cream tracking-tight leading-[1.1] mb-4">
               Our Fleet

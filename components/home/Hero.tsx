@@ -23,7 +23,7 @@ export default function Hero() {
   const [dropoff, setDropoff]       = useState('')
   const [date, setDate]             = useState('')
   const [time, setTime]             = useState('')
-  const [passengers, setPassengers] = useState('1')
+  const [passengers] = useState('1-8')
   const [name, setName]             = useState('')
   const [phone, setPhone]           = useState('')
   const [email, setEmail]           = useState('')
@@ -82,7 +82,7 @@ export default function Hero() {
             Fixed-Price Airport<br className="hidden sm:block" /> Transfers from Leeds
           </h1>
           <p className="text-cream/70 text-lg leading-relaxed">
-            Premium Fleet · Fixed prices · Flight tracking included
+            Premium 8-Seater Mercedes-Benz Airport Transfers from Leeds
           </p>
         </div>
 
@@ -90,7 +90,7 @@ export default function Hero() {
         <div className="bg-charcoal/85 backdrop-blur-md border border-white/10 rounded-sm overflow-hidden">
 
           <div className="px-5 py-3.5 border-b border-white/8 flex items-center justify-between">
-            <span className="text-cream text-sm font-semibold">Get Your Fixed-Price Quote</span>
+            <span className="text-cream text-sm font-semibold">Get Your 8-Seater Fixed-Price Quote</span>
             <span className="text-grey text-xs">Vehicles seat up to 8 · No payment now · Reply as soon as possible</span>
           </div>
 
@@ -106,7 +106,7 @@ export default function Hero() {
                 We've received your details and will be in touch as soon as possible with your fixed price. Check your email or phone.
               </p>
               <button
-                onClick={() => { setStatus('idle'); setName(''); setEmail(''); setPhone(''); setPickup(''); setDropoff(''); setDate(''); setTime(''); setPassengers('1'); setReturnOn(false); setLuggage(''); setStopsOn(false); setStops(''); setFlightNumber('') }}
+                onClick={() => { setStatus('idle'); setName(''); setEmail(''); setPhone(''); setPickup(''); setDropoff(''); setDate(''); setTime(''); setReturnOn(false); setLuggage(''); setStopsOn(false); setStops(''); setFlightNumber('') }}
                 className="mt-2 text-gold text-xs tracking-widest uppercase font-semibold hover:underline"
               >
                 Submit another →
@@ -147,18 +147,6 @@ export default function Hero() {
                 {/* Time */}
                 <Field label="Time">
                   <input type="time" value={time} onChange={e => setTime(e.target.value)} required className={`${input} [color-scheme:dark]`} />
-                </Field>
-
-                {/* Passengers */}
-                <Field label="Passengers">
-                  <div className="flex gap-1.5">
-                    {[1,2,3,4,5,6,7,8].map(n => (
-                      <button key={n} type="button" onClick={() => setPassengers(String(n))}
-                        className={`flex-1 py-2.5 text-sm font-semibold rounded-sm border transition-all ${passengers === String(n) ? 'bg-gold text-charcoal border-gold' : 'bg-white/5 border-white/12 text-grey hover:border-gold/30 hover:text-cream'}`}>
-                        {n}
-                      </button>
-                    ))}
-                  </div>
                 </Field>
 
                 {/* Luggage */}

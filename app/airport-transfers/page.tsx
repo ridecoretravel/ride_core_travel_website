@@ -148,7 +148,7 @@ export default function AirportTransfersPage() {
             {[
               { title: 'Fixed Prices', body: 'Agreed before you travel. No surge pricing, ever.' },
               { title: 'Flight Tracking', body: 'We monitor your flight and adjust pickup automatically.' },
-              { title: 'Premium Fleet', body: 'Spacious, clean, climate-controlled vehicles.' },
+              { title: 'Premium 8-Seater Mercedes-Benz', body: 'Spacious, clean, climate-controlled vehicles.' },
               { title: 'Licensed & Insured', body: 'PHV Licence 25232 · Leeds City Council · Co. 16758874.' },
             ].map((item) => (
               <div key={item.title} className="flex flex-col gap-2">

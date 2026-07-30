@@ -121,7 +121,7 @@ export default async function RoutePage({
               Leeds to {data.airportName} Taxi — Fixed Price, 24/7
             </h1>
             <p className="text-cream/70 text-lg mb-8">
-              {data.journeyTime} · {data.distance} · Premium Fleet
+              {data.journeyTime} · {data.distance} · Mercedes-Benz 8-Seater
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <a

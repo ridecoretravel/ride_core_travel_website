@@ -119,7 +119,7 @@ export default function AboutPage() {
               { title: 'Fixed Prices Always', body: 'Your price is agreed before your journey begins. No surge pricing, no hidden extras, no surprises on arrival.' },
               { title: 'Punctuality', body: 'We track your flight and monitor traffic in real time. Your driver will be ready when you are — not a minute later.' },
               { title: 'Professionalism', body: 'Every driver is DBS-checked, licensed by Leeds City Council, and committed to a courteous, professional service.' },
-              { title: 'Premium Fleet', body: 'Immaculately maintained vehicles. Clean, comfortable, and climate-controlled every single journey.' },
+              { title: 'Premium 8-Seater Mercedes-Benz', body: 'Immaculately maintained vehicles. Clean, comfortable, and climate-controlled every single journey.' },
               { title: 'Transparency', body: 'No small print surprises. Our cancellation policy, payment terms, and pricing are clear from the start.' },
               { title: '24/7 Availability', body: 'Early departures, late-night arrivals, bank holidays — we operate around your schedule, not ours.' },
             ].map((v) => (
@@ -149,7 +149,7 @@ export default function AboutPage() {
             </div>
             <div className="flex flex-col gap-5">
               <span className="text-gold text-xs font-semibold tracking-widest uppercase">The Fleet</span>
-              <h2 className="text-2xl font-bold text-cream tracking-tight">Premium Fleet. Done Right.</h2>
+              <h2 className="text-2xl font-bold text-cream tracking-tight">Premium 8-Seater Mercedes-Benz. Done Right.</h2>
               <p className="text-grey text-sm leading-relaxed">
                 We operate a carefully maintained premium fleet, ensuring every journey meets the same high standard.
                 Our vehicles are kept immaculately clean and serviced to the highest level.
