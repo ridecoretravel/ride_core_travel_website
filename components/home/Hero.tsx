@@ -159,6 +159,7 @@ export default function Hero() {
                       </button>
                     ))}
                   </div>
+                  <p className="text-[11px] text-grey/70 mt-1">We seat up to 8 passengers — choose the number riding with you.</p>
                 </Field>
 
                 {/* Luggage */}
