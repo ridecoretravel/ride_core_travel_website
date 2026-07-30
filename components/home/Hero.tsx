@@ -91,7 +91,7 @@ export default function Hero() {
 
           <div className="px-5 py-3.5 border-b border-white/8 flex items-center justify-between">
             <span className="text-cream text-sm font-semibold">Get Your Fixed-Price Quote</span>
-            <span className="text-grey text-xs">No payment now · Reply as soon as possible</span>
+            <span className="text-grey text-xs">Vehicles seat up to 8 · No payment now · Reply as soon as possible</span>
           </div>
 
           {status === 'sent' ? (
@@ -159,7 +159,6 @@ export default function Hero() {
                       </button>
                     ))}
                   </div>
-                  <p className="text-[11px] text-grey/70 mt-1">We seat up to 8 passengers — choose the number riding with you.</p>
                 </Field>
 
                 {/* Luggage */}
