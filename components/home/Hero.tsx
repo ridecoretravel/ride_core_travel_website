@@ -89,7 +89,7 @@ export default function Hero() {
         {/* ── Booking form card ── */}
         <div className="bg-charcoal/85 backdrop-blur-md border border-white/10 rounded-sm overflow-hidden">
 
-          <div className="px-5 py-3.5 border-b border-white/8 flex items-center justify-between">
+          <div className="px-5 py-3.5 border-b border-white/8 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 sm:justify-between">
             <span className="text-cream text-sm font-semibold">Get Your 8-Seater Fixed-Price Quote</span>
             <span className="text-grey text-xs">Please note: We only provide 8-seater airport transfers.</span>
           </div>
