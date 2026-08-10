@@ -18,6 +18,7 @@ const footerRoutes = [
   { label: 'Manchester Airport',     href: '/airport-transfers/leeds-to-manchester-airport' },
   { label: 'Liverpool Airport',      href: '/airport-transfers/leeds-to-liverpool-airport' },
   { label: 'London Heathrow',        href: '/airport-transfers/leeds-to-heathrow' },
+  { label: 'Birmingham Airport',     href: '/airport-transfers/leeds-to-birmingham-airport' },
 ]
 
 export default function Footer() {

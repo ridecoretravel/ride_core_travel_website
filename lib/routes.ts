@@ -152,6 +152,48 @@ export const routePages: RouteData[] = [
       },
     ],
   },
+  {
+    slug: 'leeds-to-birmingham-airport',
+    airportName: 'Birmingham Airport',
+    heroImage: '/images/routes/birmingham-airport.webp',
+    heroAlt: 'Aircraft on the stand at Birmingham Airport at sunset — Ridecore Travel fixed-price transfers from Leeds',
+    journeyTime: '2 hours 15 minutes',
+    distance: '~120 miles',
+    priceKey: 'birmingham',
+    metaTitle: 'Leeds to Birmingham Airport Taxi | Fixed Price £250 | Ridecore Travel',
+    metaDescription:
+      'Fixed-price taxi from Leeds to Birmingham Airport, from £250. 8-seater Mercedes Vito, real-time flight tracking, 24/7, licensed by Leeds City Council.',
+    faqs: [
+      {
+        q: 'How much is a taxi from Leeds to Birmingham Airport?',
+        a: 'A fixed-price taxi from Leeds to Birmingham Airport costs £250 in our 8-seater Mercedes-Benz Vito Tourer. This price is agreed before you travel — there are no surge charges, tolls, or hidden extras added on the day.',
+      },
+      {
+        q: 'How long does it take to get from Leeds to Birmingham Airport?',
+        a: 'The journey from Leeds to Birmingham Airport takes approximately 2 hours 15 minutes via the M1 and M42, covering around 120 miles. We build in extra time for traffic so you arrive comfortably ahead of your flight.',
+      },
+      {
+        q: 'Is a taxi or the train cheaper from Leeds to Birmingham Airport?',
+        a: 'For a group, a taxi is usually the better value. Our fixed £250 fare covers up to 8 passengers travelling door-to-door in one vehicle, which typically works out far cheaper than 8 separate train tickets plus the connecting transfer from Birmingham International station to the terminal.',
+      },
+      {
+        q: 'Which terminal at Birmingham Airport do you drop off at?',
+        a: 'Birmingham Airport has a single main terminal building, so we drop off and collect from the same location every time regardless of your airline — no need to specify a terminal when booking.',
+      },
+      {
+        q: 'Do you track flights for Birmingham Airport arrivals and departures?',
+        a: 'Yes. We monitor your flight number in real time, so if your flight to or from Birmingham Airport is delayed, we automatically adjust your pickup time at no extra charge.',
+      },
+      {
+        q: 'Can I book a same-day return to Birmingham Airport from Leeds?',
+        a: 'Yes. We operate 24/7 and can cover both your outbound and return journey in the same booking, with your return price fixed at the time of booking.',
+      },
+      {
+        q: 'How much luggage can I bring on a Leeds to Birmingham Airport transfer?',
+        a: 'Our Mercedes-Benz Vito Tourer 8-seater has a generous boot that comfortably fits full-size suitcases for all 8 passengers, making it ideal for groups, families, and business travellers heading to Birmingham Airport.',
+      },
+    ],
+  },
 ]
 
 export function getRouteBySlug(slug: string): RouteData | undefined {

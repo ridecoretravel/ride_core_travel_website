@@ -11,6 +11,7 @@ const routeLinks = [
   { label: 'Manchester Airport',      href: '/airport-transfers/leeds-to-manchester-airport', time: '~1 hr 10 min' },
   { label: 'Liverpool Airport',       href: '/airport-transfers/leeds-to-liverpool-airport',  time: '~1 hr 30 min' },
   { label: 'London Heathrow',         href: '/airport-transfers/leeds-to-heathrow',           time: '~3 hr 30 min' },
+  { label: 'Birmingham Airport',      href: '/airport-transfers/leeds-to-birmingham-airport',  time: '~2 hr 15 min' },
 ]
 
 export default function Header() {
