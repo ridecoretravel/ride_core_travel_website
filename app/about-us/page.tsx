@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { site } from '@/lib/site'
+import { site, SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'About Us | Ridecore Travel | Leeds Airport Transfers',
@@ -17,8 +17,40 @@ export const metadata: Metadata = {
 }
 
 export default function AboutPage() {
+  const organizationLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Ridecore Travel Ltd',
+    legalName: 'Ridecore Travel Ltd',
+    url: SITE_URL,
+    foundingDate: '2025-10-02',
+    identifier: site.companyNo,
+    telephone: site.phoneTel,
+    email: site.email,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '114 Cottingley Approach',
+      addressLocality: 'Leeds',
+      postalCode: 'LS11 0HH',
+      addressCountry: 'GB',
+    },
+    sameAs: [site.socials.facebook, site.socials.instagram, site.socials.linkedin],
+  }
+
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'About', item: `${SITE_URL}/about-us` },
+    ],
+  }
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+
       {/* Breadcrumb */}
       <div className="bg-graphite border-b border-white/8 pt-[72px]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-2 text-xs text-grey">

@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { routePages, getRouteBySlug } from '@/lib/routes'
 import { routes as priceRoutes } from '@/lib/prices'
-import { site } from '@/lib/site'
+import { site, SITE_URL } from '@/lib/site'
 import FareTable from '@/components/FareTable'
 import BookingForm from '@/components/home/BookingForm'
 import RouteFAQ from '@/components/RouteFAQ'
@@ -54,7 +54,7 @@ export default async function RoutePage({
     '@type': 'TaxiService',
     name: site.name,
     description: data.metaDescription,
-    url: `https://www.ridecoretravel.co.uk/airport-transfers/${data.slug}`,
+    url: `${SITE_URL}/airport-transfers/${data.slug}`,
     telephone: site.phoneTel,
     areaServed: [data.airportName, 'Leeds', 'West Yorkshire'],
     openingHours: 'Mo-Su 00:00-23:59',
@@ -74,9 +74,9 @@ export default async function RoutePage({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.ridecoretravel.co.uk' },
-      { '@type': 'ListItem', position: 2, name: 'Airport Transfers', item: 'https://www.ridecoretravel.co.uk/airport-transfers' },
-      { '@type': 'ListItem', position: 3, name: data.airportName, item: `https://www.ridecoretravel.co.uk/airport-transfers/${data.slug}` },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Airport Transfers', item: `${SITE_URL}/airport-transfers` },
+      { '@type': 'ListItem', position: 3, name: data.airportName, item: `${SITE_URL}/airport-transfers/${data.slug}` },
     ],
   }
 

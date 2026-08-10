@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { site } from '@/lib/site'
+import { site, SITE_URL } from '@/lib/site'
 import { routePages } from '@/lib/routes'
 import { routes as prices } from '@/lib/prices'
 
@@ -54,8 +54,44 @@ const services = [
 ]
 
 export default function ServicesPage() {
+  const servicesLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Airport Transfer & Private Hire',
+    provider: {
+      '@type': ['TaxiService', 'LocalBusiness'],
+      name: site.name,
+      url: SITE_URL,
+    },
+    areaServed: 'Leeds, West Yorkshire',
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Ridecore Travel Services',
+      itemListElement: services.map((s) => ({
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: s.title,
+          description: s.description,
+        },
+      })),
+    },
+  }
+
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE_URL}/services` },
+    ],
+  }
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+
       {/* Breadcrumb */}
       <div className="bg-graphite border-b border-white/8 pt-[72px]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-2 text-xs text-grey">

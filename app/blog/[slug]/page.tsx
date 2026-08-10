@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { posts, getPostBySlug } from '@/lib/posts'
 import RouteFAQ from '@/components/RouteFAQ'
+import { SITE_URL } from '@/lib/site'
 
 export function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }))
@@ -40,25 +41,25 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: post.title,
-    image: `https://www.ridecoretravel.co.uk${post.featuredImage}`,
+    image: `${SITE_URL}${post.featuredImage}`,
     datePublished: post.publishDate,
     author: { '@type': 'Organization', name: 'Ridecore Travel' },
     publisher: {
       '@type': 'Organization',
       name: 'Ridecore Travel',
-      logo: { '@type': 'ImageObject', url: 'https://www.ridecoretravel.co.uk/images/brand/ridecore-travel-logo.svg' },
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/brand/ridecore-travel-logo.svg` },
     },
     description: post.metaDescription,
-    url: `https://www.ridecoretravel.co.uk/blog/${post.slug}`,
+    url: `${SITE_URL}/blog/${post.slug}`,
   }
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.ridecoretravel.co.uk' },
-      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.ridecoretravel.co.uk/blog' },
-      { '@type': 'ListItem', position: 3, name: post.title, item: `https://www.ridecoretravel.co.uk/blog/${post.slug}` },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_URL}/blog` },
+      { '@type': 'ListItem', position: 3, name: post.title, item: `${SITE_URL}/blog/${post.slug}` },
     ],
   }
 

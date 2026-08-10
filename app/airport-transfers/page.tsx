@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { routePages } from '@/lib/routes'
 import { routes as prices } from '@/lib/prices'
-import { site } from '@/lib/site'
+import { site, SITE_URL } from '@/lib/site'
 import FareTable from '@/components/FareTable'
 
 export const metadata: Metadata = {
@@ -25,8 +25,8 @@ export default function AirportTransfersPage() {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.ridecoretravel.co.uk' },
-      { '@type': 'ListItem', position: 2, name: 'Airport Transfers', item: 'https://www.ridecoretravel.co.uk/airport-transfers' },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Airport Transfers', item: `${SITE_URL}/airport-transfers` },
     ],
   }
 

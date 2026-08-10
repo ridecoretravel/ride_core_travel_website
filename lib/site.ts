@@ -1,3 +1,5 @@
+export const SITE_URL = 'https://www.ridecoretravel.co.uk'
+
 export const site = {
   name: 'Ridecore Travel',
   phone: '07356 206830',

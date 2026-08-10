@@ -1,4 +1,4 @@
-import { site } from '@/lib/site'
+import { site, SITE_URL } from '@/lib/site'
 
 export default function JsonLd() {
   const localBusiness = {
@@ -6,7 +6,7 @@ export default function JsonLd() {
     '@type': ['TaxiService', 'LocalBusiness'],
     name: site.name,
     description: 'Fixed-price airport transfers from Leeds. Premium 8-seater Mercedes-Benz Vito Tourer. Licensed by Leeds City Council.',
-    url: 'https://www.ridecoretravel.co.uk',
+    url: SITE_URL,
     telephone: site.phoneTel,
     email: site.email,
     address: {
@@ -27,7 +27,7 @@ export default function JsonLd() {
       'London Heathrow', 'London Gatwick', 'Birmingham Airport', 'United Kingdom',
     ],
     hasMap: 'https://maps.google.com/?q=114+Cottingley+Approach,+Leeds,+LS11+0HH',
-    image: 'https://www.ridecoretravel.co.uk/images/og/og-image.jpg.jpeg',
+    image: `${SITE_URL}/images/og/og-image.jpg`,
     priceRange: '££',
     currenciesAccepted: 'GBP',
     paymentAccepted: 'Cash, Credit Card, Bank Transfer',
