@@ -23,6 +23,7 @@ export default function QuoteForm({ defaultDropoff }: { defaultDropoff?: string 
   const [flightNumber, setFlightNumber] = useState('')
   const [luggage, setLuggage]       = useState('')
   const [stops, setStops]           = useState('')
+  const [postcode, setPostcode]     = useState('')
   const [status, setStatus]         = useState<Status>('idle')
 
   const today = new Date().toISOString().split('T')[0]
@@ -37,6 +38,7 @@ export default function QuoteForm({ defaultDropoff }: { defaultDropoff?: string 
         body: JSON.stringify({
           name, email, phone, passengers,
           pickup, dropoff, date, time,
+          postcode: dropoff === 'Other destination' ? postcode : '',
           luggage,
           additionalStops: stops,
           returnJourney: returnOn,
@@ -72,7 +74,7 @@ export default function QuoteForm({ defaultDropoff }: { defaultDropoff?: string 
             We&apos;ve received your details and will be in touch as soon as possible with your fixed price. Check your email or phone.
           </p>
           <button
-            onClick={() => { setStatus('idle'); setName(''); setEmail(''); setPhone(''); setPickup(''); setDropoff(defaultDropoff ?? ''); setDate(''); setTime(''); setPassengers('1'); setReturnOn(false); setLuggage(''); setStops(''); setFlightNumber('') }}
+            onClick={() => { setStatus('idle'); setName(''); setEmail(''); setPhone(''); setPickup(''); setDropoff(defaultDropoff ?? ''); setDate(''); setTime(''); setPassengers('1'); setReturnOn(false); setLuggage(''); setStops(''); setFlightNumber(''); setPostcode('') }}
             className="mt-2 text-gold text-xs tracking-widest uppercase font-semibold hover:underline"
           >
             Submit another →
@@ -105,6 +107,20 @@ export default function QuoteForm({ defaultDropoff }: { defaultDropoff?: string 
               placeholder="Select airport"
               options={AIRPORTS}
             />
+
+            {/* Postcode — only for "Other destination" */}
+            {dropoff === 'Other destination' && (
+              <PremiumInput
+                label="Destination postcode"
+                icon={<LocIcon />}
+                name="postcode"
+                type="text"
+                value={postcode}
+                onChange={e => setPostcode(e.target.value)}
+                placeholder="e.g. LS17 8AB"
+                required
+              />
+            )}
 
             {/* Date */}
             <PremiumInput

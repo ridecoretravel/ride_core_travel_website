@@ -100,6 +100,7 @@ export async function POST(req: NextRequest) {
         <table width="100%" cellpadding="0" cellspacing="0" style="background:#fafafa;border:1px solid #eee;border-radius:4px;margin-bottom:20px">
           ${row('Pickup', data.pickup)}
           ${row('Drop-off', data.dropoff)}
+          ${data.postcode ? row('Postcode', data.postcode, true) : ''}
           ${row('Date', data.date)}
           ${row('Time', data.time)}
           ${row('Luggage', data.luggage || '—')}
@@ -146,6 +147,7 @@ export async function POST(req: NextRequest) {
         <table width="100%" cellpadding="0" cellspacing="0" style="background:#fafafa;border:1px solid #eee;border-radius:4px;margin-bottom:24px">
           ${row('From', data.pickup)}
           ${row('To', data.dropoff)}
+          ${data.postcode ? row('Postcode', data.postcode) : ''}
           ${row('Date', data.date)}
           ${row('Time', data.time)}
           ${row('Passengers', data.passengers)}
@@ -186,14 +188,14 @@ export async function POST(req: NextRequest) {
         to: 'booking@ridecoretravel.co.uk',
         subject: `🚐 New Quote — ${data.name} · ${data.dropoff} · ${data.date}`,
         html: notifyHtml,
-        text: `New quote request\nName: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nPickup: ${data.pickup}\nDrop-off: ${data.dropoff}\nDate: ${data.date}\nTime: ${data.time}\nPassengers: ${data.passengers}${returnText}`,
+        text: `New quote request\nName: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nPickup: ${data.pickup}\nDrop-off: ${data.dropoff}${data.postcode ? `\nPostcode: ${data.postcode}` : ''}\nDate: ${data.date}\nTime: ${data.time}\nPassengers: ${data.passengers}${returnText}`,
       }),
       transporter.sendMail({
         from: `"Ridecore Travel" <${process.env.GMAIL_USER}>`,
         to: data.email,
         subject: 'Quote Request Received — Ridecore Travel',
         html: confirmHtml,
-        text: `Hi ${data.name},\n\nWe've received your quote request and will be in touch as soon as possible.\n\nFrom: ${data.pickup}\nTo: ${data.dropoff}\nDate: ${data.date} at ${data.time}\nPassengers: ${data.passengers}${returnText}\n\nCall or WhatsApp: +44 7356 206830\nridecoretravel.co.uk`,
+        text: `Hi ${data.name},\n\nWe've received your quote request and will be in touch as soon as possible.\n\nFrom: ${data.pickup}\nTo: ${data.dropoff}${data.postcode ? `\nPostcode: ${data.postcode}` : ''}\nDate: ${data.date} at ${data.time}\nPassengers: ${data.passengers}${returnText}\n\nCall or WhatsApp: +44 7356 206830\nridecoretravel.co.uk`,
       }),
     ])
     return NextResponse.json({ ok: true })
