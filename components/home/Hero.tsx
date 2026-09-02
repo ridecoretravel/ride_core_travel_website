@@ -39,6 +39,7 @@ export default function Hero() {
             { label: 'Manchester Airport',     href: '/airport-transfers/leeds-to-manchester-airport' },
             { label: 'Liverpool Airport',      href: '/airport-transfers/leeds-to-liverpool-airport' },
             { label: 'London Heathrow',        href: '/airport-transfers/leeds-to-heathrow' },
+            { label: '8-Seater Group Transfers', href: '/airport-transfers/8-seater' },
           ].map(r => (
             <a key={r.href} href={r.href}
               className="text-[11px] text-cream/50 hover:text-gold transition-colors border border-white/10 hover:border-gold/30 px-3 py-1.5 rounded-sm tracking-wide">

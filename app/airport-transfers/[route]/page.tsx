@@ -8,6 +8,7 @@ import { site, SITE_URL } from '@/lib/site'
 import FareTable from '@/components/FareTable'
 import BookingForm from '@/components/home/BookingForm'
 import RouteFAQ from '@/components/RouteFAQ'
+import RichText from '@/components/RichText'
 
 /* ── Static generation ── */
 export async function generateStaticParams() {
@@ -118,10 +119,10 @@ export default async function RoutePage({
               <span className="text-gold text-xs font-semibold tracking-widest uppercase">Fixed Price · 24/7</span>
             </div>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-cream leading-[1.1] tracking-tight mb-4">
-              Leeds to {data.airportName} Taxi — Fixed Price, 24/7
+              {data.h1 ?? `Leeds to ${data.airportName} Taxi — Fixed Price, 24/7`}
             </h1>
             <p className="text-cream/70 text-lg mb-8">
-              {data.journeyTime} · {data.distance} · Mercedes-Benz 8-Seater
+              {data.heroTagline ?? `${data.journeyTime} · ${data.distance} · Mercedes-Benz 8-Seater`}
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <a
@@ -169,6 +170,38 @@ export default async function RoutePage({
           </div>
         </div>
       </section>
+
+      {/* 3b. Leeds-focused intro + long-form landing sections */}
+      {(data.intro || data.sections) && (
+        <section className="bg-charcoal pb-20 pt-4 border-t border-white/8">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
+            {data.intro && (
+              <div className="flex flex-col gap-4">
+                {data.intro.map((para, i) => (
+                  <RichText
+                    key={i}
+                    text={para}
+                    className={
+                      i === 0
+                        ? 'text-cream/80 text-lg leading-relaxed font-light border-l-2 border-gold pl-5'
+                        : 'text-grey text-base leading-relaxed'
+                    }
+                  />
+                ))}
+              </div>
+            )}
+
+            {data.sections?.map((sec) => (
+              <div key={sec.heading} className="flex flex-col gap-3">
+                <h2 className="text-cream text-xl md:text-2xl font-semibold tracking-tight">{sec.heading}</h2>
+                {sec.paragraphs.map((para, i) => (
+                  <RichText key={i} text={para} className="text-grey text-base leading-relaxed" />
+                ))}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* 4. Why book this route */}
       <section className="bg-graphite py-20">
@@ -272,7 +305,14 @@ export default async function RoutePage({
               )
             })}
             <Link
-              href="/#fares"
+              href="/airport-transfers/8-seater"
+              className="bg-charcoal border border-white/8 rounded-sm px-5 py-4 flex items-center justify-between hover:border-gold/30 transition-colors group"
+            >
+              <p className="text-cream text-sm font-medium group-hover:text-gold transition-colors">8-Seater Group Transfers</p>
+              <span className="text-gold text-sm">→</span>
+            </Link>
+            <Link
+              href="/airport-transfers"
               className="bg-charcoal border border-white/8 rounded-sm px-5 py-4 flex items-center justify-between hover:border-gold/30 transition-colors group"
             >
               <p className="text-cream text-sm font-medium group-hover:text-gold transition-colors">View All Fixed Fares</p>

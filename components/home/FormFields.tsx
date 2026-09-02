@@ -1,7 +1,9 @@
 export const AIRPORTS = [
   'Leeds Bradford Airport (LBA)',
   'Manchester Airport',
-  'Liverpool Airport',
+  'Liverpool John Lennon Airport',
+  'East Midlands Airport',
+  'Newcastle International Airport',
   'London Heathrow',
   'London Gatwick',
   'Birmingham Airport',

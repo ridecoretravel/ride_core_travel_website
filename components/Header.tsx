@@ -7,11 +7,14 @@ import { usePathname } from 'next/navigation'
 import { site } from '@/lib/site'
 
 const routeLinks = [
-  { label: 'Leeds Bradford Airport', href: '/airport-transfers/leeds-bradford-airport-taxi', time: '20–30 min' },
-  { label: 'Manchester Airport',      href: '/airport-transfers/leeds-to-manchester-airport', time: '~1 hr 10 min' },
-  { label: 'Liverpool Airport',       href: '/airport-transfers/leeds-to-liverpool-airport',  time: '~1 hr 30 min' },
-  { label: 'London Heathrow',         href: '/airport-transfers/leeds-to-heathrow',           time: '~3 hr 30 min' },
-  { label: 'Birmingham Airport',      href: '/airport-transfers/leeds-to-birmingham-airport',  time: '~2 hr 15 min' },
+  { label: 'Leeds Bradford Airport', href: '/airport-transfers/leeds-bradford-airport-taxi',  time: '20–30 min' },
+  { label: 'Manchester Airport',     href: '/airport-transfers/leeds-to-manchester-airport',   time: '~1 hr 10 min' },
+  { label: 'Liverpool Airport',      href: '/airport-transfers/leeds-to-liverpool-airport',    time: '~1 hr 30 min' },
+  { label: 'East Midlands Airport',  href: '/airport-transfers/leeds-to-east-midlands-airport', time: '~1 hr 40 min' },
+  { label: 'Newcastle Airport',      href: '/airport-transfers/leeds-to-newcastle-airport',    time: '~1 hr 50 min' },
+  { label: 'Birmingham Airport',     href: '/airport-transfers/leeds-to-birmingham-airport',   time: '~2 hr 15 min' },
+  { label: 'London Heathrow',        href: '/airport-transfers/leeds-to-heathrow',             time: '~3 hr 30 min' },
+  { label: '8-Seater Group Transfers', href: '/airport-transfers/8-seater',                    time: 'All routes' },
 ]
 
 export default function Header() {
