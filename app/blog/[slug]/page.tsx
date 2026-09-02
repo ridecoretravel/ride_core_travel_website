@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { posts, getPostBySlug } from '@/lib/posts'
 import RouteFAQ from '@/components/RouteFAQ'
+import { parseInline } from '@/components/RichText'
 import { SITE_URL } from '@/lib/site'
 
 export function generateStaticParams() {
@@ -43,6 +44,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     headline: post.title,
     image: `${SITE_URL}${post.featuredImage}`,
     datePublished: post.publishDate,
+    dateModified: post.updatedDate ?? post.publishDate,
     author: { '@type': 'Organization', name: 'Ridecore Travel' },
     publisher: {
       '@type': 'Organization',
@@ -126,20 +128,59 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             if (section.type === 'intro') {
               return (
                 <p key={i} className="text-cream/80 text-lg leading-relaxed font-light border-l-2 border-gold pl-5">
-                  {section.content}
+                  {section.content ? parseInline(section.content) : null}
                 </p>
               )
             }
-            if (section.type === 'h2') {
+            if (section.type === 'h2' || section.type === 'h3') {
+              const Heading: 'h2' | 'h3' = section.type === 'h2' ? 'h2' : 'h3'
               return (
                 <div key={i} className="flex flex-col gap-3">
-                  <h2 className="text-cream text-xl font-semibold">{section.heading}</h2>
-                  <p className="text-grey text-base leading-relaxed">{section.content}</p>
+                  <Heading className={section.type === 'h2' ? 'text-cream text-xl font-semibold' : 'text-cream text-lg font-semibold'}>
+                    {section.heading}
+                  </Heading>
+                  {section.content && (
+                    <p className="text-grey text-base leading-relaxed">{parseInline(section.content)}</p>
+                  )}
+                  {section.paragraphs?.map((para, j) => (
+                    <p key={j} className="text-grey text-base leading-relaxed">{parseInline(para)}</p>
+                  ))}
+                  {section.items && (
+                    <ul className="flex flex-col gap-2 pl-1">
+                      {section.items.map((item, j) => (
+                        <li key={j} className="text-grey text-base leading-relaxed flex gap-3">
+                          <span className="text-gold flex-shrink-0 mt-1.5 w-1.5 h-1.5 rounded-full bg-gold" aria-hidden />
+                          <span>{parseInline(item)}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               )
             }
             if (section.type === 'p') {
-              return <p key={i} className="text-grey text-base leading-relaxed">{section.content}</p>
+              return (
+                <p key={i} className="text-grey text-base leading-relaxed">
+                  {section.content ? parseInline(section.content) : null}
+                </p>
+              )
+            }
+            if (section.type === 'ul') {
+              return (
+                <div key={i} className="flex flex-col gap-2">
+                  {section.content && (
+                    <p className="text-grey text-base leading-relaxed">{parseInline(section.content)}</p>
+                  )}
+                  <ul className="flex flex-col gap-2 pl-1">
+                    {section.items?.map((item, j) => (
+                      <li key={j} className="text-grey text-base leading-relaxed flex gap-3">
+                        <span className="text-gold flex-shrink-0 mt-1.5 w-1.5 h-1.5 rounded-full bg-gold" aria-hidden />
+                        <span>{parseInline(item)}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )
             }
             return null
           })}
@@ -158,13 +199,28 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                 Get a Quote
               </Link>
               <Link
-                href="/airport-transfers/leeds-to-heathrow"
+                href={post.ctaRoute?.href ?? '/airport-transfers/leeds-to-heathrow'}
                 className="text-gold text-sm font-semibold px-5 py-2.5 rounded-sm border border-gold/40 hover:border-gold transition-colors"
               >
-                See Heathrow fares →
+                {post.ctaRoute?.label ?? 'See Heathrow fares'} →
               </Link>
             </div>
           </div>
+
+          {post.relatedRoutes && post.relatedRoutes.length > 0 && (
+            <div className="mt-6 border-t border-white/8 pt-6">
+              <h2 className="text-cream text-sm font-semibold tracking-widest uppercase mb-4">Related pages</h2>
+              <ul className="flex flex-col gap-2">
+                {post.relatedRoutes.map((r) => (
+                  <li key={r.href}>
+                    <Link href={r.href} className="text-gold text-sm hover:underline">
+                      {r.label} →
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </article>
 
@@ -180,7 +236,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             </svg>
             Back to Blog
           </Link>
-          <Link href="/#fares" className="text-grey text-sm hover:text-gold transition-colors">
+          <Link href="/airport-transfers" className="text-grey text-sm hover:text-gold transition-colors">
             View all fixed fares →
           </Link>
         </div>

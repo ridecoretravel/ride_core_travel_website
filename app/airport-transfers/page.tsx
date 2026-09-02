@@ -9,7 +9,7 @@ import FareTable from '@/components/FareTable'
 export const metadata: Metadata = {
   title: 'Airport Transfers from Leeds | Fixed Prices | Ridecore Travel',
   description:
-    'Fixed-price airport transfers from Leeds to Leeds Bradford, Manchester, Liverpool, London Heathrow and all UK airports. Premium fleet, 24/7, licensed.',
+    'Fixed-price 8-seater airport transfers from Leeds to Leeds Bradford, Manchester, Liverpool, East Midlands, Newcastle, Birmingham, London Heathrow and all UK airports. 24/7, licensed by Leeds City Council.',
   alternates: { canonical: '/airport-transfers' },
   openGraph: {
     title: 'Airport Transfers from Leeds | Fixed Prices | Ridecore Travel',
@@ -129,6 +129,24 @@ export default function AirportTransfersPage() {
                 </Link>
               )
             })}
+
+            <Link
+              href="/airport-transfers/8-seater"
+              className="group bg-gold/10 border border-gold/30 rounded-sm p-6 flex flex-col gap-4 hover:border-gold/60 transition-colors"
+            >
+              <div className="flex flex-col gap-1">
+                <span className="text-gold text-[10px] font-semibold tracking-widest uppercase">Groups</span>
+                <h3 className="text-cream font-semibold text-base leading-snug group-hover:text-gold transition-colors">
+                  8-Seater Group Transfers
+                </h3>
+              </div>
+              <p className="text-grey text-xs leading-relaxed mt-auto pt-3 border-t border-gold/20">
+                One Mercedes-Benz Vito for up to 8 passengers and luggage — fixed price on every route.
+              </p>
+              <span className="text-gold text-xs font-semibold tracking-wide group-hover:underline">
+                How group pricing works →
+              </span>
+            </Link>
           </div>
         </div>
       </section>

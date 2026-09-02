@@ -17,8 +17,11 @@ const footerRoutes = [
   { label: 'Leeds Bradford Airport', href: '/airport-transfers/leeds-bradford-airport-taxi' },
   { label: 'Manchester Airport',     href: '/airport-transfers/leeds-to-manchester-airport' },
   { label: 'Liverpool Airport',      href: '/airport-transfers/leeds-to-liverpool-airport' },
-  { label: 'London Heathrow',        href: '/airport-transfers/leeds-to-heathrow' },
+  { label: 'East Midlands Airport',  href: '/airport-transfers/leeds-to-east-midlands-airport' },
+  { label: 'Newcastle Airport',      href: '/airport-transfers/leeds-to-newcastle-airport' },
   { label: 'Birmingham Airport',     href: '/airport-transfers/leeds-to-birmingham-airport' },
+  { label: 'London Heathrow',        href: '/airport-transfers/leeds-to-heathrow' },
+  { label: '8-Seater Group Transfers', href: '/airport-transfers/8-seater' },
 ]
 
 export default function Footer() {

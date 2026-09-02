@@ -29,7 +29,7 @@ const faqs = [
   },
   {
     q: 'Which areas do you cover?',
-    a: 'We are based in Leeds and transfer to all major UK airports including Leeds Bradford (LBA), Manchester, Liverpool, London Heathrow, London Gatwick, and Birmingham. We can also cover other UK-wide destinations — contact us to check.',
+    a: 'We are based in Leeds and transfer to all major UK airports including Leeds Bradford (LBA), Manchester, Liverpool, East Midlands, Newcastle, Birmingham, and London Heathrow. We can also cover other UK-wide destinations — contact us to check.',
   },
   {
     q: 'Are you available 24/7?',

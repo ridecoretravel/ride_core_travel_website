@@ -23,8 +23,9 @@ export default function JsonLd() {
     },
     openingHours: 'Mo-Su 00:00-23:59',
     areaServed: [
-      'Leeds', 'Leeds Bradford Airport', 'Manchester Airport', 'Liverpool Airport',
-      'London Heathrow', 'London Gatwick', 'Birmingham Airport', 'United Kingdom',
+      'Leeds', 'Leeds Bradford Airport', 'Manchester Airport', 'Liverpool John Lennon Airport',
+      'East Midlands Airport', 'Newcastle International Airport', 'London Heathrow',
+      'London Gatwick', 'Birmingham Airport', 'United Kingdom',
     ],
     hasMap: 'https://maps.google.com/?q=114+Cottingley+Approach,+Leeds,+LS11+0HH',
     image: `${SITE_URL}/images/og/og-image.jpg`,
