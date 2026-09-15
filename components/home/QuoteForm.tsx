@@ -57,8 +57,8 @@ export default function QuoteForm({ defaultDropoff }: { defaultDropoff?: string 
   return (
     <div className="bg-charcoal/85 backdrop-blur-md border border-white/10 rounded-sm overflow-hidden">
 
-      <div className="px-5 py-3.5 border-b border-white/8 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 sm:justify-between">
-        <span className="text-cream text-sm font-semibold">Get Your 8-Seater Fixed-Price Quote</span>
+      <div className="px-5 py-3.5 border-b border-white/8 flex flex-col items-center text-center gap-1">
+        <span className="text-gold text-sm font-semibold">Get Your 8-Seater Fixed-Price Quote</span>
         <span className="text-grey text-xs">Please note: We only provide 8-seater airport transfers.</span>
       </div>
 
@@ -157,7 +157,7 @@ export default function QuoteForm({ defaultDropoff }: { defaultDropoff?: string 
               onChange={e => setLuggage(e.target.value)}
               required
               placeholder="Select luggage amount"
-              options={['1–2 bags', '3–4 bags', '5–6 bags', '7+ / oversized bags']}
+              options={['1–2 bags', '3–4 bags', '5–6 bags', '7–8 bags']}
             />
 
             {/* Additional stops */}
