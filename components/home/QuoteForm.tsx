@@ -58,7 +58,7 @@ export default function QuoteForm({ defaultDropoff }: { defaultDropoff?: string 
     <div className="bg-charcoal/85 backdrop-blur-md border border-white/10 rounded-sm overflow-hidden">
 
       <div className="px-5 py-3.5 border-b border-white/8 flex flex-col items-center text-center gap-1">
-        <span className="text-gold text-sm font-semibold">Get Your 8-Seater Fixed-Price Quote</span>
+        <span className="text-gold text-2xl md:text-3xl font-bold tracking-tight">Get Your 8-Seater Fixed-Price Quote</span>
         <span className="text-grey text-xs">Please note: We only provide 8-seater airport transfers.</span>
       </div>
 
