@@ -15,8 +15,8 @@ export const routes: RoutePrice[] = [
   { route: 'Leeds Bradford Airport → Manchester Airport',      slug: 'lba-manchester', exec8: 140 },
   { route: 'Leeds Bradford Airport → Liverpool Airport',       slug: 'lba-liverpool', exec8: 160 },
   { route: 'Leeds Bradford Airport → London Heathrow Airport', slug: 'lba-heathrow', exec8: 450 },
-  { route: 'Leeds → Dover Port',                               slug: 'dover',        exec8: 525 },
-  { route: 'Leeds → Southampton Port',                         slug: 'southampton',  exec8: 570 },
+  { route: 'Leeds City Centre → Dover Ferry Port',             slug: 'dover',        exec8: 570 },
+  { route: 'Leeds City Centre → Southampton Port',             slug: 'southampton',  exec8: 525 },
   { route: 'Leeds Train Station → Manchester Airport',         slug: 'manchester-train', exec8: 135 },
 ]
 

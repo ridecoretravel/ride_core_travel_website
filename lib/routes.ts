@@ -548,27 +548,27 @@ export const routePages: RouteData[] = [
     ],
   },
   {
-    slug: 'leeds-to-dover-port',
-    airportName: 'Dover Port',
+    slug: 'leeds-to-dover-ferry-port',
+    airportName: 'Dover Ferry Port',
     heroImage: '/images/routes/airport-transfers-hero.webp',
-    heroAlt: 'Mercedes Vito on the motorway at dusk — Ridecore Travel transfers from Leeds to Dover Port',
+    heroAlt: 'Mercedes Vito on the motorway at dusk — Ridecore Travel transfers from Leeds to Dover Ferry Port',
     heroTagline: '4 hours 30 minutes · ~267 miles · Mercedes-Benz 8-Seater',
     journeyTime: '4 hours 30 minutes',
     distance: '~267 miles',
     priceKey: 'dover',
-    metaTitle: 'Leeds to Dover Port Taxi | Fixed £525 8-Seater | Ridecore Travel',
+    metaTitle: 'Leeds to Dover Ferry Port Taxi | Fixed £570 8-Seater | Ridecore Travel',
     metaDescription:
-      'Fixed-price taxi from Leeds to Dover Port, £525 in an 8-seater Mercedes-Benz Vito. Cruise and ferry transfers, 24/7, licensed by Leeds City Council.',
+      'Fixed-price taxi from Leeds to Dover Ferry Port, £570 in an 8-seater Mercedes-Benz Vito. Cruise and ferry transfers, 24/7, licensed by Leeds City Council.',
     intro: [
-      'Dover Port is around 267 miles south of Leeds — a long run, but a straightforward one for cruise passengers and ferry travellers who need one vehicle for the whole group and all the luggage a cruise or continental trip involves.',
-      'Ridecore Travel covers the full Leeds-to-Dover route in one 8-seater [Mercedes-Benz Vito Tourer](/fleet) at a fixed fare of £525 — the same whether you are one passenger or a group of eight with cruise cases.',
+      'Dover Ferry Port is around 267 miles south of Leeds — a long run, but a straightforward one for cruise passengers and ferry travellers who need one vehicle for the whole group and all the luggage a cruise or continental trip involves.',
+      'Ridecore Travel covers the full Leeds-to-Dover route in one 8-seater [Mercedes-Benz Vito Tourer](/fleet) at a fixed fare of £570 — the same whether you are one passenger or a group of eight with cruise cases.',
     ],
     sections: [
       {
-        heading: 'The route from Leeds to Dover Port',
+        heading: 'The route from Leeds to Dover Ferry Port',
         paragraphs: [
           'The drive is mostly motorway: south on the M1, around London on the M25, then down the A2/M2 into Dover — around 4 hours 30 minutes covering roughly 267 miles in normal traffic. The M25 and approach to Dover can be significantly slower during school holidays and peak cruise-season weekends, so we build extra time into early departures.',
-          'We collect from any address across Leeds and the wider LS postcode area. Given the length of this route, we recommend booking as early as possible to secure your slot, especially for weekend cruise departures.',
+          'We collect from any address across Leeds and the wider LS postcode area. This fixed fare is priced from Leeds City Centre; pickups outside the city centre may vary slightly with distance, and we confirm the exact price when you book. Given the length of this route, we recommend booking as early as possible to secure your slot, especially for weekend cruise departures.',
         ],
       },
       {
@@ -588,11 +588,11 @@ export const routePages: RouteData[] = [
     ],
     faqs: [
       {
-        q: 'How much is a taxi from Leeds to Dover Port?',
-        a: 'A fixed-price taxi from Leeds to Dover Port is £525 in our 8-seater Mercedes-Benz Vito Tourer, covering up to 8 passengers and their luggage, agreed before you travel.',
+        q: 'How much is a taxi from Leeds to Dover Ferry Port?',
+        a: 'A fixed-price taxi from Leeds to Dover Ferry Port is £570 in our 8-seater Mercedes-Benz Vito Tourer, covering up to 8 passengers and their luggage, agreed before you travel. This fare is priced from Leeds City Centre; pickups outside the city centre may vary slightly with distance.',
       },
       {
-        q: 'How long does it take to drive from Leeds to Dover Port?',
+        q: 'How long does it take to drive from Leeds to Dover Ferry Port?',
         a: 'Around 4 hours 30 minutes covering roughly 267 miles, mostly via the M1 and M25. We build in extra time for traffic around London and during peak cruise season.',
       },
       {
@@ -604,12 +604,12 @@ export const routePages: RouteData[] = [
         a: 'Our Mercedes-Benz Vito Tourer comfortably carries full-size cases for all 8 passengers. Let us know your exact luggage count at booking so we can plan the load.',
       },
       {
-        q: 'Can you collect us from Dover Port on our return?',
+        q: 'Can you collect us from Dover Ferry Port on our return?',
         a: 'Yes. We cover both outbound and return legs — book both together and we will confirm your return pickup time closer to your sailing or disembarkation date.',
       },
       {
         q: 'Do you charge more for early-morning cruise departures?',
-        a: 'No. The £525 fixed fare applies 24/7, including early-morning departures for cruise check-in.',
+        a: 'No. The £570 fixed fare applies 24/7, including early-morning departures for cruise check-in.',
       },
     ],
   },
@@ -622,13 +622,13 @@ export const routePages: RouteData[] = [
     journeyTime: '3 hours 55 minutes',
     distance: '~235 miles',
     priceKey: 'southampton',
-    metaTitle: 'Leeds to Southampton Port Taxi | Fixed £570 8-Seater | Ridecore Travel',
+    metaTitle: 'Leeds to Southampton Port Taxi | Fixed £525 8-Seater | Ridecore Travel',
     metaDescription:
-      'Fixed-price taxi from Leeds to Southampton Port, £570 in an 8-seater Mercedes-Benz Vito. Cruise transfers, 24/7, licensed by Leeds City Council.',
+      'Fixed-price taxi from Leeds to Southampton Port, £525 in an 8-seater Mercedes-Benz Vito. Cruise transfers, 24/7, licensed by Leeds City Council.',
     faqs: [
       {
         q: 'How much is a taxi from Leeds to Southampton Port?',
-        a: 'A fixed-price taxi from Leeds to Southampton Port is £570 in our 8-seater Mercedes-Benz Vito Tourer, covering up to 8 passengers and their luggage, agreed before you travel.',
+        a: 'A fixed-price taxi from Leeds to Southampton Port is £525 in our 8-seater Mercedes-Benz Vito Tourer, covering up to 8 passengers and their luggage, agreed before you travel. This fare is priced from Leeds City Centre; pickups outside the city centre may vary slightly with distance.',
       },
       {
         q: 'How long does it take to drive from Leeds to Southampton Port?',
