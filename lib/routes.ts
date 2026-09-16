@@ -382,6 +382,309 @@ export const routePages: RouteData[] = [
       },
     ],
   },
+  {
+    slug: 'lba-to-manchester-airport',
+    airportName: 'Manchester Airport',
+    airportCode: 'MAN',
+    heroImage: '/images/routes/manchester-airport.webp',
+    heroAlt: 'Manchester Airport Terminal 2 departures — Ridecore Travel transfers from Leeds Bradford Airport',
+    h1: 'Leeds Bradford Airport to Manchester Airport Taxi — Fixed Price, 24/7',
+    heroTagline: '1 hour 10 minutes · ~54 miles · Mercedes-Benz 8-Seater',
+    journeyTime: '1 hour 10 minutes',
+    distance: '~54 miles',
+    priceKey: 'lba-manchester',
+    metaTitle: 'Leeds Bradford Airport to Manchester Airport Taxi | Fixed £140 | Ridecore Travel',
+    metaDescription:
+      'Fixed-price taxi from Leeds Bradford Airport to Manchester Airport, £140 in an 8-seater Mercedes-Benz Vito. 24/7, real-time flight tracking, licensed by Leeds City Council.',
+    intro: [
+      'Landing at Leeds Bradford Airport but flying onward — or connecting in — from Manchester Airport? A fixed-price transfer between the two removes the need to work out trains, connections and terminal changes with luggage in tow.',
+      'Ridecore Travel covers the full LBA-to-Manchester run in one 8-seater [Mercedes-Benz Vito Tourer](/fleet) at a fixed fare of £140 — the same price for one passenger or a full group of eight. No meter, no surge pricing, and your onward flight tracked in real time.',
+    ],
+    sections: [
+      {
+        heading: 'The route from Leeds Bradford Airport to Manchester Airport',
+        paragraphs: [
+          'The drive runs south via the A658, Leeds ring road and M62, covering around 54 miles in roughly 1 hour 10 minutes in normal traffic. The M62 around Manchester can slow at peak times, so we build extra time into early and late pickups.',
+          'We collect directly from the LBA terminal forecourt, or from any address across Leeds and the wider LS postcode area if you are starting the journey from home rather than off an inbound flight.',
+        ],
+      },
+      {
+        heading: 'Manchester Airport terminal and drop-off',
+        paragraphs: [
+          'Manchester Airport has three terminals. Tell us your airline and flight number when booking and we will confirm which terminal to use and drop you right at departures. For arrivals into Manchester, we track your flight and adjust pickup automatically if you land early or late.',
+          'A meet-and-greet with a name board inside the terminal can be arranged on request.',
+        ],
+      },
+      {
+        heading: 'Why book a fixed-price transfer between airports',
+        paragraphs: [
+          'Connecting between two airports by public transport usually means at least one change and a walk between platforms and terminals with luggage. A door-to-door 8-seater keeps your group and bags together for the whole journey, at a fare agreed before you travel.',
+          'Flying into LBA and heading further afield? We also cover [Leeds Bradford Airport to Liverpool Airport](/airport-transfers/lba-to-liverpool-airport) and [Leeds Bradford Airport to Heathrow](/airport-transfers/lba-to-heathrow).',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'How much is a taxi from Leeds Bradford Airport to Manchester Airport?',
+        a: 'A fixed-price taxi from Leeds Bradford Airport to Manchester Airport is £140 in our 8-seater Mercedes-Benz Vito Tourer, agreed before you travel with no surge pricing or hidden extras.',
+      },
+      {
+        q: 'How long does it take to get from Leeds Bradford Airport to Manchester Airport?',
+        a: 'Around 1 hour 10 minutes covering roughly 54 miles via the M62, depending on traffic. We build in extra time for peak-hour congestion around Manchester.',
+      },
+      {
+        q: 'Which terminal at Manchester Airport do you use?',
+        a: 'We drop off and collect at whichever terminal your airline uses — Terminal 1, 2 or 3. Please provide your airline and flight number when booking.',
+      },
+      {
+        q: 'Do you track flights for this route?',
+        a: 'Yes. We monitor both your Leeds Bradford Airport and Manchester Airport flights in real time and adjust your pickup automatically at no extra charge.',
+      },
+      {
+        q: 'Can I book this as part of a same-day connection?',
+        a: 'Yes. We operate 24/7 and regularly cover tight connections between LBA and Manchester Airport — let us know your flight times when booking.',
+      },
+    ],
+  },
+  {
+    slug: 'lba-to-liverpool-airport',
+    airportName: 'Liverpool John Lennon Airport',
+    airportCode: 'LPL',
+    heroImage: '/images/routes/liverpool-airport.webp',
+    heroAlt: 'Liverpool John Lennon Airport entrance — Ridecore Travel transfers from Leeds Bradford Airport',
+    h1: 'Leeds Bradford Airport to Liverpool Airport Taxi — Fixed Price, 24/7',
+    heroTagline: '1 hour 25 minutes · ~74 miles · Mercedes-Benz 8-Seater',
+    journeyTime: '1 hour 25 minutes',
+    distance: '~74 miles',
+    priceKey: 'lba-liverpool',
+    metaTitle: 'Leeds Bradford Airport to Liverpool Airport Taxi | Fixed £160 | Ridecore Travel',
+    metaDescription:
+      'Fixed-price taxi from Leeds Bradford Airport to Liverpool John Lennon Airport, £160 in an 8-seater Mercedes-Benz Vito. 24/7, real-time flight tracking, licensed by Leeds City Council.',
+    intro: [
+      'Some routes and airlines only fly from Liverpool John Lennon Airport, and Leeds Bradford Airport is a common first landing point for travellers heading on that way. A fixed-price transfer between the two covers the full 74-mile run in one vehicle.',
+      'Ridecore Travel runs the LBA-to-Liverpool route in one 8-seater [Mercedes-Benz Vito Tourer](/fleet) at a fixed fare of £160 — the same whether you are travelling solo or as a group of eight with luggage.',
+    ],
+    sections: [
+      {
+        heading: 'The route from Leeds Bradford Airport to Liverpool Airport',
+        paragraphs: [
+          'The drive heads west via the M62, covering around 74 miles in roughly 1 hour 25 minutes in normal traffic. Traffic around Manchester and the M62/M57 interchange can add time at peak periods, so we build a buffer into early and holiday pickups.',
+          'We collect directly from the LBA terminal forecourt, or from anywhere in Leeds and the wider LS postcode area if your journey starts from home.',
+        ],
+      },
+      {
+        heading: 'Liverpool Airport terminal and drop-off',
+        paragraphs: [
+          'Liverpool John Lennon Airport has a single terminal, so there is no terminal to specify when booking. For departures we drop directly at the terminal forecourt; for arrivals we track your flight and adjust the pickup time automatically if you land early or late.',
+          'A meet-and-greet with a name board inside the terminal can be arranged on request.',
+        ],
+      },
+      {
+        heading: 'Why book a fixed-price airport-to-airport transfer',
+        paragraphs: [
+          'There is no direct public transport link between LBA and Liverpool Airport, so most travellers are looking at multiple trains or a long coach journey. A single 8-seater keeps your whole group and luggage together for one straightforward journey at a price agreed in advance.',
+          'Also flying via LBA to Manchester or Heathrow? See our [Leeds Bradford Airport to Manchester Airport](/airport-transfers/lba-to-manchester-airport) and [Leeds Bradford Airport to Heathrow](/airport-transfers/lba-to-heathrow) pages.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'How much is a taxi from Leeds Bradford Airport to Liverpool Airport?',
+        a: 'A fixed-price taxi from Leeds Bradford Airport to Liverpool John Lennon Airport is £160 in our 8-seater Mercedes-Benz Vito Tourer, agreed before you travel.',
+      },
+      {
+        q: 'How long does it take to drive from Leeds Bradford Airport to Liverpool Airport?',
+        a: 'Around 1 hour 25 minutes covering roughly 74 miles via the M62, depending on traffic conditions.',
+      },
+      {
+        q: 'Is there a direct terminal to specify at Liverpool Airport?',
+        a: 'No. Liverpool John Lennon Airport has a single terminal building, so we use the same drop-off and pick-up point every time.',
+      },
+      {
+        q: 'Do you track flights on this route?',
+        a: 'Yes. We monitor flights at both airports in real time and adjust your pickup automatically if there are delays, at no extra charge.',
+      },
+      {
+        q: 'Can I book this transfer for a tight same-day connection?',
+        a: 'Yes, we operate 24/7. Let us know your flight times when booking and we will plan the pickup accordingly.',
+      },
+    ],
+  },
+  {
+    slug: 'lba-to-heathrow',
+    airportName: 'London Heathrow Airport',
+    airportCode: 'LHR',
+    heroImage: '/images/routes/heathrow-airport.webp',
+    heroAlt: 'London Heathrow Airport Terminal 5 — Ridecore Travel long-distance transfers from Leeds Bradford Airport',
+    h1: 'Leeds Bradford Airport to Heathrow Taxi — Fixed Price, 24/7',
+    heroTagline: '3 hours 30 minutes · ~205 miles · Mercedes-Benz 8-Seater',
+    journeyTime: '3 hours 30 minutes',
+    distance: '~205 miles',
+    priceKey: 'lba-heathrow',
+    metaTitle: 'Leeds Bradford Airport to Heathrow Taxi | Fixed £450 | Ridecore Travel',
+    metaDescription:
+      'Fixed-price taxi from Leeds Bradford Airport to London Heathrow, £450 in an 8-seater Mercedes-Benz Vito. 24/7, real-time flight tracking, licensed by Leeds City Council.',
+    faqs: [
+      {
+        q: 'How much is a taxi from Leeds Bradford Airport to Heathrow?',
+        a: 'A fixed-price taxi from Leeds Bradford Airport to London Heathrow is £450 in our 8-seater Mercedes-Benz Vito Tourer, agreed before you travel with no tolls, surge pricing or hidden extras.',
+      },
+      {
+        q: 'How long does the drive from Leeds Bradford Airport to Heathrow take?',
+        a: 'Around 3 hours 30 minutes covering roughly 205 miles via the M1, depending on traffic. We factor in extra time and recommend booking with plenty of notice for connecting flights.',
+      },
+      {
+        q: 'Which Heathrow terminal do you drop off at?',
+        a: 'We drop off at Terminals 2, 3, 4 or 5 depending on your onward airline. Please provide your flight details when booking.',
+      },
+      {
+        q: 'Do you track flights for this route?',
+        a: 'Yes. We monitor your flight at Leeds Bradford Airport and your onward flight at Heathrow, adjusting the pickup automatically if either is delayed.',
+      },
+      {
+        q: 'Is an 8-seater comfortable for such a long journey?',
+        a: 'Yes. The Mercedes-Benz Vito Tourer has comfortable reclining seats, climate control and ample legroom — ideal for a long-distance airport-to-airport run.',
+      },
+    ],
+  },
+  {
+    slug: 'leeds-to-dover-port',
+    airportName: 'Dover Port',
+    heroImage: '/images/routes/airport-transfers-hero.webp',
+    heroAlt: 'Mercedes Vito on the motorway at dusk — Ridecore Travel transfers from Leeds to Dover Port',
+    heroTagline: '4 hours 30 minutes · ~267 miles · Mercedes-Benz 8-Seater',
+    journeyTime: '4 hours 30 minutes',
+    distance: '~267 miles',
+    priceKey: 'dover',
+    metaTitle: 'Leeds to Dover Port Taxi | Fixed £525 8-Seater | Ridecore Travel',
+    metaDescription:
+      'Fixed-price taxi from Leeds to Dover Port, £525 in an 8-seater Mercedes-Benz Vito. Cruise and ferry transfers, 24/7, licensed by Leeds City Council.',
+    intro: [
+      'Dover Port is around 267 miles south of Leeds — a long run, but a straightforward one for cruise passengers and ferry travellers who need one vehicle for the whole group and all the luggage a cruise or continental trip involves.',
+      'Ridecore Travel covers the full Leeds-to-Dover route in one 8-seater [Mercedes-Benz Vito Tourer](/fleet) at a fixed fare of £525 — the same whether you are one passenger or a group of eight with cruise cases.',
+    ],
+    sections: [
+      {
+        heading: 'The route from Leeds to Dover Port',
+        paragraphs: [
+          'The drive is mostly motorway: south on the M1, around London on the M25, then down the A2/M2 into Dover — around 4 hours 30 minutes covering roughly 267 miles in normal traffic. The M25 and approach to Dover can be significantly slower during school holidays and peak cruise-season weekends, so we build extra time into early departures.',
+          'We collect from any address across Leeds and the wider LS postcode area. Given the length of this route, we recommend booking as early as possible to secure your slot, especially for weekend cruise departures.',
+        ],
+      },
+      {
+        heading: 'Dover cruise and ferry terminals',
+        paragraphs: [
+          'We drop off directly at the relevant Dover cruise terminal or ferry check-in area — tell us your cruise line or ferry operator when booking so we go to the correct terminal. For return journeys we track your ferry crossing or cruise disembarkation time where possible and adjust pickup accordingly.',
+          'Travelling with cruise luggage? Let us know your case count at booking (up to 8 large cases comfortably fit alongside 8 passengers) so we can confirm the load in advance.',
+        ],
+      },
+      {
+        heading: 'Why book a fixed-price transfer for a long-distance port run',
+        paragraphs: [
+          'A 267-mile door-to-door transfer removes the need for an overnight stop, parking at the port, or coordinating train connections with heavy luggage. Your fare is fixed before you travel, and the whole group and its cases travel together for the entire journey.',
+          'Also considering Southampton for your cruise? See our [Leeds to Southampton Port](/airport-transfers/leeds-to-southampton-port) page.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'How much is a taxi from Leeds to Dover Port?',
+        a: 'A fixed-price taxi from Leeds to Dover Port is £525 in our 8-seater Mercedes-Benz Vito Tourer, covering up to 8 passengers and their luggage, agreed before you travel.',
+      },
+      {
+        q: 'How long does it take to drive from Leeds to Dover Port?',
+        a: 'Around 4 hours 30 minutes covering roughly 267 miles, mostly via the M1 and M25. We build in extra time for traffic around London and during peak cruise season.',
+      },
+      {
+        q: 'Can you drop off at a specific cruise or ferry terminal?',
+        a: 'Yes. Tell us your cruise line or ferry operator when booking and we will confirm and drop off at the correct terminal.',
+      },
+      {
+        q: 'How much luggage can you carry for a cruise?',
+        a: 'Our Mercedes-Benz Vito Tourer comfortably carries full-size cases for all 8 passengers. Let us know your exact luggage count at booking so we can plan the load.',
+      },
+      {
+        q: 'Can you collect us from Dover Port on our return?',
+        a: 'Yes. We cover both outbound and return legs — book both together and we will confirm your return pickup time closer to your sailing or disembarkation date.',
+      },
+      {
+        q: 'Do you charge more for early-morning cruise departures?',
+        a: 'No. The £525 fixed fare applies 24/7, including early-morning departures for cruise check-in.',
+      },
+    ],
+  },
+  {
+    slug: 'leeds-to-southampton-port',
+    airportName: 'Southampton Port',
+    heroImage: '/images/routes/airport-transfers-hero.webp',
+    heroAlt: 'Mercedes Vito on the motorway at dusk — Ridecore Travel transfers from Leeds to Southampton Port',
+    heroTagline: '3 hours 55 minutes · ~235 miles · Mercedes-Benz 8-Seater',
+    journeyTime: '3 hours 55 minutes',
+    distance: '~235 miles',
+    priceKey: 'southampton',
+    metaTitle: 'Leeds to Southampton Port Taxi | Fixed £570 8-Seater | Ridecore Travel',
+    metaDescription:
+      'Fixed-price taxi from Leeds to Southampton Port, £570 in an 8-seater Mercedes-Benz Vito. Cruise transfers, 24/7, licensed by Leeds City Council.',
+    faqs: [
+      {
+        q: 'How much is a taxi from Leeds to Southampton Port?',
+        a: 'A fixed-price taxi from Leeds to Southampton Port is £570 in our 8-seater Mercedes-Benz Vito Tourer, covering up to 8 passengers and their luggage, agreed before you travel.',
+      },
+      {
+        q: 'How long does it take to drive from Leeds to Southampton Port?',
+        a: 'Around 3 hours 55 minutes covering roughly 235 miles, mostly via the M1 and M3. We allow extra time for traffic around London and during peak cruise-season weekends.',
+      },
+      {
+        q: 'Can you drop off at a specific cruise terminal in Southampton?',
+        a: 'Yes. Tell us your cruise line and terminal when booking (Southampton has several cruise terminals) and we will confirm and drop off at the correct one.',
+      },
+      {
+        q: 'How much luggage can you carry for a cruise?',
+        a: 'Our Mercedes-Benz Vito Tourer comfortably carries full-size cases for all 8 passengers. Let us know your exact luggage count at booking so we can plan the load.',
+      },
+      {
+        q: 'Can you collect us from Southampton Port on our return?',
+        a: 'Yes. We cover both outbound and return legs — book both together and we will confirm your return pickup time closer to your disembarkation date.',
+      },
+    ],
+  },
+  {
+    slug: 'leeds-train-station-to-manchester-airport',
+    airportName: 'Manchester Airport',
+    airportCode: 'MAN',
+    heroImage: '/images/routes/manchester-airport.webp',
+    heroAlt: 'Manchester Airport Terminal 2 departures — Ridecore Travel transfers from Leeds Train Station',
+    h1: 'Leeds Train Station to Manchester Airport Taxi — Fixed Price, 24/7',
+    heroTagline: '1 hour 10 minutes · ~45 miles · Mercedes-Benz 8-Seater',
+    journeyTime: '1 hour 10 minutes',
+    distance: '~45 miles',
+    priceKey: 'manchester-train',
+    metaTitle: 'Leeds Train Station to Manchester Airport Taxi | Fixed £135 | Ridecore Travel',
+    metaDescription:
+      'Fixed-price taxi from Leeds Train Station to Manchester Airport, £135 in an 8-seater Mercedes-Benz Vito. 24/7, real-time flight tracking, licensed by Leeds City Council.',
+    faqs: [
+      {
+        q: 'How much is a taxi from Leeds Train Station to Manchester Airport?',
+        a: 'A fixed-price taxi from Leeds Train Station to Manchester Airport is £135 in our 8-seater Mercedes-Benz Vito Tourer, agreed before you travel with no surge pricing or hidden extras.',
+      },
+      {
+        q: 'Where do you pick up from at Leeds Train Station?',
+        a: 'We meet you at the forecourt outside the station, wherever is easiest for loading luggage. Let us know your exit or platform when booking and we will confirm the exact meeting point.',
+      },
+      {
+        q: 'How long does the journey to Manchester Airport take?',
+        a: 'Around 1 hour 10 minutes covering roughly 45 miles via the M62, depending on traffic. We build in extra time for peak-hour congestion.',
+      },
+      {
+        q: 'Which terminal at Manchester Airport do you drop off at?',
+        a: 'We drop off at whichever terminal your airline uses — Terminal 1, 2 or 3. Please provide your flight details when booking.',
+      },
+      {
+        q: 'Can you track my connecting train if it is delayed?',
+        a: 'Yes. Let us know your train service and expected arrival time when booking, and we will adjust your pickup if your train is delayed, at no extra charge.',
+      },
+    ],
+  },
 ]
 
 export function getRouteBySlug(slug: string): RouteData | undefined {
