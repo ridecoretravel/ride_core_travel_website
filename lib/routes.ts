@@ -426,7 +426,7 @@ export const routePages: RouteData[] = [
     faqs: [
       {
         q: 'How much is a taxi from Leeds Bradford Airport to Manchester Airport?',
-        a: 'A fixed-price taxi from Leeds Bradford Airport to Manchester Airport is £140 in our 8-seater Mercedes-Benz Vito Tourer, agreed before you travel with no surge pricing or hidden extras.',
+        a: 'A fixed-price taxi from Leeds Bradford Airport to Manchester Airport is £140 in our 8-seater Mercedes-Benz Vito Tourer, agreed before you travel with no surge pricing or hidden extras. This fare is for pickup at the LBA terminal; if you would rather be collected from home first, the fare may vary slightly with distance.',
       },
       {
         q: 'How long does it take to get from Leeds Bradford Airport to Manchester Airport?',
@@ -490,7 +490,7 @@ export const routePages: RouteData[] = [
     faqs: [
       {
         q: 'How much is a taxi from Leeds Bradford Airport to Liverpool Airport?',
-        a: 'A fixed-price taxi from Leeds Bradford Airport to Liverpool John Lennon Airport is £160 in our 8-seater Mercedes-Benz Vito Tourer, agreed before you travel.',
+        a: 'A fixed-price taxi from Leeds Bradford Airport to Liverpool John Lennon Airport is £160 in our 8-seater Mercedes-Benz Vito Tourer, agreed before you travel. This fare is for pickup at the LBA terminal; if you would rather be collected from home first, the fare may vary slightly with distance.',
       },
       {
         q: 'How long does it take to drive from Leeds Bradford Airport to Liverpool Airport?',
@@ -527,7 +527,7 @@ export const routePages: RouteData[] = [
     faqs: [
       {
         q: 'How much is a taxi from Leeds Bradford Airport to Heathrow?',
-        a: 'A fixed-price taxi from Leeds Bradford Airport to London Heathrow is £450 in our 8-seater Mercedes-Benz Vito Tourer, agreed before you travel with no tolls, surge pricing or hidden extras.',
+        a: 'A fixed-price taxi from Leeds Bradford Airport to London Heathrow is £450 in our 8-seater Mercedes-Benz Vito Tourer, agreed before you travel with no tolls, surge pricing or hidden extras. This fare is for pickup at the LBA terminal; if you would rather be collected from home first, the fare may vary slightly with distance.',
       },
       {
         q: 'How long does the drive from Leeds Bradford Airport to Heathrow take?',
@@ -665,7 +665,7 @@ export const routePages: RouteData[] = [
     faqs: [
       {
         q: 'How much is a taxi from Leeds Train Station to Manchester Airport?',
-        a: 'A fixed-price taxi from Leeds Train Station to Manchester Airport is £135 in our 8-seater Mercedes-Benz Vito Tourer, agreed before you travel with no surge pricing or hidden extras.',
+        a: 'A fixed-price taxi from Leeds Train Station to Manchester Airport is £135 in our 8-seater Mercedes-Benz Vito Tourer, agreed before you travel with no surge pricing or hidden extras. This fare is priced from Leeds City Centre (where the train station is); pickups from further out may vary slightly with distance.',
       },
       {
         q: 'Where do you pick up from at Leeds Train Station?',
