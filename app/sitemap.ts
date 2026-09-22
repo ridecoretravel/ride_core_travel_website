@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/blog`,              lastModified: new Date('2026-09-02'), changeFrequency: 'weekly',  priority: 0.7 },
     { url: `${BASE}/booking`,           lastModified: new Date('2026-07-15'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${BASE}/fleet`,             lastModified: new Date('2026-07-30'), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE}/leeds-to-london-day-return`, lastModified: new Date('2026-09-22'), changeFrequency: 'monthly', priority: 0.75 },
     { url: `${BASE}/terms-conditions`,  lastModified: new Date('2026-07-28'), changeFrequency: 'yearly',  priority: 0.3 },
   ]
 

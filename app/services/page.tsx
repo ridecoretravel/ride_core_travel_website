@@ -47,9 +47,9 @@ const services = [
     icon: <RouteIcon />,
     title: 'Long-Distance Journeys',
     description:
-      'Need to travel further than the airport? We cover long-distance journeys across the UK. From Leeds to London, Edinburgh, or anywhere in between — contact us for a bespoke quote.',
-    link: `tel:${site.phoneTel}`,
-    linkLabel: 'Call for a quote',
+      'Need to travel further than the airport? Our fixed-price Leeds to London day return is £800 with 8 hours free waiting time. We also cover other long-distance journeys across the UK — contact us for a bespoke quote.',
+    link: '/leeds-to-london-day-return',
+    linkLabel: 'See the London day return',
   },
 ]
 

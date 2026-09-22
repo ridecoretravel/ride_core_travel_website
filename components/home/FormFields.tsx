@@ -9,6 +9,7 @@ export const AIRPORTS = [
   'Birmingham Airport',
   'Edinburgh Airport',
   'Bristol Airport',
+  'London (Day Return)',
   'Other destination',
 ]
 

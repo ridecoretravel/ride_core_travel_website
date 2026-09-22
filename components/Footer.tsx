@@ -7,6 +7,7 @@ const footerNav = [
   { label: 'Services', href: '/services' },
   { label: 'Airport Transfers', href: '/airport-transfers' },
   { label: 'Fleet', href: '/fleet' },
+  { label: 'London Day Return', href: '/leeds-to-london-day-return' },
   { label: 'Blog', href: '/blog' },
   { label: 'About', href: '/about-us' },
   { label: 'Book a Transfer', href: '/booking' },
