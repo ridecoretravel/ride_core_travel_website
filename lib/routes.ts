@@ -550,8 +550,8 @@ export const routePages: RouteData[] = [
   {
     slug: 'leeds-to-dover-ferry-port',
     airportName: 'Dover Ferry Port',
-    heroImage: '/images/routes/airport-transfers-hero.webp',
-    heroAlt: 'Mercedes Vito on the motorway at dusk — Ridecore Travel transfers from Leeds to Dover Ferry Port',
+    heroImage: '/images/routes/dover-ferry-port.jpg',
+    heroAlt: 'Aerial view of Dover Ferry Port with ferries docked — Ridecore Travel transfers from Leeds',
     heroTagline: '4 hours 30 minutes · ~267 miles · Mercedes-Benz 8-Seater',
     journeyTime: '4 hours 30 minutes',
     distance: '~267 miles',
@@ -616,8 +616,8 @@ export const routePages: RouteData[] = [
   {
     slug: 'leeds-to-southampton-port',
     airportName: 'Southampton Port',
-    heroImage: '/images/routes/airport-transfers-hero.webp',
-    heroAlt: 'Mercedes Vito on the motorway at dusk — Ridecore Travel transfers from Leeds to Southampton Port',
+    heroImage: '/images/routes/southampton-port.jpg',
+    heroAlt: 'Aerial view of a cruise ship docked at Southampton Port — Ridecore Travel transfers from Leeds',
     heroTagline: '3 hours 55 minutes · ~235 miles · Mercedes-Benz 8-Seater',
     journeyTime: '3 hours 55 minutes',
     distance: '~235 miles',
