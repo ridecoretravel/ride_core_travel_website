@@ -1,6 +1,7 @@
 ﻿'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { site } from '@/lib/site'
 import QuoteForm from './QuoteForm'
 import { PhoneIcon } from './FormFields'
@@ -41,10 +42,10 @@ export default function Hero() {
             { label: 'London Heathrow',        href: '/airport-transfers/leeds-to-heathrow' },
             { label: '8-Seater Group Transfers', href: '/airport-transfers/8-seater' },
           ].map(r => (
-            <a key={r.href} href={r.href}
+            <Link key={r.href} href={r.href}
               className="text-[11px] text-cream/50 hover:text-gold transition-colors border border-white/10 hover:border-gold/30 px-3 py-1.5 rounded-sm tracking-wide">
               {r.label}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -55,7 +56,7 @@ export default function Hero() {
             Prefer to call? {site.phone}
           </a>
           <span className="text-cream/20 text-xs">·</span>
-          <span className="text-cream/30 text-xs">Licensed by Leeds City Council</span>
+          <span className="text-cream/60 text-xs">Licensed by Leeds City Council</span>
         </div>
       </div>
     </section>

@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 const airports = [
   { label: 'Leeds Bradford Airport', href: '/airport-transfers/leeds-bradford-airport-taxi' },
   { label: 'Manchester Airport', href: '/airport-transfers/leeds-to-manchester-airport' },
@@ -25,19 +27,19 @@ export default function ServiceAreas() {
             Airport transfers from Leeds to{' '}
             {airports.map((a, i) => (
               <span key={a.label}>
-                <a href={a.href} className="text-cream/80 hover:text-gold transition-colors underline-offset-2 hover:underline">
+                <Link href={a.href} className="text-cream/80 hover:text-gold transition-colors underline-offset-2 hover:underline">
                   {a.label}
-                </a>
+                </Link>
                 {i < airports.length - 1 ? ', ' : '.'}
               </span>
             ))}
           </p>
-          <a
+          <Link
             href="/booking"
             className="inline-flex mx-auto bg-gold text-charcoal font-semibold px-7 py-3.5 rounded-sm tracking-wide hover:bg-gold/90 transition-colors text-sm"
           >
             Get a Quote for Your Route
-          </a>
+          </Link>
         </div>
       </div>
     </section>

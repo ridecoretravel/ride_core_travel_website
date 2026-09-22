@@ -24,6 +24,15 @@ export default function Header() {
   const dropRef                     = useRef<HTMLDivElement>(null)
   const pathname                    = usePathname()
 
+  // close everything on route change — adjust state during render rather than
+  // in an effect, per https://react.dev/learn/you-might-not-need-an-effect
+  const [prevPathname, setPrevPathname] = useState(pathname)
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname)
+    setMenuOpen(false)
+    setDropOpen(false)
+  }
+
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 10)
     window.addEventListener('scroll', handler, { passive: true })
@@ -38,9 +47,6 @@ export default function Header() {
     document.addEventListener('mousedown', onClick)
     return () => document.removeEventListener('mousedown', onClick)
   }, [])
-
-  // close everything on route change
-  useEffect(() => { setMenuOpen(false); setDropOpen(false) }, [pathname])
 
   return (
     <header

@@ -24,6 +24,15 @@ const footerRoutes = [
   { label: '8-Seater Group Transfers', href: '/airport-transfers/8-seater' },
 ]
 
+const footerMoreRoutes = [
+  { label: 'LBA to Manchester Airport', href: '/airport-transfers/lba-to-manchester-airport' },
+  { label: 'LBA to Liverpool Airport',  href: '/airport-transfers/lba-to-liverpool-airport' },
+  { label: 'LBA to Heathrow',           href: '/airport-transfers/lba-to-heathrow' },
+  { label: 'Dover Ferry Port',          href: '/airport-transfers/leeds-to-dover-ferry-port' },
+  { label: 'Southampton Port',          href: '/airport-transfers/leeds-to-southampton-port' },
+  { label: 'Train Station to Manchester Airport', href: '/airport-transfers/leeds-train-station-to-manchester-airport' },
+]
+
 export default function Footer() {
   return (
     <footer className="bg-charcoal border-t border-white/10">
@@ -68,6 +77,14 @@ export default function Footer() {
                 {footerRoutes.map((l) => (
                   <Link key={l.label} href={l.href}
                     className="text-grey text-sm hover:text-gold transition-colors">
+                    {l.label}
+                  </Link>
+                ))}
+              </nav>
+              <nav className="flex flex-col gap-2 pt-1">
+                {footerMoreRoutes.map((l) => (
+                  <Link key={l.label} href={l.href}
+                    className="text-grey text-xs hover:text-gold transition-colors">
                     {l.label}
                   </Link>
                 ))}

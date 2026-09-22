@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { routePages, getRouteBySlug } from '@/lib/routes'
+import { routePages, getRouteBySlug, getRelatedRoutes } from '@/lib/routes'
 import { routes as priceRoutes } from '@/lib/prices'
 import { site, SITE_URL } from '@/lib/site'
 import FareTable from '@/components/FareTable'
@@ -48,7 +48,7 @@ export default async function RoutePage({
   const data = getRouteBySlug(route)
   if (!data) notFound()
 
-  const otherRoutes = routePages.filter((r) => r.slug !== data.slug)
+  const otherRoutes = getRelatedRoutes(data, routePages)
 
   const taxiLd = {
     '@context': 'https://schema.org',
@@ -88,7 +88,7 @@ export default async function RoutePage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
 
       {/* 1. Breadcrumb */}
-      <div className="bg-graphite border-b border-white/8 pt-20">
+      <div className="bg-graphite border-b border-white/8 pt-[72px]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-2 text-xs text-grey">
           <Link href="/" className="hover:text-gold transition-colors">Home</Link>
           <span>/</span>
@@ -125,12 +125,12 @@ export default async function RoutePage({
               {data.heroTagline ?? `${data.journeyTime} · ${data.distance} · Mercedes-Benz 8-Seater`}
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
-              <a
+              <Link
                 href="/booking"
                 className="bg-gold text-charcoal font-semibold px-7 py-4 rounded-sm text-center tracking-wide hover:bg-gold/90 transition-colors text-sm"
               >
                 Get a Quote
-              </a>
+              </Link>
               <a
                 href={`tel:${site.phoneTel}`}
                 className="border border-cream/40 text-cream font-semibold px-7 py-4 rounded-sm text-center tracking-wide hover:border-cream hover:bg-cream/5 transition-colors text-sm"
@@ -160,12 +160,12 @@ export default async function RoutePage({
               >
                 Book via WhatsApp
               </a>
-              <a
+              <Link
                 href="/booking"
                 className="border border-white/20 text-cream font-semibold text-sm px-6 py-3 rounded-sm tracking-wide hover:border-gold/40 transition-colors"
               >
                 Online Quote Form
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -282,7 +282,7 @@ export default async function RoutePage({
       {/* 8. Related routes */}
       <section className="bg-graphite py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-cream text-lg font-semibold mb-7 tracking-tight">Other Routes We Cover</h2>
+          <h2 className="text-cream text-lg font-semibold mb-7 tracking-tight">Related Routes</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {otherRoutes.map((r) => {
               const price = priceRoutes.find((p) => p.slug === r.priceKey)

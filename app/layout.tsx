@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   description:
     'Fixed-price 24/7 airport transfers from Leeds. Premium 8-seater Mercedes Vito. Licensed by Leeds City Council. Leeds Bradford, Manchester, Heathrow & all UK airports.',
   metadataBase: new URL(SITE_URL),
+  alternates: { canonical: '/' },
   openGraph: {
     title: 'Fixed-Price Airport Transfers from Leeds | Ridecore Travel',
     description:

@@ -265,7 +265,7 @@ export default function QuoteForm({ defaultDropoff }: { defaultDropoff?: string 
               </button>
               <div className="flex flex-wrap gap-x-5 gap-y-1 mt-3 justify-center">
                 {['Fixed price · no surprises', 'No payment now', '24/7 availability'].map(t => (
-                  <span key={t} className="text-cream/40 text-[11px] flex items-center gap-1.5">
+                  <span key={t} className="text-cream/60 text-[11px] flex items-center gap-1.5">
                     <span className="text-gold text-[8px]">✦</span>{t}
                   </span>
                 ))}

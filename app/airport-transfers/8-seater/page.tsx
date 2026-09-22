@@ -138,7 +138,7 @@ export default function EightSeaterPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
 
       {/* 1. Breadcrumb */}
-      <div className="bg-graphite border-b border-white/8 pt-20">
+      <div className="bg-graphite border-b border-white/8 pt-[72px]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-2 text-xs text-grey">
           <Link href="/" className="hover:text-gold transition-colors">Home</Link>
           <span>/</span>

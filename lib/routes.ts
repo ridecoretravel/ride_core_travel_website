@@ -110,6 +110,30 @@ export const routePages: RouteData[] = [
     metaTitle: 'Leeds to Manchester Airport Taxi | Fixed Price | Ridecore Travel',
     metaDescription:
       'Book a fixed-price transfer from Leeds to Manchester Airport. 8-seater Mercedes Vito, flight tracking, 24/7 availability.',
+    intro: [
+      "Manchester Airport is around 45 miles south-west of Leeds, reached via the M62. For many Leeds travellers it offers routes and flight times that Leeds Bradford Airport doesn't cover.",
+      'Ridecore Travel runs the full Leeds-to-Manchester route in one 8-seater [Mercedes-Benz Vito Tourer](/fleet) at a single fixed fare — the same whether you are travelling solo or as a group of eight with luggage.',
+    ],
+    sections: [
+      {
+        heading: 'The route from Leeds to Manchester Airport',
+        paragraphs: [
+          'The journey runs via the M62, covering roughly 45 miles in around 1 hour 10 minutes in normal traffic. We collect from any address across Leeds and the wider LS postcode area, with pickups outside the city centre confirmed at the time of booking.',
+        ],
+      },
+      {
+        heading: 'Manchester Airport terminal and drop-off',
+        paragraphs: [
+          'Manchester Airport has three terminals. Tell us your airline and flight number when booking and we will drop you at the correct one — Terminal 1, 2 or 3. For arrivals, we track your flight and adjust your pickup automatically if you land early or late.',
+        ],
+      },
+      {
+        heading: 'Why book a fixed-price transfer',
+        paragraphs: [
+          'A pre-booked fixed fare means no meter and no surge pricing, with the whole group and luggage travelling together in one vehicle. Also flying via Leeds Bradford Airport? See our [Leeds Bradford Airport to Manchester Airport](/airport-transfers/lba-to-manchester-airport) page, or transfers from [Leeds Train Station to Manchester Airport](/airport-transfers/leeds-train-station-to-manchester-airport).',
+        ],
+      },
+    ],
     faqs: [
       {
         q: 'How long is the drive from Leeds to Manchester Airport?',
@@ -145,6 +169,24 @@ export const routePages: RouteData[] = [
     metaTitle: 'Leeds to Liverpool Airport Taxi | Fixed Price | Ridecore Travel',
     metaDescription:
       'Fixed-price airport transfers from Leeds to Liverpool John Lennon Airport. Premium 8-seater Mercedes Vito, 24/7.',
+    intro: [
+      "Liverpool John Lennon Airport is around 75 miles west of Leeds, reached via the M62. It's a popular choice for routes and charter flights not always available from Leeds Bradford Airport.",
+      'Ridecore Travel runs the full Leeds-to-Liverpool route in one 8-seater [Mercedes-Benz Vito Tourer](/fleet) at a single fixed fare, agreed before you travel — the same fare whether you are one passenger or a group of eight.',
+    ],
+    sections: [
+      {
+        heading: 'The route from Leeds to Liverpool Airport',
+        paragraphs: [
+          'The drive runs west via the M62, covering around 75 miles in roughly 1 hour 30 minutes in normal traffic. We collect from any address across Leeds and the wider LS postcode area, with pickups outside the city centre confirmed at the time of booking.',
+        ],
+      },
+      {
+        heading: 'Why book a fixed-price transfer',
+        paragraphs: [
+          'Your fare is agreed in advance with no meter and no surge pricing, and we track your flight in real time so the return leg is never left to chance. Landing at Leeds Bradford Airport and heading onward instead? See our [Leeds Bradford Airport to Liverpool Airport](/airport-transfers/lba-to-liverpool-airport) page.',
+        ],
+      },
+    ],
     faqs: [
       {
         q: 'How long does it take to drive from Leeds to Liverpool Airport?',
@@ -312,6 +354,24 @@ export const routePages: RouteData[] = [
     metaTitle: 'Leeds to Birmingham Airport Taxi | Fixed Price £250 | Ridecore Travel',
     metaDescription:
       'Fixed-price taxi from Leeds to Birmingham Airport, from £250. 8-seater Mercedes Vito, real-time flight tracking, 24/7, licensed by Leeds City Council.',
+    intro: [
+      'Birmingham Airport sits around 120 miles south of Leeds, a longer run reached via the M1 and M42. For a group of up to eight, a single fixed-price transfer is usually more straightforward — and often better value — than several train tickets plus the connection from Birmingham International station.',
+      'Ridecore Travel covers the full Leeds-to-Birmingham route in one 8-seater [Mercedes-Benz Vito Tourer](/fleet) at a single fixed fare, agreed before you travel.',
+    ],
+    sections: [
+      {
+        heading: 'The route from Leeds to Birmingham Airport',
+        paragraphs: [
+          'The drive runs south via the M1 and M42, covering around 120 miles in roughly 2 hours 15 minutes in normal traffic. We collect from any address across Leeds and the wider LS postcode area.',
+        ],
+      },
+      {
+        heading: 'Birmingham Airport terminal and drop-off',
+        paragraphs: [
+          'Birmingham Airport has a single main terminal building, so we use the same drop-off and pick-up location every time regardless of your airline. For arrivals we track your flight and adjust the pickup automatically if you land early or late.',
+        ],
+      },
+    ],
     faqs: [
       {
         q: 'How much is a taxi from Leeds to Birmingham Airport?',
@@ -355,6 +415,30 @@ export const routePages: RouteData[] = [
     metaTitle: 'Leeds to Heathrow Airport Taxi | Fixed Price | Ridecore Travel',
     metaDescription:
       'Book a reliable fixed-price transfer from Leeds to London Heathrow. 8-seater Mercedes Vito, professional licensed drivers.',
+    intro: [
+      'London Heathrow is around 200 miles south of Leeds, the longest of our regular airport routes, taking approximately 3 hours 30 minutes via the M1. It is a common choice for Leeds travellers connecting onto long-haul flights not available from Yorkshire.',
+      'Ridecore Travel covers the full Leeds-to-Heathrow route in one 8-seater [Mercedes-Benz Vito Tourer](/fleet) at a single fixed fare — the same whether you are travelling solo or as a full group of eight with luggage.',
+    ],
+    sections: [
+      {
+        heading: 'The route from Leeds to Heathrow',
+        paragraphs: [
+          'The drive is mostly motorway, running south on the M1, and covers around 200 miles in approximately 3 hours 30 minutes in normal traffic. We collect from any address across Leeds and the wider LS postcode area, and no motorway tolls or congestion charges are added to your fixed fare.',
+        ],
+      },
+      {
+        heading: 'Heathrow terminal and drop-off',
+        paragraphs: [
+          'Heathrow has four passenger terminals — 2, 3, 4 and 5. Tell us your airline and flight number when booking and we will confirm the correct terminal and drop you at departures. For arrivals we track your flight and adjust pickup automatically if you land early or late.',
+        ],
+      },
+      {
+        heading: 'Why book a fixed-price transfer for a long-distance route',
+        paragraphs: [
+          'On a 200-mile route, a fixed fare protects you from meter creep, and the Mercedes-Benz Vito Tourer’s reclining seats and climate control make the journey comfortable for the whole group. Flying via Leeds Bradford Airport instead? See our [Leeds Bradford Airport to Heathrow](/airport-transfers/lba-to-heathrow) page.',
+        ],
+      },
+    ],
     faqs: [
       {
         q: 'How long does the drive from Leeds to Heathrow take?',
@@ -524,6 +608,30 @@ export const routePages: RouteData[] = [
     metaTitle: 'Leeds Bradford Airport to Heathrow Taxi | Fixed £450 | Ridecore Travel',
     metaDescription:
       'Fixed-price taxi from Leeds Bradford Airport to London Heathrow, £450 in an 8-seater Mercedes-Benz Vito. 24/7, real-time flight tracking, licensed by Leeds City Council.',
+    intro: [
+      'Connecting from Leeds Bradford Airport onward to a long-haul flight from Heathrow? A fixed-price transfer covers the full 205-mile run in one vehicle, without working out trains, connections or terminal changes with luggage in tow.',
+      'Ridecore Travel runs the LBA-to-Heathrow route in one 8-seater [Mercedes-Benz Vito Tourer](/fleet) at a single fixed fare — the same whether you are travelling solo or as a full group of eight.',
+    ],
+    sections: [
+      {
+        heading: 'The route from Leeds Bradford Airport to Heathrow',
+        paragraphs: [
+          'The journey covers around 205 miles and typically takes 3 hours 30 minutes, depending on traffic. We collect directly from the LBA terminal forecourt, or from any address across Leeds if your journey starts from home instead of off an inbound flight.',
+        ],
+      },
+      {
+        heading: 'Heathrow terminal and drop-off',
+        paragraphs: [
+          'Heathrow has four passenger terminals — 2, 3, 4 and 5. Tell us your onward airline and flight number when booking and we will confirm the correct terminal. We track both your Leeds Bradford Airport and Heathrow flights, adjusting the pickup automatically if either is delayed.',
+        ],
+      },
+      {
+        heading: 'Why book a fixed-price airport-to-airport transfer',
+        paragraphs: [
+          'A door-to-door 8-seater keeps your group and luggage together for the whole 205-mile journey, in a Mercedes-Benz Vito Tourer with comfortable reclining seats and climate control. Also connecting via LBA to Manchester or Liverpool? See our [Leeds Bradford Airport to Manchester Airport](/airport-transfers/lba-to-manchester-airport) and [Leeds Bradford Airport to Liverpool Airport](/airport-transfers/lba-to-liverpool-airport) pages.',
+        ],
+      },
+    ],
     faqs: [
       {
         q: 'How much is a taxi from Leeds Bradford Airport to Heathrow?',
@@ -625,6 +733,30 @@ export const routePages: RouteData[] = [
     metaTitle: 'Leeds to Southampton Port Taxi | Fixed £525 8-Seater | Ridecore Travel',
     metaDescription:
       'Fixed-price taxi from Leeds to Southampton Port, £525 in an 8-seater Mercedes-Benz Vito. Cruise transfers, 24/7, licensed by Leeds City Council.',
+    intro: [
+      "Southampton Port is around 235 miles south of Leeds, reached mostly via the M1 and M3. It's a major UK cruise port, and a fixed-price transfer covers the full journey in one vehicle for the whole group and all the cruise luggage.",
+      'Ridecore Travel covers the full Leeds-to-Southampton route in one 8-seater [Mercedes-Benz Vito Tourer](/fleet) at a single fixed fare — the same whether you are one passenger or a group of eight with cruise cases.',
+    ],
+    sections: [
+      {
+        heading: 'The route from Leeds to Southampton Port',
+        paragraphs: [
+          'The drive is mostly motorway, via the M1 and M3, covering around 235 miles in approximately 3 hours 55 minutes in normal traffic. We collect from any address across Leeds and the wider LS postcode area, and recommend booking early for weekend cruise departures.',
+        ],
+      },
+      {
+        heading: 'Southampton cruise terminals',
+        paragraphs: [
+          'Southampton has several cruise terminals. Tell us your cruise line and terminal when booking and we will confirm and drop off at the correct one. Let us know your luggage count in advance so we can plan the load — our Vito Tourer comfortably carries full-size cases for all 8 passengers.',
+        ],
+      },
+      {
+        heading: 'Why book a fixed-price transfer for a cruise departure',
+        paragraphs: [
+          'A 235-mile door-to-door transfer removes the need for an overnight stop or parking at the port, with your fare agreed before you travel. Also considering Dover for your cruise or ferry? See our [Leeds to Dover Ferry Port](/airport-transfers/leeds-to-dover-ferry-port) page.',
+        ],
+      },
+    ],
     faqs: [
       {
         q: 'How much is a taxi from Leeds to Southampton Port?',
@@ -662,6 +794,24 @@ export const routePages: RouteData[] = [
     metaTitle: 'Leeds Train Station to Manchester Airport Taxi | Fixed £135 | Ridecore Travel',
     metaDescription:
       'Fixed-price taxi from Leeds Train Station to Manchester Airport, £135 in an 8-seater Mercedes-Benz Vito. 24/7, real-time flight tracking, licensed by Leeds City Council.',
+    intro: [
+      'Arriving into Leeds by train and continuing on to Manchester Airport? This route picks up directly from Leeds Train Station, rather than requiring a separate journey into the city first.',
+      'Ridecore Travel covers the run from Leeds Train Station to Manchester Airport in one 8-seater [Mercedes-Benz Vito Tourer](/fleet) at a single fixed fare — the same whether you are travelling solo or as a group of eight with luggage.',
+    ],
+    sections: [
+      {
+        heading: 'Pickup at Leeds Train Station',
+        paragraphs: [
+          'We meet you at the station forecourt, wherever is easiest for loading luggage — let us know your exit or platform when booking and we will confirm the exact meeting point. If your train is delayed, tell us your service and expected arrival time and we will adjust your pickup at no extra charge.',
+        ],
+      },
+      {
+        heading: 'The route to Manchester Airport',
+        paragraphs: [
+          'From Leeds Train Station the drive runs via the M62, covering around 45 miles in roughly 1 hour 10 minutes in normal traffic. We drop off at whichever terminal your airline uses — Terminal 1, 2 or 3 — so please provide your flight details when booking.',
+        ],
+      },
+    ],
     faqs: [
       {
         q: 'How much is a taxi from Leeds Train Station to Manchester Airport?',
@@ -689,4 +839,42 @@ export const routePages: RouteData[] = [
 
 export function getRouteBySlug(slug: string): RouteData | undefined {
   return routePages.find((r) => r.slug === slug)
+}
+
+type RouteCategory = 'lba-connection' | 'port' | 'train-station' | 'leeds-airport'
+
+function getRouteCategory(route: RouteData): RouteCategory {
+  if (route.slug.startsWith('lba-to-')) return 'lba-connection'
+  if (route.slug === 'leeds-train-station-to-manchester-airport') return 'train-station'
+  if (route.airportName.toLowerCase().includes('port')) return 'port'
+  return 'leeds-airport'
+}
+
+function parseMiles(distance: string): number {
+  const match = distance.match(/(\d+(?:\.\d+)?)/)
+  return match ? parseFloat(match[1]) : Infinity
+}
+
+/**
+ * Returns 3–6 genuinely related routes for a given route page: routes of the
+ * same type first (same category — e.g. other LBA connections, other port
+ * transfers), then the closest-distance routes of other types to fill out
+ * the list. Grounded in existing route data (slug/category and distance),
+ * not an invented ranking.
+ */
+export function getRelatedRoutes(current: RouteData, all: RouteData[] = routePages): RouteData[] {
+  const others = all.filter((r) => r.slug !== current.slug)
+  const category = getRouteCategory(current)
+
+  const sameCategory = others.filter((r) => getRouteCategory(r) === category)
+  const rest = others
+    .filter((r) => getRouteCategory(r) !== category)
+    .sort(
+      (a, b) =>
+        Math.abs(parseMiles(a.distance) - parseMiles(current.distance)) -
+        Math.abs(parseMiles(b.distance) - parseMiles(current.distance))
+    )
+
+  const targetCount = Math.min(6, Math.max(3, sameCategory.length))
+  return [...sameCategory, ...rest].slice(0, targetCount)
 }
