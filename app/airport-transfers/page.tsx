@@ -147,6 +147,26 @@ export default function AirportTransfersPage() {
                 How group pricing works →
               </span>
             </Link>
+
+            <Link
+              href="/leeds-to-london-day-return"
+              className="group bg-gold/10 border border-gold/30 rounded-sm p-6 flex flex-col gap-4 hover:border-gold/60 transition-colors"
+            >
+              <div className="flex flex-col gap-1">
+                <span className="text-gold text-[10px] font-semibold tracking-widest uppercase">Long-Distance</span>
+                <h3 className="text-cream font-semibold text-base leading-snug group-hover:text-gold transition-colors">
+                  London Day Return
+                </h3>
+              </div>
+              <div className="flex items-baseline gap-2 mt-auto pt-3 border-t border-gold/20">
+                <span className="text-grey text-xs">fixed</span>
+                <span className="text-gold font-bold text-xl">£800</span>
+                <span className="text-grey text-xs">return</span>
+              </div>
+              <span className="text-gold text-xs font-semibold tracking-wide group-hover:underline">
+                8 hours free waiting — view details →
+              </span>
+            </Link>
           </div>
         </div>
       </section>

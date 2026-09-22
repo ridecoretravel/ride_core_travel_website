@@ -125,6 +125,9 @@ export default function Header() {
           <Link href="/airport-transfers" className="text-sm tracking-wide text-cream/80 hover:text-gold transition-colors">
             Fares
           </Link>
+          <Link href="/leeds-to-london-day-return" className="text-sm tracking-wide text-cream/80 hover:text-gold transition-colors">
+            London Day Return
+          </Link>
           <Link href="/blog" className="text-sm tracking-wide text-cream/80 hover:text-gold transition-colors">
             Blog
           </Link>
@@ -201,6 +204,7 @@ export default function Header() {
             <NavItem href="/services" onClick={() => setMenuOpen(false)}>Services</NavItem>
             <NavItem href="/fleet" onClick={() => setMenuOpen(false)}>Fleet</NavItem>
             <NavItem href="/airport-transfers" onClick={() => setMenuOpen(false)}>Fares</NavItem>
+            <NavItem href="/leeds-to-london-day-return" onClick={() => setMenuOpen(false)}>London Day Return</NavItem>
             <NavItem href="/blog" onClick={() => setMenuOpen(false)}>Blog</NavItem>
             <NavItem href="/about-us" onClick={() => setMenuOpen(false)}>About Us</NavItem>
 
