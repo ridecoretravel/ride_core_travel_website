@@ -17,6 +17,9 @@ export default function FareTable({ priceKey, compact }: Props) {
     ? routes.filter((r) => r.slug === priceKey)
     : routes
 
+  const hasOverrides = !priceKey && routes.some((r) => r.noteOverride)
+  const note = priceKey ? (rows[0]?.noteOverride ?? pricesNote) : pricesNote
+
   return (
     <div className="flex flex-col gap-4">
 
@@ -61,7 +64,12 @@ export default function FareTable({ priceKey, compact }: Props) {
         })}
       </div>
 
-      <p className="text-grey text-xs italic px-1">{pricesNote}</p>
+      <p className="text-grey text-xs italic px-1">{note}</p>
+      {hasOverrides && (
+        <p className="text-grey text-xs italic px-1">
+          Leeds Bradford Airport connection routes are priced for pickup at the LBA terminal — see the route page for details.
+        </p>
+      )}
 
       {!compact && (
         <div className="flex flex-wrap gap-3">
