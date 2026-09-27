@@ -219,7 +219,7 @@ export const routePages: RouteData[] = [
     journeyTime: '~1 hour 40 minutes',
     distance: '~85 miles',
     priceKey: 'eastmidlands',
-    metaTitle: 'Leeds to East Midlands Airport Taxi | Fixed £170 8-Seater | Ridecore Travel',
+    metaTitle: 'Leeds to East Midlands Airport Taxi | Fixed £170 8-Seater',
     metaDescription:
       'Fixed-price taxi from Leeds to East Midlands Airport, £170 in an 8-seater Mercedes-Benz Vito. 24/7, real-time flight tracking, licensed by Leeds City Council.',
     intro: [
@@ -285,7 +285,7 @@ export const routePages: RouteData[] = [
     journeyTime: '~1 hour 50 minutes',
     distance: '~95 miles',
     priceKey: 'newcastle',
-    metaTitle: 'Leeds to Newcastle Airport Taxi | Fixed £230 8-Seater | Ridecore Travel',
+    metaTitle: 'Leeds to Newcastle Airport Taxi | Fixed £230 8-Seater',
     metaDescription:
       'Fixed-price taxi from Leeds to Newcastle International Airport, £230 in an 8-seater Mercedes-Benz Vito. 24/7, real-time flight tracking, licensed by Leeds City Council.',
     intro: [
@@ -477,7 +477,7 @@ export const routePages: RouteData[] = [
     journeyTime: '1 hour 10 minutes',
     distance: '~54 miles',
     priceKey: 'lba-manchester',
-    metaTitle: 'Leeds Bradford Airport to Manchester Airport Taxi | Fixed £140 | Ridecore Travel',
+    metaTitle: 'Leeds Bradford to Manchester Airport Taxi | Fixed £140',
     metaDescription:
       'Fixed-price taxi from Leeds Bradford Airport to Manchester Airport, £140 in an 8-seater Mercedes-Benz Vito. 24/7, real-time flight tracking, licensed by Leeds City Council.',
     intro: [
@@ -541,7 +541,7 @@ export const routePages: RouteData[] = [
     journeyTime: '1 hour 25 minutes',
     distance: '~74 miles',
     priceKey: 'lba-liverpool',
-    metaTitle: 'Leeds Bradford Airport to Liverpool Airport Taxi | Fixed £160 | Ridecore Travel',
+    metaTitle: 'Leeds Bradford to Liverpool Airport Taxi | Fixed £160',
     metaDescription:
       'Fixed-price taxi from Leeds Bradford Airport to Liverpool John Lennon Airport, £160 in an 8-seater Mercedes-Benz Vito. 24/7, real-time flight tracking, licensed by Leeds City Council.',
     intro: [
@@ -605,7 +605,7 @@ export const routePages: RouteData[] = [
     journeyTime: '3 hours 30 minutes',
     distance: '~205 miles',
     priceKey: 'lba-heathrow',
-    metaTitle: 'Leeds Bradford Airport to Heathrow Taxi | Fixed £450 | Ridecore Travel',
+    metaTitle: 'Leeds Bradford to Heathrow Airport Taxi | Fixed £450',
     metaDescription:
       'Fixed-price taxi from Leeds Bradford Airport to London Heathrow, £450 in an 8-seater Mercedes-Benz Vito. 24/7, real-time flight tracking, licensed by Leeds City Council.',
     intro: [
@@ -664,7 +664,7 @@ export const routePages: RouteData[] = [
     journeyTime: '4 hours 30 minutes',
     distance: '~267 miles',
     priceKey: 'dover',
-    metaTitle: 'Leeds to Dover Ferry Port Taxi | Fixed £570 8-Seater | Ridecore Travel',
+    metaTitle: 'Leeds to Dover Ferry Port Taxi | Fixed £570 8-Seater',
     metaDescription:
       'Fixed-price taxi from Leeds to Dover Ferry Port, £570 in an 8-seater Mercedes-Benz Vito. Cruise and ferry transfers, 24/7, licensed by Leeds City Council.',
     intro: [
@@ -730,7 +730,7 @@ export const routePages: RouteData[] = [
     journeyTime: '3 hours 55 minutes',
     distance: '~235 miles',
     priceKey: 'southampton',
-    metaTitle: 'Leeds to Southampton Port Taxi | Fixed £525 8-Seater | Ridecore Travel',
+    metaTitle: 'Leeds to Southampton Port Taxi | Fixed £525 8-Seater',
     metaDescription:
       'Fixed-price taxi from Leeds to Southampton Port, £525 in an 8-seater Mercedes-Benz Vito. Cruise transfers, 24/7, licensed by Leeds City Council.',
     intro: [
@@ -791,7 +791,7 @@ export const routePages: RouteData[] = [
     journeyTime: '1 hour 10 minutes',
     distance: '~45 miles',
     priceKey: 'manchester-train',
-    metaTitle: 'Leeds Train Station to Manchester Airport Taxi | Fixed £135 | Ridecore Travel',
+    metaTitle: 'Leeds Station to Manchester Airport Taxi | Fixed £135',
     metaDescription:
       'Fixed-price taxi from Leeds Train Station to Manchester Airport, £135 in an 8-seater Mercedes-Benz Vito. 24/7, real-time flight tracking, licensed by Leeds City Council.',
     intro: [

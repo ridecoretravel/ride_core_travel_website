@@ -32,7 +32,6 @@ export default function JsonLd() {
     priceRange: '££',
     currenciesAccepted: 'GBP',
     paymentAccepted: 'Cash, Credit Card, Bank Transfer',
-    vehicleType: 'Mercedes-Benz Vito Tourer 8-seater',
     sameAs: [
       site.socials.facebook,
       site.socials.instagram,

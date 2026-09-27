@@ -188,7 +188,7 @@ export const posts: Post[] = [
     slug: 'which-airport-to-fly-from-near-leeds',
     title: 'Which Airport Should You Fly From Near Leeds?',
     excerpt: 'Leeds Bradford, Manchester, Liverpool, Birmingham or Heathrow — how the five airports within reach of Leeds compare on drive time, flight choice and transfer cost.',
-    metaTitle: 'Which Airport Should You Fly From Near Leeds? LBA vs Manchester vs More',
+    metaTitle: 'Which Airport Should You Fly From Near Leeds?',
     metaDescription: 'Leeds Bradford is closest, but Manchester has far more flights. A practical comparison of the five airports within reach of Leeds, with drive times and fixed transfer prices.',
     featuredImage: '/images/routes/airport-transfers-hero.webp',
     featuredImageAlt: 'Mercedes Vito on the motorway at dusk — airport transfers from Leeds with Ridecore Travel',

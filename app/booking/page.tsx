@@ -29,6 +29,7 @@ export default function BookingPage() {
           <span className="text-cream/60">Book a Transfer</span>
         </div>
       </div>
+      <h1 className="sr-only">Book Your Airport Transfer from Leeds</h1>
       <BookingForm />
     </div>
   )
