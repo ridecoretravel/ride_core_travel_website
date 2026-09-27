@@ -64,11 +64,14 @@ function row(label: string, value: string, highlight = false) {
 export async function POST(req: NextRequest) {
   const data = await req.json()
 
-  const required = ['name', 'email', 'phone', 'passengers', 'pickup', 'dropoff', 'date', 'time']
+  const required = ['name', 'email', 'phone', 'passengers', 'pickup', 'dropoff', 'date', 'time', 'bookingType']
   for (const field of required) {
     if (!data[field]) {
       return NextResponse.json({ error: `Missing field: ${field}` }, { status: 400 })
     }
+  }
+  if (data.bookingType === 'Company Booking' && !data.companyName) {
+    return NextResponse.json({ error: 'Missing field: companyName' }, { status: 400 })
   }
 
   const returnText = data.returnJourney
@@ -89,6 +92,8 @@ export async function POST(req: NextRequest) {
         <!-- Customer -->
         <p style="font-family:sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;color:#b29a75;text-transform:uppercase;margin:0 0 8px">Customer</p>
         <table width="100%" cellpadding="0" cellspacing="0" style="background:#fafafa;border:1px solid #eee;border-radius:4px;margin-bottom:20px">
+          ${row('Booking Type', data.bookingType, true)}
+          ${data.companyName ? row('Company Name', data.companyName, true) : ''}
           ${row('Name', data.name)}
           ${row('Phone', `<a href="tel:${data.phone}" style="color:#0E0E0E;text-decoration:none">${data.phone}</a>`)}
           ${row('Email', `<a href="mailto:${data.email}" style="color:#0E0E0E;text-decoration:none">${data.email}</a>`)}
@@ -145,6 +150,8 @@ export async function POST(req: NextRequest) {
         <!-- Journey summary -->
         <p style="font-family:sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;color:#b29a75;text-transform:uppercase;margin:0 0 8px">Your Journey</p>
         <table width="100%" cellpadding="0" cellspacing="0" style="background:#fafafa;border:1px solid #eee;border-radius:4px;margin-bottom:24px">
+          ${row('Booking Type', data.bookingType)}
+          ${data.companyName ? row('Company Name', data.companyName) : ''}
           ${row('From', data.pickup)}
           ${row('To', data.dropoff)}
           ${data.postcode ? row('Postcode', data.postcode) : ''}
@@ -188,7 +195,7 @@ export async function POST(req: NextRequest) {
         to: 'booking@ridecoretravel.co.uk',
         subject: `🚐 New Quote — ${data.name} · ${data.dropoff} · ${data.date}`,
         html: notifyHtml,
-        text: `New quote request\nName: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nPickup: ${data.pickup}\nDrop-off: ${data.dropoff}${data.postcode ? `\nPostcode: ${data.postcode}` : ''}\nDate: ${data.date}\nTime: ${data.time}\nPassengers: ${data.passengers}${returnText}`,
+        text: `New quote request\nBooking Type: ${data.bookingType}${data.companyName ? `\nCompany Name: ${data.companyName}` : ''}\nName: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nPickup: ${data.pickup}\nDrop-off: ${data.dropoff}${data.postcode ? `\nPostcode: ${data.postcode}` : ''}\nDate: ${data.date}\nTime: ${data.time}\nPassengers: ${data.passengers}${returnText}`,
       }),
       transporter.sendMail({
         from: `"Ridecore Travel" <${process.env.GMAIL_USER}>`,

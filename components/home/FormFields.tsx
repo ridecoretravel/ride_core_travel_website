@@ -97,6 +97,30 @@ export function PassengersField({ value, onChange }: { value: string; onChange: 
   )
 }
 
+export function BookingTypeField({ value, onChange }: { value: string; onChange: (v: string) => void }) {
+  return (
+    <div className="flex flex-col gap-1.5 sm:col-span-2 lg:col-span-3">
+      <FieldLabel icon={<UserIcon />}>Booking type</FieldLabel>
+      <div className="flex gap-1.5">
+        {['Private Booking', 'Company Booking'].map(opt => (
+          <button
+            key={opt}
+            type="button"
+            onClick={() => onChange(opt)}
+            className={`flex-1 py-3.5 text-sm font-semibold rounded-sm border transition-all ${
+              value === opt
+                ? 'bg-gold text-charcoal border-gold'
+                : 'bg-graphite border-white/10 text-grey hover:border-gold/30 hover:text-cream'
+            }`}
+          >
+            {opt}
+          </button>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export function ReturnJourneyToggle({ checked, onToggle }: { checked: boolean; onToggle: () => void }) {
   return (
     <div className="sm:col-span-2">

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import {
-  AIRPORTS, PremiumInput, PremiumSelect, PassengersField, ReturnJourneyToggle, FieldLabel,
+  AIRPORTS, PremiumInput, PremiumSelect, PassengersField, ReturnJourneyToggle, BookingTypeField, FieldLabel,
   LocIcon, DestIcon, CalIcon, TimeIcon, LuggageIcon, StopsIcon, PlaneIcon, UserIcon, MailIcon, PhoneIcon,
 } from './FormFields'
 
@@ -24,12 +24,26 @@ export default function QuoteForm({ defaultDropoff }: { defaultDropoff?: string 
   const [luggage, setLuggage]       = useState('')
   const [stops, setStops]           = useState('')
   const [postcode, setPostcode]     = useState('')
+  const [bookingType, setBookingType] = useState('')
+  const [companyName, setCompanyName] = useState('')
   const [status, setStatus]         = useState<Status>('idle')
+  const [errorMessage, setErrorMessage] = useState('')
 
   const today = new Date().toISOString().split('T')[0]
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    if (!bookingType) {
+      setStatus('error')
+      setErrorMessage('Please select a booking type.')
+      return
+    }
+    if (bookingType === 'Company Booking' && !companyName.trim()) {
+      setStatus('error')
+      setErrorMessage('Please enter your company name.')
+      return
+    }
+    setErrorMessage('')
     setStatus('sending')
     try {
       const res = await fetch('/api/quote', {
@@ -37,6 +51,8 @@ export default function QuoteForm({ defaultDropoff }: { defaultDropoff?: string 
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name, email, phone, passengers,
+          bookingType,
+          companyName: bookingType === 'Company Booking' ? companyName : '',
           pickup, dropoff, date, time,
           postcode: dropoff === 'Other destination' ? postcode : '',
           luggage,
@@ -50,6 +66,7 @@ export default function QuoteForm({ defaultDropoff }: { defaultDropoff?: string 
       if (!res.ok) throw new Error()
       setStatus('sent')
     } catch {
+      setErrorMessage('')
       setStatus('error')
     }
   }
@@ -74,7 +91,7 @@ export default function QuoteForm({ defaultDropoff }: { defaultDropoff?: string 
             We&apos;ve received your details and will be in touch as soon as possible with your fixed price. Check your email or phone.
           </p>
           <button
-            onClick={() => { setStatus('idle'); setName(''); setEmail(''); setPhone(''); setPickup(''); setDropoff(defaultDropoff ?? ''); setDate(''); setTime(''); setPassengers('1'); setReturnOn(false); setLuggage(''); setStops(''); setFlightNumber(''); setPostcode('') }}
+            onClick={() => { setStatus('idle'); setName(''); setEmail(''); setPhone(''); setPickup(''); setDropoff(defaultDropoff ?? ''); setDate(''); setTime(''); setPassengers('1'); setReturnOn(false); setLuggage(''); setStops(''); setFlightNumber(''); setPostcode(''); setBookingType(''); setCompanyName('') }}
             className="mt-2 text-gold text-xs tracking-widest uppercase font-semibold hover:underline"
           >
             Submit another →
@@ -214,6 +231,23 @@ export default function QuoteForm({ defaultDropoff }: { defaultDropoff?: string 
               <span className="text-grey text-[10px] font-semibold tracking-widest uppercase">Your details</span>
             </div>
 
+            {/* Booking type */}
+            <BookingTypeField value={bookingType} onChange={setBookingType} />
+
+            {/* Company name — only for Company Booking */}
+            {bookingType === 'Company Booking' && (
+              <PremiumInput
+                label="Company name"
+                icon={<UserIcon />}
+                name="companyName"
+                type="text"
+                value={companyName}
+                onChange={e => setCompanyName(e.target.value)}
+                placeholder="Your company's name"
+                required
+              />
+            )}
+
             {/* Personal details */}
             <PremiumInput
               label="Full name"
@@ -249,7 +283,7 @@ export default function QuoteForm({ defaultDropoff }: { defaultDropoff?: string 
             {/* Submit */}
             <div className="sm:col-span-2 lg:col-span-3 pt-1">
               {status === 'error' && (
-                <p className="text-red-400 text-xs mb-2">Something went wrong — please try again or call us directly.</p>
+                <p className="text-red-400 text-xs mb-2">{errorMessage || 'Something went wrong — please try again or call us directly.'}</p>
               )}
               <button type="submit" disabled={status === 'sending'}
                 className="w-full bg-gold text-charcoal font-bold text-sm tracking-widest uppercase py-4 rounded-sm hover:bg-gold/90 active:scale-[.99] transition-all disabled:opacity-60 flex items-center justify-center gap-2">
